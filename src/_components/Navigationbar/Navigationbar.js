@@ -20,11 +20,10 @@ class Navigationbar extends React.Component {
     styles = {
         borderRadius: 30,
         width: 100,
-        height: 32
     };
 
     navStyle = {
-        "box-shadow": "0 14px 25px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.3)",
+        "box-shadow": "0 14px 25px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
         height: "80px"
     };
 
@@ -48,8 +47,8 @@ class Navigationbar extends React.Component {
                         </div>
                         <div>
                             <Nav className="mx-auto" navbar>
-                                <Button style={this.styles} className="btn btn-outline-info m-2">Login</Button>
-                                <Button style={this.styles} className="btn btn-outline-info m-2">SignUp</Button>
+                                <Button style={this.styles} className="btn btn-outline-info m-2" size="sm">Login</Button>
+                                <Button style={this.styles} className="btn btn-outline-info m-2" size="sm">SignUp</Button>
                             </Nav>
                         </div>
                     </Collapse>
