@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './bootstrap/css/bootstrap.min.css'
+
 import Navigationbar from "./_components/Navigationbar/Navigationbar.js";
 import RowCategory from "./_components/Navigationbar/rowCategory.jsx";
+import Tcarousel from './_components/Navigationbar/Tcarousel';
 
 class App extends Component {
   render() {
@@ -17,6 +20,7 @@ class App extends Component {
         </p>
           <Navigationbar/>
           <RowCategory/>
+          <Tcarousel/>
       </div>
     );
   }

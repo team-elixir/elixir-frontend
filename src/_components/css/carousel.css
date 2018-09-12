@@ -1,0 +1,33 @@
+/* carousel */
+.carousel{
+    padding-bottom: 10px;
+}
+.carousel-img{
+    width: 100%;
+}
+.carousel-indicators{
+    bottom: 20px;
+}
+.carousel-indicators li{
+    width: 10px ;
+    height: 10px;
+    border-radius: 100%;
+}
+/*.carousel-control-next-icon {*/
+    /*margin-right: 180px;*/
+/*}*/
+/*.carousel-control-prev-icon {*/
+    /*margin-left: 180px;*/
+/*}*/
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+    width: 15%;
+    height: 50px;
+    background-color: #00000000;
+}
+.carousel-control-next{
+    margin-right: 25%;
+}
+.carousel-control-prev{
+    margin-left: 25%;
+}
