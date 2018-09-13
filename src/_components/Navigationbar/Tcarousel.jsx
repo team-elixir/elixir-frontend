@@ -4,12 +4,12 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    CarouselIndicators,
+    // CarouselIndicators,
     // CarouselCaption
 } from 'reactstrap';
 import images01 from '../img/01.jpg';
 import images02 from '../img/02.jpg';
-import images03 from '../img/03.jpg';
+// import images03 from '../img/03.jpg';
 import images04 from '../img/04.jpg';
 import images05 from '../img/05.jpg';
 import images06 from '../img/06.jpg';
@@ -34,12 +34,12 @@ const items = [
         altText: 'Test 002',
         caption: 'panigale 1299 Final Edition'
     },
-    {
-        id: 3,
-        src: images03,
-        altText: 'Test 003',
-        caption: 'panigale 1299 final Edition'
-    },
+    // {
+    //     id: 3,
+    //     src: images03,
+    //     altText: 'Test 003',
+    //     caption: 'panigale 1299 final Edition'
+    // },
     {
         id: 4,
         src: images04,
@@ -119,9 +119,9 @@ export class Tcarousel extends Component {
                 <style>
                     {
                         `.custom-tag {
-                width: 50%;
-                height: auto;
-                margin-left: 25%;
+                width: 90%;
+                height: 120px;
+                margin-left: 5%;
                 background: white;
               }`
                     }
@@ -131,9 +131,9 @@ export class Tcarousel extends Component {
                     next={this.next}
                     previous={this.previous}
                     className='carousel-fade'
-                    interval='5000'
+                    // interval='5000'
                 >
-                    <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                    {/*<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />*/}
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                     <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
