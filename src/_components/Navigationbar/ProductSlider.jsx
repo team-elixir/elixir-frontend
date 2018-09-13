@@ -110,7 +110,7 @@ class ProductSlider extends Component {
                             <img id="image"  src="http://www.jonathanswatchbuyer.com/wp-content/uploads/2013/05/rolex_7.jpg" alt="Image"/>
                         </a>
                     </div>
-                    <div className="col-md-9">
+                    <div id ="carousel_icon" className="col-md-9">
                         <Carousel
                             activeIndex={activeIndex}
                             next={this.next}
@@ -120,7 +120,9 @@ class ProductSlider extends Component {
                         >
                             {/*<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />*/}
                             {slides}
-                            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
+                            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}>
+
+                            </CarouselControl>
                             <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                         </Carousel>
                     </div>
