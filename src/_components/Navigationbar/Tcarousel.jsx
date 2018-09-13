@@ -126,7 +126,7 @@ export class Tcarousel extends Component {
               }`
                     }
                 </style>
-                <Carousel
+                <Carousel id="1234"
                     activeIndex={activeIndex}
                     next={this.next}
                     previous={this.previous}
