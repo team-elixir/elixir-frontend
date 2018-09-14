@@ -4,8 +4,9 @@ import './App.css';
 import './bootstrap/css/bootstrap.min.css'
 
 import Navigationbar from "./_components/Navigationbar/Navigationbar.js";
-import RowCategory from "./_components/Navigationbar/rowCategory.jsx";
+import RowCategory from "./_components/Navigationbar/RowCategory.jsx";
 import Tcarousel from './_components/Navigationbar/Tcarousel';
+import ProductSlider from './_components/Navigationbar/ProductSlider';
 
 class App extends Component {
   render() {
@@ -21,6 +22,8 @@ class App extends Component {
           <Navigationbar/>
           <RowCategory/>
           <Tcarousel/>
+          <ProductSlider/>
+          <ProductSlider/>
       </div>
     );
   }
