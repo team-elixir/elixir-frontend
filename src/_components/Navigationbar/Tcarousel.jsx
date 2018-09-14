@@ -4,22 +4,13 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    // CarouselIndicators,
-    // CarouselCaption
 } from 'reactstrap';
-import images01 from '../img/01.jpg';
-import images02 from '../img/02.jpg';
-// import images03 from '../img/03.jpg';
-import images04 from '../img/04.jpg';
-import images05 from '../img/05.jpg';
-import images06 from '../img/06.jpg';
-
-// function importAll(r) {
-//     let images = {};
-//     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-//     return images;
-// }
-// const images = importAll(require.context('./img', false, '/\.jpg/'));
+import images01 from '../img/01.gif';
+import images02 from '../img/02.gif';
+import images03 from '../img/03.gif';
+import images04 from '../img/04.gif';
+import images05 from '../img/05.gif';
+import images06 from '../img/06.gif';
 
 const items = [
     {
@@ -34,12 +25,12 @@ const items = [
         altText: 'Test 002',
         caption: 'panigale 1299 Final Edition'
     },
-    // {
-    //     id: 3,
-    //     src: images03,
-    //     altText: 'Test 003',
-    //     caption: 'panigale 1299 final Edition'
-    // },
+    {
+        id: 3,
+        src: images03,
+        altText: 'Test 003',
+        caption: 'panigale 1299 final Edition'
+    },
     {
         id: 4,
         src: images04,
@@ -102,38 +93,27 @@ export class Tcarousel extends Component {
         const slides = items.map((item) => {
             return (
                 <CarouselItem
-                    className="custom-tag"
+                    className="carousel-tag"
                     tag="div"
                     onExiting={this.onExiting}
                     onExited={this.onExited}
                     key={item.id}
                 >
-                    <img src={item.src} alt={item.altText} className="carousel-img"/>
+                    <img id="carousel-img" src={item.src} alt={item.altText} className="carousel-img"/>
                     {/*<CarouselCaption className="text-capitalize" captionText={item.caption} captionHeader={item.altText} />*/}
                 </CarouselItem>
             );
         });
 
         return (
-            <div>
-                <style>
-                    {
-                        `.custom-tag {
-                width: 90%;
-                height: 120px;
-                margin-left: 5%;
-                background: white;
-              }`
-                    }
-                </style>
-                <Carousel id="1234"
+            <div id="tcarousel_icon">
+                <Carousel
                     activeIndex={activeIndex}
                     next={this.next}
                     previous={this.previous}
                     className='carousel-fade'
-                    // interval='5000'
+                    interval='5000'
                 >
-                    {/*<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />*/}
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                     <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
