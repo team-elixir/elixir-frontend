@@ -105,7 +105,7 @@ class ProductSlider extends Component {
         return (
 
                 <div  className="d-flex justify-content-center m-3">
-                    <div className="btn-warning" style={this.style1}>
+                    <div style={this.style1}>
                         <a href="#">
                             <img id="image"  src="http://www.jonathanswatchbuyer.com/wp-content/uploads/2013/05/rolex_7.jpg" alt="Image"/>
                         </a>
