@@ -23,7 +23,7 @@ class Navigationbar extends React.Component {
     };
 
     navStyle = {
-        "box-shadow": "0 14px 25px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
+        "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
         height: "80px"
     };
 
@@ -38,15 +38,16 @@ class Navigationbar extends React.Component {
                     </div>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <div class="mx-auto" style={{ width: 550 }}>
-                            <Form>
-                                <FormGroup style={{paddingTop:18}}>
-                                    <Input style={{ borderRadius: 50, height: 32}} type="text" name="search" id="exampleSearch" placeholder="Search . . ."/>
-                                </FormGroup>
-                            </Form>
+                        <div class="mx-auto" style={{width: "50%"}}>
+                            <div className="input-group mb-3" style={{paddingTop: "13px"}}>
+                                <input type="text" className="form-control rounded-left" placeholder="what you are looking to buy today" aria-label="" aria-describedby="basic-addon1"/>
+                                <div className="input-group-prepend">
+                                    <button className="btn-primary rounded-right" type="submit" style={{width: "50px"}}><i className="fa fa-search"></i></button>
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            <Nav className="mx-auto" navbar>
+                            <Nav className="mx-auto align-items-center" navbar>
                                 <Button style={this.styles} className="btn btn-outline-info m-2" size="sm">Login</Button>
                                 <Button style={this.styles} className="btn btn-outline-info m-2" size="sm">SignUp</Button>
                             </Nav>
@@ -54,7 +55,7 @@ class Navigationbar extends React.Component {
                     </Collapse>
                 </Navbar>
             </div>
-    );
+        );
     }
 }
 
