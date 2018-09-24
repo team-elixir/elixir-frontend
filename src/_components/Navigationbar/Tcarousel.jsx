@@ -4,51 +4,15 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
+    CarouselIndicators
 } from 'reactstrap';
-import images01 from '../img/01.gif';
-import images02 from '../img/02.gif';
-import images03 from '../img/03.gif';
-import images04 from '../img/04.gif';
-import images05 from '../img/05.gif';
-import images06 from '../img/06.gif';
-
 const items = [
-    {
-        id: 1,
-        src: images01,
-        altText: 'Test 001',
-        caption: 'Panigale 1299 Final Edition',
-    },
-    {
-        id: 2,
-        src: images02,
-        altText: 'Test 002',
-        caption: 'panigale 1299 Final Edition'
-    },
-    {
-        id: 3,
-        src: images03,
-        altText: 'Test 003',
-        caption: 'panigale 1299 final Edition'
-    },
-    {
-        id: 4,
-        src: images04,
-        altText: 'Test 003',
-        caption: 'panigale 1299 final Edition'
-    },
-    {
-        id: 5,
-        src: images05,
-        altText: 'Test 003',
-        caption: 'panigale 1299 final Edition'
-    },
-    {
-        id: 6,
-        src: images06,
-        altText: 'Test 003',
-        caption: 'panigale 1299 final Edition'
-    }
+    {id: 1, src: 'https://elixir.ausgrads.academy/carousel/01.gif',},
+    {id: 2, src: 'https://elixir.ausgrads.academy/carousel/02.gif',},
+    {id: 3, src: 'https://elixir.ausgrads.academy/carousel/03.gif',},
+    {id: 4, src: 'https://elixir.ausgrads.academy/carousel/04.gif',},
+    {id: 5, src: 'https://elixir.ausgrads.academy/carousel/05.gif',},
+    {id: 6, src: 'https://elixir.ausgrads.academy/carousel/06.gif',}
 ];
 
 export class Tcarousel extends Component {
@@ -99,8 +63,7 @@ export class Tcarousel extends Component {
                     onExited={this.onExited}
                     key={item.id}
                 >
-                    <img id="carousel-img" src={item.src} alt={item.altText} className="carousel-img"/>
-                    {/*<CarouselCaption className="text-capitalize" captionText={item.caption} captionHeader={item.altText} />*/}
+                    <img id="carousel-img" src={item.src} className="carousel-img"/>
                 </CarouselItem>
             );
         });
@@ -111,9 +74,10 @@ export class Tcarousel extends Component {
                     activeIndex={activeIndex}
                     next={this.next}
                     previous={this.previous}
-                    className='carousel-fade'
+                    className='carousel'
                     interval='5000'
                 >
+                    <CarouselIndicators id="Cindicator" items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                     <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
