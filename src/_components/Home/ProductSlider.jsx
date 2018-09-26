@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './productSlider_rowCategory.css';
+import '../../assets/css/productSlider_rowCategory.css';
 
 
 import {

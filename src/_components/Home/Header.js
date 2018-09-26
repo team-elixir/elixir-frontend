@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import grizzlogo from "./grizz-logo.png";
+import grizzlogo from "../../assets/images/grizz-logo.png";
 
 class Header extends React.Component{
     styles = {

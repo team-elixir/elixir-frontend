@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/carousel.css'
+import '../../assets/css/carousel.css'
 import {
     Carousel,
     CarouselItem,
@@ -15,7 +15,7 @@ const items = [
     {id: 6, src: 'https://elixir.ausgrads.academy/carousel/06.gif',}
 ];
 
-export class Tcarousel extends Component {
+export class HomeCarousel extends Component {
     constructor(props) {
         super(props);
         this.state = { activeIndex: 0 };
@@ -87,4 +87,4 @@ export class Tcarousel extends Component {
     }
 }
 
-export default Tcarousel
+export default HomeCarousel
