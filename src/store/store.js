@@ -9,7 +9,8 @@ const store = createStore(
     initialState,
     compose(
         applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__&&window.__REDUX_DEVTOOLS_EXTENSION__()
+//         This is redux chrome extension. Uncomment it if you installed already, It will make it work.
+//         window.__REDUX_DEVTOOLS_EXTENSION__&&window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 );
 export default store;
