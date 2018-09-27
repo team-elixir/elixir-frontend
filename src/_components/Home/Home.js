@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from "./Header";
 import RowCategory from "./RowCategory";
 import HomeCarousel from "./HomeCarousel";
-import ProductSlider from "./ProductSlider";
+import ProductSliderConnection from "./ProductSliderConnection";
 import Footer from "./Footer";
 
 class Home extends Component {
@@ -13,8 +13,9 @@ class Home extends Component {
                 <RowCategory/>
                 {/*Top carousel-Yu*/}
                 <HomeCarousel/>
-                <ProductSlider/>
-                <ProductSlider/>
+                <ProductSliderConnection/>
+                <ProductSliderConnection/>
+                <ProductSliderConnection/>
                 {/*Footer-Yu*/}
                 <Footer/>
             </div>
