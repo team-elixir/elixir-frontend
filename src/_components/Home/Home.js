@@ -4,6 +4,7 @@ import RowCategory from "./RowCategory";
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderConnection from "./ProductSliderConnection";
 import Footer from "./Footer";
+import Posts from "../Posts";
 
 class Home extends Component {
     render() {
@@ -11,6 +12,7 @@ class Home extends Component {
             <div className="App">
                 <Header />
                 <RowCategory/>
+                <Posts/>
                 {/*Top carousel-Yu*/}
                 <HomeCarousel/>
                 <ProductSliderConnection/>
