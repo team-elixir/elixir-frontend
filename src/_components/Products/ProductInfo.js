@@ -3,15 +3,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {connect} from 'react-redux';
 import {getProduct} from "../../actions/productActions";
 import ProductCarousel from "./ProductCarousel"
+import Loading from "../Loading/Loading";
 
 
 class ProductInfo extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isLoading: true,
-            error: null,
-        };
     }
 
 
@@ -25,7 +22,7 @@ class ProductInfo extends Component {
 
     show() {
         const {product, list} = this.props.productInfo;
-        console.log(list);
+        // console.log(list);
 
         let image = <ProductCarousel productImage={list}/>;
 
@@ -59,13 +56,12 @@ class ProductInfo extends Component {
             </div>
         )
     }
-
     render() {
         // Check if we have data.
-        if (this.props.productInfo.product)
+        if (!this.props.pageStatus.isLoading)
             return this.show();
         else
-            return <p>No data found!</p>;
+            return <Loading/>;
     }
 }
 

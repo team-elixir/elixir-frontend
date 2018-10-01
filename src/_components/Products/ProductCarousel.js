@@ -7,7 +7,7 @@ const ProductCarousel = (productImages) => {
     let slides = productImages.productImage.map((image) => {
         return(
             <div key={image}>
-                <img src={image} width="auto" height="350"/>
+                <img src={image} alt="ProductImage" width="auto" height="350"/>
             </div>
         )
     });
