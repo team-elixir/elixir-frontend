@@ -22,11 +22,11 @@ class Posts extends Component {
     }
 
   }
-componentWillMount()
-{
-  this.props.fetchPosts();
+ componentWillMount()
+ {
+   this.props.fetchPosts();
 
-}
+ }
   render() {
     let posts = [];
     if (this.state.allposts.length !== 0) {
