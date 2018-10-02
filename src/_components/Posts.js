@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Header from "./Home/Header";
+import RowCategory from "./Home/RowCategory";
 import {fetchPosts, fetchSubCategories} from "../actions/postActions";
 //import productimg from "./product.jpg";
 
@@ -55,6 +57,7 @@ class Posts extends Component {
       <div>
         <div className="container mt-lg-5" >
               <div className="card-columns">
+              
             {postItems}
               </div>
         </div>
