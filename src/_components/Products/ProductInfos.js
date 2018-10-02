@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {connect} from 'react-redux';
-import PropTypes from "prop-types";
-import {getProduct} from "../../actions/productActions";
 import ProductCarousel from "./ProductCarousel"
-import Loading from "../Loading/Loading";
 import {withRouter} from "react-router-dom";
 import PageNotFound from "../Loading/PageNotFound";
 import StarRatingComponent from 'react-star-rating-component';
+import '../../assets/css/custom.css'
 
 
 const ProductInfos = (data) => {
@@ -18,8 +15,8 @@ const ProductInfos = (data) => {
             : <ProductCarousel productImage={data.data.list}/>;
 
         return (
-            <div>
-                <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+            <div className="col-md-12">
+                <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-1 pt-3">
                     <div>
                         <h1 className="text-left">{data.data.product.name}<span
                             className="p-view-header-brand"> by {data.data.product.brand}</span></h1>
@@ -39,9 +36,12 @@ const ProductInfos = (data) => {
                                 {image}
                             </div>
                         </div>
-                        <div className="col-lg-5 col-md-6">
+                        <div className="col-lg-8 col-md-6">
                             <h5 className="text-left">Product Description</h5>
                             <p className="text-left mt-3 p-view-description">{data.data.product.description}</p>
+                            <div className="col-12 mt-3 pl-0 pr-0 pb-0 pull-bottom">
+                                <h5 className="text-left "><span className="rrp-text text-danger">RRP</span> ${data.data.product.price}</h5>
+                            </div>
                         </div>
                     </div>
                     <div className="row">

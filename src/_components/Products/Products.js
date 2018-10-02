@@ -12,9 +12,6 @@ import ProductInfos from "./ProductInfos";
 import Loading from "../Loading/Loading";
 
 class Products extends Component {
-    constructor(props) {
-        super(props);
-    }
     componentWillReceiveProps(nextProps) {
         if(nextProps.match.params !== this.props.match.params){
             window.location.reload()
@@ -43,7 +40,7 @@ class Products extends Component {
                 <div>
                     <Header/>
                     <RowCategory/>
-                    <Posts/>
+                    {/*<Posts/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
                     <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
                     <Footer/>
