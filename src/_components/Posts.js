@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions/postActions";
+import {fetchPosts, fetchSubCategories} from "../actions/postActions";
 //import productimg from "./product.jpg";
 
 class Posts extends Component {
@@ -11,14 +11,16 @@ class Posts extends Component {
     };
   }
 
-  componentWillMount() {
-    //this.props.fetchPosts();
-  }
+    componentDidMount() {
+        this.props.dispatch(fetchSubCategories());
+    }
+
   componentDidUpdate(prevProps) {
     if (prevProps.posts !== this.props.posts) {
       console.log(this.props.posts);
       this.setState({ allposts: this.props.posts });
     }
+
   }
 
   render() {
@@ -36,13 +38,14 @@ class Posts extends Component {
                 <div className="card-body">
                     <h6 className="card-title">{post.product.name}</h6>
                     <p className="card-text">{post.product.brand}</p>
+                    <p className="card-text">${post.product.price}</p>
                     <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
         </div>
     ));
     return (
       <div>
-        <div className="container">
+        <div className="container mt-lg-5" >
               <div className="card-columns">
             {postItems}
               </div>

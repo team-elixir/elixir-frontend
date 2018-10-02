@@ -17,7 +17,6 @@ class Products extends Component {
                     {/*<TestAxios/>*/}
                     <Header/>
                     <RowCategory/>
-                    <Posts/>
                     <ProductInfo/>
                     <SuggestProduct/>
                     <Footer/>
