@@ -15,7 +15,6 @@ class Products extends Component {
     constructor(props) {
         super(props);
     }
-
     componentWillReceiveProps(nextProps) {
         if(nextProps.match.params !== this.props.match.params){
             window.location.reload()
@@ -27,33 +26,26 @@ class Products extends Component {
         // this.props.getProduct(nextProps.match.params);
         return this.props.pageState.isLoading;
     }
-
-
-    componentWillMount(nextProps){
+    componentWillMount(){
         const { id } = this.props.match.params;
         this.props.getProduct(id);
         // console.log(this.props.product);
     }
-
-
     // componentDidUpdate(){
     //
     // }
 
     render() {
-        // console.log(nextProps.match.params);
+        // console.log(this.props.pageState.item);
         if (this.props.pageState.item.product)
             return (
                 // console.log(nextProps.match.params),
                 <div>
-                    {/*<p>{console.log(this.props.pageState.item)}</p>*/}
-                    {/*<TestAxios/>*/}
-                    {/*<Header/>*/}
+                    <Header/>
                     <RowCategory/>
                     <Posts/>
-                    {/*<ProductInfo/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
-                    <SuggestProduct/>
+                    <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
                     <Footer/>
                 </div>
             );
