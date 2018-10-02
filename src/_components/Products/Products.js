@@ -50,7 +50,7 @@ class Products extends Component {
                     {/*<TestAxios/>*/}
                     {/*<Header/>*/}
                     <RowCategory/>
-                    <Posts/>
+                    {/* <Posts/> */}
                     {/*<ProductInfo/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
                     <SuggestProduct/>
