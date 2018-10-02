@@ -5,16 +5,20 @@ import RowCategory from "../Home/RowCategory";
 import ProductInfo from "./ProductInfo";
 import Footer from "../Home/Footer";
 import Header from "../Home/Header";
+import {TestAxios} from "./testAxios";
+import SuggestProduct from "./SuggestProduct";
+import Posts from "../Posts";
 
 
 class Products extends Component {
     render() {
         return (
                 <div>
+                    {/*<TestAxios/>*/}
                     <Header/>
                     <RowCategory/>
                     <ProductInfo/>
-                    {/*<SuggestProduct/>*/}
+                    <SuggestProduct/>
                     <Footer/>
                 </div>
         );
