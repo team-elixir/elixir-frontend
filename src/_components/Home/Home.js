@@ -12,7 +12,7 @@ class Home extends Component {
             <div className="App">
                 <Header />
                 <RowCategory/>
-                <Posts/>
+                {/* <Posts/> */}
                 {/*Top carousel-Yu*/}
                 <HomeCarousel/>
                 <ProductSliderConnection/>

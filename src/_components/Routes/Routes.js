@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import Products from "../Products/Products";
 import PageNotFound from "../Loading/PageNotFound";
 import Loading from "../Loading/Loading";
+import Posts from "../Posts";
 
 
 class Routes extends Component {
@@ -18,6 +19,7 @@ class Routes extends Component {
                     <Route exact path="/home" component={Home}/>
                     <Route path="/product/view/:id" component={Products}/>
                     <Route path="/loading" component={Loading}/>
+                    <Route path="/addShopping" component={Posts} />
                     <Route component={PageNotFound}/>
                 </Switch>
             </BrowserRouter>

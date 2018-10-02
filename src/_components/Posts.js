@@ -22,7 +22,11 @@ class Posts extends Component {
     }
 
   }
+componentWillMount()
+{
+  this.props.fetchPosts();
 
+}
   render() {
     let posts = [];
     if (this.state.allposts.length !== 0) {
@@ -57,6 +61,10 @@ class Posts extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts.items
+  
 });
 
-export default connect(mapStateToProps)(Posts);
+const mapDispatchToProps = {
+  fetchPosts
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Posts);
