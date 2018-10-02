@@ -10,21 +10,21 @@ class Footer extends Component {
                         <div className="col">
                             <h5>ABOUT GRIZZLY</h5>
                             <ul className="list-unstyled quick-links">
-                                <li><a href="https://www.google.com.au"><i className="fa fa-angle-double-right" />About us</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Careers</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Grizzly Rewards</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Discount Codes</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />About us</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Careers</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Grizzly Rewards</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Discount Codes</a></li>
                                 {/*<li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Videos</a></li>*/}
                             </ul>
                         </div>
                         <div className="col">
                             <h5>CUSTOMER SERVICE</h5>
                             <ul className="list-unstyled quick-links">
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Contact Us</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Return Policy</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Shipping Policies</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Order Status</a></li>
-                                <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />FAQ</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Contact Us</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Return Policy</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Shipping Policies</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />Order Status</a></li>
+                                <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right" />FAQ</a></li>
                             </ul>
                         </div>
                         <div>

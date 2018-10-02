@@ -1,4 +1,4 @@
-import {PRODUCTS_GET_PRODUCT, PRODUCTS_GET_CATEGORY} from '../actions/types';
+import {PRODUCTS_GET_PRODUCT, PRODUCTS_GET_CATEGORY, PRODUCTS_SET_LOADING} from '../actions/types';
 
 const initialState = {
     items: [],
@@ -10,16 +10,21 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case PRODUCTS_SET_LOADING:
+            return {
+                ...state,
+                isLoading: true
+            };
         case PRODUCTS_GET_PRODUCT:
             // console.log("get product info");
             return {
                 ...state,
-                items: action.payload,
+                item: action.payload,
                 isLoading: false
             };
 
         case PRODUCTS_GET_CATEGORY:
-            console.log("get product info");
+            // console.log("get product info");
             return {
                 ...state,
                 items: action.payload,
