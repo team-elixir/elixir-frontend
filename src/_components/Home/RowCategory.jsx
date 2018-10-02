@@ -50,7 +50,7 @@ class RowCategory extends Component {
                     <Button style={this.styles} className= " btn btn-outline-info m-2" onClick={this.returnProducts}>Shop all</Button>
                     <Button style={this.styles} className= " btn btn-outline-info m-2">Electronics</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2">Home Appliances</Button>
-                    <Button style={this.styles} className= " btn-outline-info m-2">Music Accessories</Button>
+                    <Button style={this.styles} className= " btn-outline-info m-2">ories</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2">Apparel</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2">Footwear</Button>
                 </ButtonGroup>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import grizzlogo from "../../assets/images/grizz-logo.png";
-
+import {fetchSearchResults} from "../../actions/postActions";
+import {connect } from "react-redux";
 class Header extends React.Component{
     styles = {
         borderRadius: 30,
@@ -10,7 +11,10 @@ class Header extends React.Component{
         "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
         height: "80px"
     };
-
+searchFunctionality = () => {
+    this.props.fetchSearchResults();
+    console.log("-----Search functionality called--------");
+}
     render(){
         return(
 
@@ -31,7 +35,7 @@ class Header extends React.Component{
                                    aria-describedby="basic-addon1"/>
                             <div className="input-group-prepend">
                                 <button className="btn-primary rounded-right" type="submit" style={{width: "50px"}}><i
-                                    className="fa fa-search"></i></button>
+                                   onClick={this.searchFunctionality} className="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
@@ -44,5 +48,8 @@ class Header extends React.Component{
         );
     }
 }
+const mapDispatchToProps = {
+    fetchSearchResults
+};
 
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);

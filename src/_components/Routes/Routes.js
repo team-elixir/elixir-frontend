@@ -11,6 +11,7 @@ class Routes extends Component {
                 <div>
                 <Route path ="/" component={Home} exact/>
                 <Route path ="/product" component={Products}/>
+
                 </div>
             </BrowserRouter>
         );

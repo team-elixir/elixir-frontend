@@ -4,5 +4,6 @@ import postReducer from './postReducer';
 
 export default combineReducers({
     productData: productsReducer,
-    posts: postReducer
+    posts: postReducer,
+    
 });
