@@ -14,6 +14,7 @@ import Loading from "../Loading/Loading";
 class Products extends Component {
     constructor(props) {
         super(props);
+
     }
 
     componentWillReceiveProps(nextProps) {
