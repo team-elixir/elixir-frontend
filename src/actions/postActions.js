@@ -12,7 +12,6 @@ export const fetchPosts = () => dispatch => {
     );
 };
 
-<<<<<<< HEAD
 export const fetchSearchResults = () => dispatch => {
   fetch("https://api.elixir.ausgrads.academy/products_micro/products/displayProducts")
     .then(res => res.json())
@@ -23,7 +22,6 @@ export const fetchSearchResults = () => dispatch => {
       })
     );
 };
-=======
 export const fetchSubCategories = (category) => dispatch => {
     const subCatArray = [];
     axios
@@ -53,4 +51,3 @@ export const fetchProducts = arr => dispatch => {
 };
 
 
->>>>>>> bcd1b239b67e3f48d870863d48d3284ec7b4ed84

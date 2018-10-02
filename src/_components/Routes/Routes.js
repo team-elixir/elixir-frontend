@@ -10,13 +10,6 @@ class Routes extends Component {
     render() {
         return (
             <BrowserRouter>
-<<<<<<< HEAD
-                <div>
-                <Route path ="/" component={Home} exact/>
-                <Route path ="/product" component={Products}/>
-
-                </div>
-=======
                 <Switch>
 
                     {/*Default domain redirect to /home*/}
@@ -28,7 +21,6 @@ class Routes extends Component {
                     <Route path="/loading" component={Loading}/>
                     <Route component={PageNotFound}/>
                 </Switch>
->>>>>>> bcd1b239b67e3f48d870863d48d3284ec7b4ed84
             </BrowserRouter>
         );
     }
