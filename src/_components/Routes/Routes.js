@@ -20,7 +20,7 @@ class Routes extends Component {
                     <Route exact path="/home" component={Home}/>
                     <Route path="/product/view/:id" component={Products}/>
                     <Route path="/loading" component={Loading}/>
-                    <Route path="/addShopping" component={ProductsSearch} />
+                    <Route path="/addShopping/:categoryNames" component={Posts} />
                     <Route component={PageNotFound}/>
                 </Switch>
             </BrowserRouter>
