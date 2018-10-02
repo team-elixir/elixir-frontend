@@ -5,12 +5,10 @@ import {connect} from 'react-redux';
 import CategoryCarousel from "./CategoryCarousel";
 
 class SuggestProduct extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillMount() {
-        this.props.getCategory();
+    componentWillMount(){
+        const { data } = this.props;
+        console.log(data);
+        this.props.getCategory(data);
     }
 
     shouldComponentUpdate() {
@@ -21,20 +19,19 @@ class SuggestProduct extends Component {
         // const {list} = this.props.listInfo;
         const {listInfo} = this.props;
         let category = <CategoryCarousel categoryImage={listInfo}/>;
-        console.log(listInfo);
-
-
+        // console.log(listInfo);
 
         return (
-            <div className="container">
-                <div className="row justify-content-start" id='categoryCarousel'>
-                    <p>{category}</p>
+            <div className="col-md-12">
+                <div className="col-sm-9 offset-sm-3 col-md-10 offset-md-1 pt-3" id='categoryCarousel'>
+                    <br/>
+                    <div className="w-25 bg-info rounded text-xl-center align-middle   "><h4>People also searched for</h4></div>
+                    {category}
                 </div>
+                <br/>
             </div>
         )
     }
-
-
     render() {
         // Check if we have data.
         if (!this.props.listStatus.Loading)

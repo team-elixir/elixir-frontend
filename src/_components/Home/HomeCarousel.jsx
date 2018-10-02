@@ -63,7 +63,7 @@ export class HomeCarousel extends Component {
                     onExited={this.onExited}
                     key={item.id}
                 >
-                    <img id="carousel-img" src={item.src} className="carousel-img"/>
+                    <img id="carousel-img" src={item.src} alt={item.id} className="carousel-img"/>
                 </CarouselItem>
             );
         });
