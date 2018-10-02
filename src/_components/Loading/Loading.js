@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import '../../assets/css/loading.css'
+import {Link, withRouter} from "react-router-dom";
 
 class Loading extends Component {
     render() {
         return (
 
-            <div className="container">
-                <div className="row justify-content-start">
+            <div className="container" id='loading'>
+                <div id="loader"><br/></div>
+                <div className="loading">
                     <header>
                         <h1>Please wait while product is loading.</h1>
                     </header>
-                    <div id="loader-wrapper">
-                        <div id="loader"> </div>
-                    </div>
+                    <Link to="/">Back to homepage</Link>
                 </div>
             </div>
         );
     }
 }
 
-export default Loading;
+export default withRouter(Loading);

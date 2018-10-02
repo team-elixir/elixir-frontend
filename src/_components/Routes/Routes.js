@@ -11,13 +11,12 @@ class Routes extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-
                     {/*Default domain redirect to /home*/}
                     <Route exact path="/" render={() => (
                         <Redirect to="/home"/>
                     )}/>
                     <Route exact path="/home" component={Home}/>
-                    <Route path="/product" component={Products}/>
+                    <Route path="/product/view/:id" component={Products}/>
                     <Route path="/loading" component={Loading}/>
                     <Route component={PageNotFound}/>
                 </Switch>
