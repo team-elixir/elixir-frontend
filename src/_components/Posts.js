@@ -12,7 +12,11 @@ class Posts extends Component {
   }
 
     componentDidMount() {
-        this.props.dispatch(fetchSubCategories());
+      this.props.fetchPosts();
+      this.props.fetchSubCategories();
+
+
+
     }
 
   componentDidUpdate(prevProps) {
@@ -24,7 +28,7 @@ class Posts extends Component {
   }
  componentWillMount()
  {
-   this.props.fetchPosts();
+
 
  }
   render() {
@@ -65,6 +69,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchPosts
+  fetchPosts ,fetchSubCategories
 };
 export default connect(mapStateToProps,mapDispatchToProps)(Posts);
