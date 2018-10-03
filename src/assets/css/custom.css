@@ -2,3 +2,17 @@
     bottom:0;
     position: absolute;
 }
+
+.carousel .slide{
+    background: white;
+}
+
+#linkButton{
+    border-radius: 20px;
+}
+#sImages{
+    object-fit: contain;
+}
+#pImages{
+    object-fit: contain;
+}

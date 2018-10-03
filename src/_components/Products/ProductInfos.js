@@ -1,10 +1,8 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductCarousel from "./ProductCarousel"
 import {withRouter} from "react-router-dom";
 import PageNotFound from "../Loading/PageNotFound";
 import StarRatingComponent from 'react-star-rating-component';
-import '../../assets/css/custom.css'
 
 
 const ProductInfos = (data) => {

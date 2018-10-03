@@ -3,10 +3,11 @@ import RowCategory from "../Home/RowCategory";
 import Footer from "../Home/Footer";
 import Header from "../Home/Header";
 import SuggestProduct from "./SuggestProduct";
-import Posts from "../Posts";
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
 import {getProduct} from "../../actions/productActions";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import '../../assets/css/custom.css'
 import PropTypes from "prop-types";
 import ProductInfos from "./ProductInfos";
 import Loading from "../Loading/Loading";
@@ -15,7 +16,7 @@ class Products extends Component {
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.match.params !== this.props.match.params){
-            window.location.reload()
+            this.props.getProduct(nextProps.match.params.id);
         }
         //Test URL input id
         // console.log(nextProps.match.params);
