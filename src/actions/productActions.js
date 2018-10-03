@@ -11,20 +11,21 @@ export const getProduct = (id) => dispatch => {
                     type: PRODUCTS_GET_PRODUCT,
                     payload: res.data,
                 },
-                console.log('getProduct Fire!!')
+                // console.log('getProduct Fire!!')
             )
         });
 };
 
-export const getCategory = () => dispatch => {
+export const getCategory = (sid) => dispatch => {
     axios
-        .post('https://api.elixir.ausgrads.academy/products_micro/products/getBySubCategory/', ['1'])
+        .post('https://api.elixir.ausgrads.academy/products_micro/products/getBySubCategory/', [sid])
         .catch(error => console.log(error.status))
-
-        .then(category => dispatch({
+        .then(category => {
+            dispatch({ type: PRODUCTS_SET_LOADING });
+            dispatch({
             type: PRODUCTS_GET_CATEGORY,
             payload: category.data,
-        }));
+        })});
 };
 
 
