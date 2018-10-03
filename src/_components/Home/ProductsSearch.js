@@ -6,18 +6,15 @@ import ProductSliderConnection from "./ProductSliderConnection";
 import Footer from "./Footer";
 import Posts from "../Posts";
 
-class Home extends Component {
+class ProductsSearch extends Component {
     render() {
         return (
             <div className="App">
                 <Header />
                 <RowCategory/>
-                {/* <Posts/> */}
+                 <Posts/> 
                 {/*Top carousel-Yu*/}
-                <HomeCarousel/>
-                <ProductSliderConnection/>
-                <ProductSliderConnection/>
-                <ProductSliderConnection/>
+               
                 {/*Footer-Yu*/}
                 <Footer/>
             </div>
@@ -25,4 +22,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default ProductsSearch;

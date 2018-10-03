@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from 'reactstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import {fetchPosts, fetchProducts, fetchSubCategories} from "../../actions/postActions";
 import { connect } from "react-redux";
-
+import {Link,withRouter} from 'react-router-dom'
 
 class RowCategory extends Component {
 
@@ -71,8 +71,9 @@ class RowCategory extends Component {
                         </DropdownMenu>
                     </Dropdown>
 
-                    <Button style={this.styles} className= " btn btn-outline-info m-2" onClick={this.returnProducts}>Shop all</Button>
-                    <Button style={this.styles} className= " btn btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Electronics</Button>
+                    <Link to={`/addShopping`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="all" >Shop all</Button></Link>
+                    <Link to={`/addShopping/`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="electronic">Electronics</Button></Link>
+
                     <Button style={this.styles} className= " btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Home Appliances</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Music Accessories</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Apparel</Button>
@@ -94,4 +95,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(RowCategory);
+)(withRouter(RowCategory));

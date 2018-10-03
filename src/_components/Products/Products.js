@@ -40,7 +40,9 @@ class Products extends Component {
                 <div>
                     <Header/>
                     <RowCategory/>
-                    {/*<Posts/>*/}
+
+                    {/* <Posts/> */}
+                    {/*<ProductInfo/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
                     <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
                     <Footer/>

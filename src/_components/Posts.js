@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Header from "./Home/Header";
+import RowCategory from "./Home/RowCategory";
 import {fetchPosts, fetchSubCategories} from "../actions/postActions";
 //import productimg from "./product.jpg";
 
@@ -12,7 +14,11 @@ class Posts extends Component {
   }
 
     componentDidMount() {
-        this.props.dispatch(fetchSubCategories());
+      this.props.fetchPosts();
+      this.props.fetchSubCategories();
+
+
+
     }
 
   componentDidUpdate(prevProps) {
@@ -22,7 +28,11 @@ class Posts extends Component {
     }
 
   }
+ componentWillMount()
+ {
 
+
+ }
   render() {
     let posts = [];
     if (this.state.allposts.length !== 0) {
@@ -47,6 +57,7 @@ class Posts extends Component {
       <div>
         <div className="container mt-lg-5" >
               <div className="card-columns">
+              
             {postItems}
               </div>
         </div>
@@ -57,6 +68,10 @@ class Posts extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts.items
+  
 });
 
-export default connect(mapStateToProps)(Posts);
+const mapDispatchToProps = {
+  fetchPosts ,fetchSubCategories
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Posts);
