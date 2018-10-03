@@ -12,7 +12,11 @@ class RowCategory extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            dropdownOpen: false
+            dropdownOpen: false,
+            category:[
+                "all",
+                "Electronic"
+            ]
         };
     }
 
@@ -70,9 +74,11 @@ class RowCategory extends Component {
 
                         </DropdownMenu>
                     </Dropdown>
+                    <Link to={`/addShopping/${this.state.category[0]}`}><Button style={this.styles} className= " btn btn-outline-info m-2"  >Shop all</Button></Link>
+                    <Link to={`/addShopping/${this.state.category[1]}`}><Button style={this.styles} className= " btn btn-outline-info m-2"  >Electronics</Button></Link>
 
-                    <Link to={`/addShopping`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="all" >Shop all</Button></Link>
-                    <Link to={`/addShopping/`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="electronic">Electronics</Button></Link>
+                    {/* <Link to={`/addShopping/`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="all" >Shop all</Button></Link> */}
+                    {/* <Link to={`/addShopping/`}><Button style={this.styles} className= " btn btn-outline-info m-2" value="electronic">Electronics</Button></Link> */}
 
                     <Button style={this.styles} className= " btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Home Appliances</Button>
                     <Button style={this.styles} className= " btn-outline-info m-2" value="electronic" onClick={this.returnCategoryProducts}>Music Accessories</Button>

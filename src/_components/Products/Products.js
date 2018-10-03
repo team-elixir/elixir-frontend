@@ -12,6 +12,7 @@ import ProductInfos from "./ProductInfos";
 import Loading from "../Loading/Loading";
 
 class Products extends Component {
+
     componentWillReceiveProps(nextProps) {
         if(nextProps.match.params !== this.props.match.params){
             window.location.reload()
