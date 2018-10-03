@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {getCategory} from "../../actions/productActions";
 import {connect} from 'react-redux';
 import CategoryCarousel from "./CategoryCarousel";
