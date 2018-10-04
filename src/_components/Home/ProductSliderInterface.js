@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sliderAction} from "../../actions/slidersAction";
+import {sliderAction, sliderAction1} from "../../actions/slidersAction";
 import ProductSlider from "./ProductSlider";
 
 // image for sale
@@ -18,12 +18,21 @@ class ProductSliderInterface extends Component {
     // Fetching data from server
     componentDidMount() {
         this.props.getData();
+        this.props.getData1();
     }
 
     render() {
         // sorting data into different group
-        watchData = this.props.dataState.slice(0, 10);
-        phoneData = this.props.dataState.slice(10, 20);
+
+        if (this.props.dataState.hasOwnProperty('watch')){
+            // watchData = this.props.dataState.watch.slice(0, 10);
+            watchData = this.props.dataState.watch;
+            console.log(watchData);
+        }
+        else if(this.props.dataState.hasOwnProperty('phone')){
+            phoneData = this.props.dataState.phone;
+            console.log(phoneData);
+        }
         return (
             <div>
                 {/* load data to the screen */}
@@ -40,5 +49,6 @@ const mapStateToProps = state => ({
 // choose action for fetching
 const mapActionToProps = {
     getData: sliderAction,
+    getData1: sliderAction1,
 };
 export default connect (mapStateToProps, mapActionToProps)(ProductSliderInterface);

@@ -1,12 +1,13 @@
 
 
-
-let initState = {watch: [],};
+let initState = {watch: [], phone: []};
 const sliderReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'GET':
-            return action.payload;
-         default:
+        case 'GET-WATCH':
+            return {watch: action.payload};
+        case 'GET-PHONE':
+            return {phone: action.payload};
+        default:
             return 'Empty';
     }
 }
