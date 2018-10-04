@@ -3,7 +3,7 @@ import Header from "./Header";
 import RowCategory from "./RowCategory";
 import {Link,withRouter} from 'react-router-dom';
 import HomeCarousel from "./HomeCarousel";
-import ProductSliderConnection from "./ProductSliderConnection";
+import ProductSliderConnection from "./ProductSliderInterface";
 import Footer from "./Footer";
 import Posts from "../Posts";
 
