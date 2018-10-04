@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
 import '../../assets/css/productSlider_rowCategory.css';
-
-import axios from 'axios';
-
 import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    CarouselIndicators,
-    CarouselCaption
 } from 'reactstrap';
 const items = [
     {
@@ -88,24 +83,15 @@ class ProductSlider extends Component {
         this.previous = this.previous.bind(this);
 
     }
-    componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(res => {
-                console.log(res.data);
-                const category = res.data;
-                this.setState({ category });
-            })
-    }
-
     next() {
         if (this.animate) return;
-        const nextIndex = this.state.activeIndex === items.length - 5 ? 0 : this.state.activeIndex + 5;
+        const nextIndex = this.state.activeIndex === this.props.name.length - 5 ? 0 : this.state.activeIndex + 5;
         this.setState({ activeIndex: nextIndex });
     }
 
     previous() {
         if (this.animate) return;
-        const nextIndex = this.state.activeIndex === 0 ? items.length - 5 : this.state.activeIndex - 5;
+        const nextIndex = this.state.activeIndex === 0 ? this.props.length - 5 : this.state.activeIndex - 5;
         this.setState({ activeIndex: nextIndex });
     }
     dataSouce = () =>{
@@ -141,8 +127,6 @@ class ProductSlider extends Component {
                     className="custom-1"
                     tag="div"
                     key={item.id}
-                    //  onExiting={this.onExiting}
-                    // onExited={this.onExited}
                 >
                     <div className="carousel-inner">
 
@@ -153,13 +137,10 @@ class ProductSlider extends Component {
 
                         </div>
                     </div>
-                    {/*<CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />*/}
                 </CarouselItem>
             );
         });
-
         return (
-
             <div  className="d-flex justify-content-center m-3">
                 <div style={this.style1}>
                     <a href="#">
@@ -174,22 +155,13 @@ class ProductSlider extends Component {
                         interval={false}
                         keyboard={false}
                     >
-                        {/*<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />*/}
                         {slides}
                         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}>
-
                         </CarouselControl>
                         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                     </Carousel>
                 </div>
-                {/*<ul>*/}
-                {/*hello*/}
-                {/*{ this.state.category.map(category => <li>{category.name}</li>)}*/}
-                {/*</ul>*/}
-
             </div>
-
-
         );
     }
 }
