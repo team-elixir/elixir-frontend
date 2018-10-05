@@ -9,15 +9,11 @@ import Posts from "../Posts";
 class Home extends Component {
     render() {
         return (
-            <div className="App">
-                <Header />
-                <RowCategory/>
-                {/* <Posts/> */}
+            <div>
                 {/*Top carousel-Yu*/}
                 <HomeCarousel/>
                 <ProductSliderInterface/>
                 {/*Footer-Yu*/}
-                <Footer/>
             </div>
         );
     }

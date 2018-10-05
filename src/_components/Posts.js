@@ -1,156 +1,106 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Header from "./Home/Header";
-import RowCategory from "./Home/RowCategory";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import Footer from "./Home/Footer"
-import {fetchPosts, fetchSubCategories} from "../actions/postActions";
-//import productimg from "./product.jpg";
+import {fetchAllCat, fetchAllSub, fetchPosts, fetchProducts, fetchSubCategories} from "../actions/postActions";
+import Post from "./Post";
 
 class Posts extends Component {
-  constructor(props) {
-    super(props);
-   // this.checkCategory = this.checkCategory.bind(this);
+    constructor(props) {
+        super(props);
+        this.state = {
+            allposts: []
+        };
+    }
 
-    this.state = {
-      allposts: []
-    };
-  }
+    componentDidMount() {
+        // if(this.props.data.length === 0){
+        //     console.log("Calling fetch posts from here.")
+        //     this.props.fetchPosts();
+        // }
+        // else
+        //   this.props.fetchProducts(this.props.data);
+    }
 
-    componentWillMount() {
-      const categoryName =  this.props.match.params;
-      var  catName;
-      // for (var proper in categoryName)
-      // {
-      //   alert(proper);
-      //   break;
-      // }
-      for ( var proper in categoryName ) {
-        catName=categoryName[proper];
-        break;
-      }
-      if (catName=="all"){
-        this.props.fetchPosts();
-         // this.props.fetchSubCategories();
+    componentDidUpdate(prevProps) {
+
+        if (prevProps.data !== this.props.data) {
+            console.log(this.props.data);
+            if(this.props.data.length === 0){
+                console.log("Calling fetch posts from here.")
+                this.props.fetchPosts();
+            }
+            else
+                this.props.fetchProducts(this.props.data);
+            this.setState({ allposts: this.props.posts });
         }
-      else if (catName!="all"){
-        this.props.fetchSubCategories(catName);
-    
-      }
-            
-          
+
     }
-  //   componentWillReceiveProps(nextProps) {
-  //     if(nextProps.match.params !== this.props.match.params){
-  //         // window.location.reload()
-  //         const categoryName =  this.props.match.params;
-  // var  catName;
-  // for ( var proper in categoryName ) {
-  //   catName=categoryName[proper];
-  //   break;
-  // }
-  // if (catName=="all"){
-  //   this.props.fetchPosts();
-  //     this.props.fetchSubCategories();
-  //   }
-  // else if (catName=="Electronic"){
-  //   this.props.fetchSubCategories(catName);
 
-  // }
-        
-  //     }
+    render() {
 
-  // }
-  
-  componentWillUpdate(nextProps) {
-    if (nextProps.posts !== this.props.posts) {
-      console.log(this.props.posts);
-      this.setState({ allposts: this.props.posts });
-      const categoryName =  this.props.match.params;
-      var  catName;
-      for ( var proper in categoryName ) {
-        catName=categoryName[proper];
-        break;
-      }
-      if (catName=="all"){
-        this.props.fetchPosts();
-         // this.props.fetchSubCategories();
+        let posts = [];
+        if (this.props.posts.length !== 0) {
+            posts = this.props.posts;
         }
-      else if (catName!="all"){
-        this.props.fetchSubCategories(catName);
-    
-      }
-    }
-   
-  }
-// this function not used yet
-//  checkCategory(){
-//   const categoryName =  this.props.match.params;
-//   var  catName;
-//   for ( var proper in categoryName ) {
-//     catName=categoryName[proper];
-//     break;
-//   }
-//   if (catName=="all"){
-//     this.props.fetchPosts();
-//       this.props.fetchSubCategories();
-//     }
-//   else if (catName=="Electronic"){
-//     this.props.fetchSubCategories(catName);
 
-//   }
-     
-// }
-  render() {
-    let posts = [];
-    if (this.state.allposts.length !== 0) {
-      posts = this.state.allposts;
-      console.log(posts);
-    }
+        const postItems = posts.map(post => (
 
-    
-    const postItems = posts.map(post => (
+            <Post key ={post.product.id} data={post}/>
+        ));
+        return (
+            <div>
+                <div className="row m-4">
+                    <div className=" align-items-center col-12 col-md-4 col-lg-3 bg-light mt-3">
+                        <div>
+                            <h5 style={{marginTop: "50px"}}>Shop by sub category</h5>
+                        </div>
 
-        <div key={post.product.id} className="card p-3 text-center">
+                        <div>
+                            <h5 style={{marginTop: "250px"}}>Refine By</h5>
+                        </div>
 
-                <img className="card-img-top" src={post.list[0]} alt="image" />
-                <div className="card-body">
-                    <h6 className="card-title">{post.product.name}</h6>
-                    <p className="card-text">{post.product.brand}</p>
-                    <p className="card-text">${post.product.price}</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                    
+
+                    </div>
+
+                    <div className="col-12 col-md-8 col-lg-9">
+                        <div className="row bg-light m-3">
+                            <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+                            </div>
+                            <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+                            </div>
+                            <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                <p className="m-3">Sort By: </p>
+                                <select>
+                                    <option value="title" >Title</option>
+                                    <option value="title" >Brand</option>
+                                    <option value="title" >Price: Low to High</option>
+                                    <option value="title" >Price: High to Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="container mt-lg-5">
+                            <div className="card-columns">
+                                {postItems}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        </div>
-    ));
-    return (
-
-      <div className="App">
-      <Header />
-      <RowCategory/>
-      <div>
-        <div className="container mt-lg-5" >
-              <div className="card-columns">
-              
-            {postItems}
-              </div>
-        </div>
-      </div>
-      <Footer/>
-     
             </div>
-    );
-  }
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  posts: state.posts.items, //all the product items
-  subCatArray: state.posts.subCategories,
-
+    posts: state.posts.items,
 });
 
 const mapDispatchToProps = {
-  fetchPosts ,fetchSubCategories
+    fetchPosts,
+    fetchProducts,
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Posts);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Posts);

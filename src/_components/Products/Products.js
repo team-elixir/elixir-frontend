@@ -40,14 +40,10 @@ class Products extends Component {
             return (
                 // console.log(nextProps.match.params),
                 <div>
-                    <Header/>
-                    <RowCategory/>
-
                     {/* <Posts/> */}
                     {/*<ProductInfo/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
                     <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
-                    <Footer/>
                 </div>
             );
         else

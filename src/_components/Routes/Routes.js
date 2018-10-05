@@ -6,12 +6,12 @@ import PageNotFound from "../Loading/PageNotFound";
 import Loading from "../Loading/Loading";
 import Posts from "../Posts";
 import ProductsSearch from '../Home/ProductsSearch';
+import SubCategories from '../SubCategories';
 
 
 class Routes extends Component {
     render() {
         return (
-            <BrowserRouter>
                 <Switch>
                     {/*Default domain redirect to /home*/}
                     <Route exact path="/" render={() => (
@@ -20,10 +20,9 @@ class Routes extends Component {
                     <Route exact path="/home" component={Home}/>
                     <Route path="/product/view/:id" component={Products}/>
                     <Route path="/loading" component={Loading}/>
-                    <Route path="/addShopping/:categoryNames" component={Posts} />
-                    <Route component={PageNotFound}/>
+                    <Route path="/category/:name" component={SubCategories} />
+                    <Route path="*" component={PageNotFound} />
                 </Switch>
-            </BrowserRouter>
         );
     }
 }
