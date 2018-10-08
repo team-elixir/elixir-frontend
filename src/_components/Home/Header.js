@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import grizzlogo from "../../assets/images/grizz-logo.png";
 import {fetchSearchResults} from "../../actions/postActions";
+import '../../assets/css/Login.css';
 import {connect } from "react-redux";
 class Header extends React.Component{
     styles = {
@@ -34,16 +35,128 @@ searchFunctionality = () => {
                                    placeholder="what you are looking to buy today" aria-label=""
                                    aria-describedby="basic-addon1"/>
                             <div className="input-group-prepend">
-                                <button className="btn-primary rounded-right" type="submit" style={{width: "50px"}}><i
-                                   onClick={this.searchFunctionality} className="fa fa-search"></i></button>
+                                <button className="btn-primary rounded-right" type="submit" style={{width: "50px"}}><i onClick={this.searchFunctionality} className="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit">Login</button>
-                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit">SignUp</button>
+                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit" data-toggle="modal" data-target="#loginModal">Login</button>
+                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit" data-toggle="modal" data-target="#signupModal">SignUp</button>
                     </div>
                 </div>
+
+                { /* Start of Log in Model*/ }
+
+                <div>
+                    <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="myform form ">
+                                <div className="logo mb-3">
+                                    <div className="col-md-12 text-center">
+                                        <h1>Login</h1>
+                                    </div>
+                                </div>
+                                <form action="" method="post" name="login">
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email" className="form-control" id="email"
+                                               aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">Password</label>
+                                        <input type="password" name="password" id="password"
+                                               className="form-control" aria-describedby="emailHelp"
+                                               placeholder="Enter Password"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <p className="text-center"><a href="#">Forgot password?</a></p>
+                                    </div>
+                                    <div className="col-md-12 text-center ">
+                                        <button type="submit"
+                                                className=" btn btn-block mybtn btn-primary tx-tfm">Login
+                                        </button>
+                                    </div>
+                                    <div className="col-md-12 ">
+                                        <div className="login-or">
+                                            <hr className="hr-or"/>
+                                            <span className="span-or">or</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 mb-3">
+                                        <p className="text-center">
+                                            <a href="#" className="google btn mybtn"><i
+                                                className="fa fa-google-plus">
+                                            </i> Signup using Google
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div className="form-group">
+                                        <p className="text-center">Don't have account? <a href="#" id="signup">Sign
+                                            up here</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                { /* End of Log in Model*/ }
+
+
+                { /* Start of SignUp in Model*/ }
+
+                <div>
+                    <div className="modal fade" id="signupModal" tabIndex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="myform form ">
+                                <div className="logo mb-3">
+                                    <div className="col-md-12 text-center">
+                                        <h1>Signup</h1>
+                                    </div>
+                                </div>
+                                <form action="" method="post" name="login">
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">First Name</label>
+                                        <input type="text" name="firstname" className="form-control" id="firstname"
+                                               aria-describedby="emailHelp" placeholder="Enter Firstname"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">Last Name</label>
+                                        <input type="text" name="lastname" className="form-control" id="lastname"
+                                               aria-describedby="emailHelp" placeholder="Enter Lastname"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email" className="form-control" id="email"
+                                               aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="float-left" htmlFor="exampleInputEmail1">Password</label>
+                                        <input type="password" name="password" id="password"
+                                               className="form-control" aria-describedby="emailHelp"
+                                               placeholder="Enter Password"/>
+                                    </div>
+                                    <div className="col-md-12 text-center mb-3">
+                                        <button type="submit"
+                                                className=" btn btn-block mybtn btn-primary tx-tfm">Create Your
+                                            Grizzly Account
+                                        </button>
+                                    </div>
+                                    <div className="col-md-12 ">
+                                        <div className="form-group">
+                                            <p className="text-center"><a href="#" id="signin">Already have an
+                                                account?</a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                { /* End of SignUp in Model*/ }
+
             </nav>
         );
     }

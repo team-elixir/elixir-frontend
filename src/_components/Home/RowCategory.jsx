@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
+import "./Row.css";
+
 import {
     Dropdown,
     DropdownToggle,
@@ -10,7 +12,7 @@ import {
     fetchPosts,
     fetchProducts,
     fetchSubCategories,
-    fetchAllSub, fetchAllCat
+    fetchAllCat
 } from "../../actions/postActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -53,28 +55,50 @@ class RowCategory extends Component {
             <div className="text-center m-3 mt-4">
                 <ButtonGroup className="d-flex justify-content-center">
 
+                    {/*<ul className="navbar-nav mr-auto">*/}
+                    {/*<li className="nav-item dropdown">*/}
+                        {/*<a className="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown"*/}
+                           {/*aria-haspopup="true" aria-expanded="false">Dropdown1</a>*/}
+                        {/*<ul className="dropdown-menu" aria-labelledby="dropdown1">*/}
+                            {/*<li className="dropdown-item" href="#"><a>Action 1</a></li>*/}
+                            {/*<li className="dropdown-item dropdown">*/}
+                                {/*<a className="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown"*/}
+                                   {/*aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>*/}
+                                {/*<ul className="dropdown-menu" aria-labelledby="dropdown1-1">*/}
+                                    {/*<li className="dropdown-item" href="#"><a>Action 1.1</a></li>*/}
+                                    {/*<li className="dropdown-item dropdown">*/}
+                                        {/*<a className="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown"*/}
+                                           {/*aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>*/}
+                                        {/*<ul className="dropdown-menu" aria-labelledby="dropdown1-1-1">*/}
+                                            {/*<li className="dropdown-item" href="#"><a>Action 1.1.1</a></li>*/}
+                                        {/*</ul>*/}
+                                    {/*</li>*/}
+                                {/*</ul>*/}
+                            {/*</li>*/}
+                        {/*</ul>*/}
+                    {/*</li>*/}
+                    {/*</ul>*/}
 
-
-                    <Dropdown style={{display: "none"}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                        <DropdownToggle caret className="m-2" style={{ borderRadius: 50, width: 200 }}>
-                            Shop by Category
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Shop Phones</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Shop Watches</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Shop Camera</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Shop Kitchen appliances</DropdownItem>
-                            <DropdownItem divider />
-                        </DropdownMenu>
-                    </Dropdown>
+                    {/*<Dropdown style={{display: "none"}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>*/}
+                        {/*<DropdownToggle caret className="m-2" style={{ borderRadius: 50, width: 200 }}>*/}
+                            {/*Shop by Category*/}
+                        {/*</DropdownToggle>*/}
+                        {/*<DropdownMenu>*/}
+                            {/*<DropdownItem>Shop Phones</DropdownItem>*/}
+                            {/*<DropdownItem divider />*/}
+                            {/*<DropdownItem>Shop Watches</DropdownItem>*/}
+                            {/*<DropdownItem divider />*/}
+                            {/*<DropdownItem>Shop Camera</DropdownItem>*/}
+                            {/*<DropdownItem divider />*/}
+                            {/*<DropdownItem>Shop Kitchen appliances</DropdownItem>*/}
+                            {/*<DropdownItem divider />*/}
+                        {/*</DropdownMenu>*/}
+                    {/*</Dropdown>*/}
 
 
                     <Link to="/category/all" style={this.styles} className=" btn btn-outline-info m-2">Shop all</Link>
                     {catArray.map(category =>
-                        <Link to={"/category/"+category.name} style={this.styles} className=" btn-outline-info m-2" >{category.name}</Link>
+                     <Link to={"/category/"+category.name} style={this.styles} className=" btn-outline-info m-2" >{category.name}</Link>
                     )}
                 </ButtonGroup>
             </div>
@@ -86,7 +110,7 @@ const mapDispatchToProps = {
     fetchPosts,
     fetchProducts,
     fetchSubCategories,
-    fetchAllSub, fetchAllCat
+    fetchAllCat
 };
 
 const mapStateToProps = state => ({

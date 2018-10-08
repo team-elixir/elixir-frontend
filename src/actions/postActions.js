@@ -51,21 +51,10 @@ export const fetchProducts = arr => dispatch => {
 
 };
 
-export const fetchAllSub = () => dispatch => {
-    axios
-        .get(
-            "https://api.elixir.ausgrads.academy/category_micro/category/sub-category/all",
-        )
-        .then(res => {
-            dispatch({ type: FETCH_SUBCATEGORIES_DETAILS, payload: res.data  });
-        });
-
-};
-
 export const fetchAllCat = () => dispatch => {
     axios
         .get(
-            "https://api.elixir.ausgrads.academy/category_micro/category/all",
+            "https://api.elixir.ausgrads.academy/category_micro/category/allData",
         )
         .then(res => {
             dispatch({ type: FETCH_CATEGORIES_DETAILS, payload: res.data  });
