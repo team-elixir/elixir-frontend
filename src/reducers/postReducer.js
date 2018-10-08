@@ -28,18 +28,6 @@ export default function(state = initialState, action) {
                 subCategories: action.payload
 
             };
-        // case FETCH_PRODUCTS_FULFILLED:
-        //     return{
-        //         ...state,
-        //         categoryItems: action.payload
-        //
-        //     };
-        // case FETCH_SUBCATEGORIES_DETAILS:
-        //     return{
-        //         ...state,
-        //         subCatDet: action.payload
-        //     };
-
         case FETCH_CATEGORIES_DETAILS:
             return{
                 ...state,
