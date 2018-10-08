@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {fetchAllCat, fetchAllSub, fetchPosts, fetchProducts, fetchSubCategories} from "../actions/postActions";
 import Post from "./Post";
+import Cart from "./Cart";
 
 class Posts extends Component {
     constructor(props) {
@@ -79,7 +80,7 @@ class Posts extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="container mt-lg-5">
+                        <div className="container-fluid mt-lg-5">
                             <div className="card-columns">
                                 {postItems}
                             </div>

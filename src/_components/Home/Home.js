@@ -5,6 +5,7 @@ import HomeCarousel from "./HomeCarousel";
 import ProductSliderInterface from "./ProductSliderInterface";
 import Footer from "./Footer";
 import Posts from "../Posts";
+import Cart from "../Cart";
 
 class Home extends Component {
     render() {
