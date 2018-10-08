@@ -3,6 +3,15 @@ import grizzlogo from "../../assets/images/grizz-logo.png";
 import {fetchSearchResults} from "../../actions/postActions";
 import {connect } from "react-redux";
 class Header extends React.Component{
+
+
+
+
+
+
+
+
+
     styles = {
         borderRadius: 30,
         width: 100,
@@ -15,6 +24,19 @@ searchFunctionality = () => {
     this.props.fetchSearchResults();
     console.log("-----Search functionality called--------");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
     render(){
         return(
 
