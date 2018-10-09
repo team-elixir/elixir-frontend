@@ -5,6 +5,7 @@ import '../../assets/css/Login.css';
 import {connect } from "react-redux";
 import * as firebase from "firebase";
 import {firebaseui} from "firebaseui";
+import { Link } from "react-router-dom";
 
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
@@ -62,15 +63,20 @@ GoogleLogin = () =>
         this.setState({ isSignedIn: !!user });
     });
 
+
 };
 
-
+Logout = () =>
+{
+    firebase.auth().signOut();
+    window.location.reload();
+};
 
 
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
             this.setState({ isSignedIn: !!user });//if user is an object , set to true else false
-            this.props.setSignedState(false)
+            // this.props.setSignedState(false)
             // console.log("VALUE"+JSON.stringify(this.props.isSignedIn));
 
         });
@@ -109,16 +115,33 @@ GoogleLogin = () =>
 
                                      {/*Login Button ends here*/}
 
-                            <button style={this.styles} className="btn btn-outline-info m-2" type="submit" data-toggle="modal" data-target="#signupModal">SignUp</button>
+                    {this.state.isSignedIn? (<div></div>)
+                                                     :(<button style={this.styles} className="btn btn-outline-info m-2"
+                                                     type="submit" data-toggle="modal" data-target="#signupModal">SignUp</button>)}
+
 
                     {/*If  Sign in is true , then loads Login button else logout*/}
                     <div>
-                        { this.props.isSignedIn ?  (<button style={this.styles} className="btn btn-outline-info m-2"
-                                                            type="submit" data-toggle="modal" data-target="#loginModal">Log Out</button>
+                        { this.state.isSignedIn ?
+                            (<div class = "dropdown">
+                                <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
+                                        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {firebase.auth().currentUser.displayName}</button>
 
-                            )
+
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button style={this.styles} className="btn btn-outline-info m-2"
+                                                  onClick={() => this.Logout()}>Logout</button>
+                                </div>
+                            </div>)
+
+                            //
+                            // <button style={this.styles} className="btn btn-outline-info m-2"
+                            //                                 type="submit" >{firebase.auth().currentUser.displayName}</button>
+                            //
+                            // )
                             :(<button style={this.styles} className="btn btn-outline-info m-2"
-                                                          type="submit" data-toggle="modal" data-target="#loginModal">{JSON.stringify(this.props.isSignedIn)}</button>)
+                                                          type="submit" data-toggle="modal" data-target="#loginModal">Login</button>)
                           }
                     </div>
 

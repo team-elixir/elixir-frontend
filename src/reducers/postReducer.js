@@ -11,7 +11,7 @@ const initialState = {
     categoryItems: [],
     subCategories: [],
     catList: [],
-    isSignedIn:false
+    isSignedIn:true
 
 
 };
