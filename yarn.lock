@@ -4346,7 +4346,7 @@ firebase@^5.5.3:
     "@firebase/polyfill" "0.3.3"
     "@firebase/storage" "0.2.3"
 
-firebaseui@^3.2.0:
+firebaseui@^3.2.0, firebaseui@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/firebaseui/-/firebaseui-3.4.1.tgz#f440f1cc653d98f97caadf8f58f7d67b83d00fde"
   integrity sha512-DKXSFKC2ryCjpbifpLXC/erXPR8v7aCyWMicRXO0m7GNj+cpQgw7L3XOwzgpyoLKOL1DhsJ0Qniwi5qvvRSbjQ==

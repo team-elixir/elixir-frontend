@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_SUBCATEGORIES_FULFILLED, FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS} from "./types";
+import {SIGNEDIN_STATE, FETCH_POSTS, FETCH_SUBCATEGORIES_FULFILLED, FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS} from "./types";
 import axios from "axios";
 
 export const fetchPosts = () => dispatch => {
@@ -22,7 +22,14 @@ export const fetchSearchResults = () => dispatch => {
             })
         );
 };
+export  const setSignedState = (SignedState) => dispatch =>{
+    console.log("ACtion"+SignedState)
+    dispatch({
+        type:SIGNEDIN_STATE,
+        payload:!SignedState
 
+    })
+}
 export const fetchSubCategories = (category) => dispatch => {
     const subCatArray = [];
     axios
