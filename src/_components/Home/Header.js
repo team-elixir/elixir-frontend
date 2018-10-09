@@ -1,9 +1,47 @@
 import React, {Component} from 'react';
 import grizzlogo from "../../assets/images/grizz-logo.png";
-import {fetchSearchResults} from "../../actions/postActions";
+import {fetchSearchResults,setSignedState} from "../../actions/postActions";
 import '../../assets/css/Login.css';
 import {connect } from "react-redux";
+import * as firebase from "firebase";
+import {firebaseui} from "firebaseui";
+import { Link } from "react-router-dom";
+
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+
+firebase.initializeApp({
+    apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
+    authDomain: "elixir-218723.firebaseapp.com",
+});
+
 class Header extends React.Component{
+    constructor(props)
+    {
+        super(props);
+      //  var googleLoginUI =  new firebaseui.auth.AuthUI(firebase.auth());
+        ;
+    }
+
+    state = { isSignedIn: false ,
+            // show:true
+    };
+
+    uiConfig = {
+        signInFlow: "popup",
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+
+        ],
+        callbacks: {
+            signInSuccess: () => false
+        }
+    };
+
+
+
+
+
+
     styles = {
         borderRadius: 30,
         width: 100,
@@ -16,7 +54,39 @@ searchFunctionality = () => {
     this.props.fetchSearchResults();
     console.log("-----Search functionality called--------");
 }
+
+
+
+GoogleLogin = () =>
+{
+    firebase.auth().onAuthStateChanged(user => {
+        this.setState({ isSignedIn: !!user });
+    });
+
+
+};
+
+Logout = () =>
+{
+    firebase.auth().signOut();
+    window.location.reload();
+};
+
+
+    componentDidMount = () => {
+        firebase.auth().onAuthStateChanged(user => {
+            this.setState({ isSignedIn: !!user });//if user is an object , set to true else false
+            // this.props.setSignedState(false)
+            // console.log("VALUE"+JSON.stringify(this.props.isSignedIn));
+
+        });
+    };
+
+
+
     render(){
+     //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
         return(
 
             <nav className="navbar navbar-expand-lg navbar-light" style={this.navStyle}>
@@ -39,14 +109,45 @@ searchFunctionality = () => {
                             </div>
                         </div>
                     </div>
+                    {/*Login Button Starts here */}
+
+
+
+                                     {/*Login Button ends here*/}
+
+                    {this.state.isSignedIn? (<div></div>)
+                                                     :(<button style={this.styles} className="btn btn-outline-info m-2"
+                                                     type="submit" data-toggle="modal" data-target="#signupModal">SignUp</button>)}
+
+
+                    {/*If  Sign in is true , then loads Login button else logout*/}
                     <div>
-                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit" data-toggle="modal" data-target="#loginModal">Login</button>
-                        <button style={this.styles} className="btn btn-outline-info m-2" type="submit" data-toggle="modal" data-target="#signupModal">SignUp</button>
+                        { this.state.isSignedIn ?
+                            (<div class = "dropdown">
+                                <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
+                                        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {firebase.auth().currentUser.displayName}</button>
+
+
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button style={this.styles} className="btn btn-outline-info m-2"
+                                                  onClick={() => this.Logout()}>Logout</button>
+                                </div>
+                            </div>)
+
+                            //
+                            // <button style={this.styles} className="btn btn-outline-info m-2"
+                            //                                 type="submit" >{firebase.auth().currentUser.displayName}</button>
+                            //
+                            // )
+                            :(<button style={this.styles} className="btn btn-outline-info m-2"
+                                                          type="submit" data-toggle="modal" data-target="#loginModal">Login</button>)
+                          }
                     </div>
+
                 </div>
 
                 { /* Start of Log in Model*/ }
-
                 <div>
                     <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
@@ -83,13 +184,14 @@ searchFunctionality = () => {
                                         </div>
                                     </div>
                                     <div className="col-md-12 mb-3">
-                                        <p className="text-center">
-                                            <a href="#" className="google btn mybtn"><i
-                                                className="fa fa-google-plus">
-                                            </i> Signup using Google
-                                            </a>
-                                        </p>
+                                        {/*-------------------------------------------------------------------------*/}
+
+                                        <StyledFirebaseAuth
+                                            uiConfig={this.uiConfig}
+                                            firebaseAuth={firebase.auth()}
+                                        />
                                     </div>
+                                    {/*-----------------------------------------------------------------------------*/}
                                     <div className="form-group">
                                         <p className="text-center">Don't have account? <a href="#" id="signup">Sign
                                             up here</a></p>
@@ -99,6 +201,9 @@ searchFunctionality = () => {
                         </div>
                     </div>
                 </div>
+
+
+
 
                 { /* End of Log in Model*/ }
 
@@ -162,7 +267,11 @@ searchFunctionality = () => {
     }
 }
 const mapDispatchToProps = {
-    fetchSearchResults
+    fetchSearchResults,setSignedState
 };
+const mapStateToProps = state => ({
+    isSignedIn:state.posts.isSignedIn
+})
+
 
 export default connect(null, mapDispatchToProps)(Header);

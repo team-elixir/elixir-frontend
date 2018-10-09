@@ -1,5 +1,5 @@
 import {
-    FETCH_POSTS,
+    FETCH_POSTS,SIGNEDIN_STATE,
     FETCH_SUBCATEGORIES_FULFILLED,
     FETCH_PRODUCTS_FULFILLED,
     FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS
@@ -11,6 +11,8 @@ const initialState = {
     categoryItems: [],
     subCategories: [],
     catList: [],
+    isSignedIn:true
+
 
 };
 
@@ -33,6 +35,11 @@ export default function(state = initialState, action) {
                 ...state,
                 catList: action.payload
             };
+        case   SIGNEDIN_STATE:
+            return{
+                ...state,
+                isSignedIn: action.payload
+            }
         default:
             return state;
     }
