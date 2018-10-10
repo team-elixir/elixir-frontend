@@ -6,9 +6,8 @@ import PageNotFound from "../Loading/PageNotFound";
 import Loading from "../Loading/Loading";
 import Posts from "../Posts";
 import ProductsSearch from '../Home/ProductsSearch';
-import Categories from '../Categories';
+import SubCategories from '../SubCategories';
 import Cart from "../Cart";
-import SubCategories from "../SubCategories";
 
 
 class Routes extends Component {
@@ -22,8 +21,7 @@ class Routes extends Component {
                     <Route exact path="/home" component={Home}/>
                     <Route path="/product/view/:id" component={Products}/>
                     <Route path="/loading" component={Loading}/>
-                    <Route path="/category/:name" component={Categories} />
-                    <Route path="/subCategory/:id" component={SubCategories} />
+                    <Route path="/category/:name" component={SubCategories} />
                     <Route path="/cart" component={Cart}/>
                     <Route path="*" component={PageNotFound} />
                 </Switch>

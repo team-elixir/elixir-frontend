@@ -3,9 +3,6 @@ import './Cart.css';
 
 class Cart extends Component {
     render() {
-
-        // const cartList = this.props.
-
         return (
             <div>
                 <div className="container">
@@ -24,29 +21,12 @@ class Cart extends Component {
                         <tr>
                             <td data-th="Product">
                                 <div className="row">
-                                    {/*<div className="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."*/}
-                                                                                   {/*className="img-responsive"/></div>*/}
-                                    {/*<div className="col-sm-10">*/}
-                                        {/*<h4 className="nomargin">Product 1</h4>*/}
-                                        {/*<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat*/}
-                                            {/*nulla pariatur.</p>*/}
-                                    {/*</div>*/}
-                                    <div className="container">
-
-                                        <div className="my-item d-flex flex-column flex-md-row">
-                                            <p className="my-item__image mb-3 mb-md-0 mr-md-3 w-25">
-                                                <img src="http://via.placeholder.com/1600x1600" alt="Image"
-                                                     className="img-fluid"/>
-                                            </p>
-                                            <div className="my-item__text">
-                                                <p>
-                                                    Quibusdam inventore iusto deleniti quis quam veniam, qui esse velit,
-                                                    voluptates
-                                                </p>
-                                            </div>
-
-                                        </div>
-
+                                    <div className="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."
+                                                                             className="img-responsive"/></div>
+                                    <div className="col-sm-10">
+                                        <h4 className="nomargin">Product 1</h4>
+                                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                            nulla pariatur. Lorem ipsum dolor sit amet.</p>
                                     </div>
                                 </div>
                             </td>
@@ -68,7 +48,7 @@ class Cart extends Component {
                             <td><a href="/" className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue
                                 Shopping</a></td>
                             <td colSpan="2" className="hidden-xs"></td>
-                            <td className="hidden-xs text-center"><strong>{'Total $${this.props.price}'}</strong></td>
+                            <td className="hidden-xs text-center"><strong>Total $1.99</strong></td>
                             <td><a href="#" className="btn btn-success btn-block">Checkout <i
                                 className="fa fa-angle-right"></i></a></td>
                         </tr>

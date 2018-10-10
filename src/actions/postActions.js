@@ -37,11 +37,11 @@ export const fetchSubCategories = (category) => dispatch => {
             "https://api.elixir.ausgrads.academy/category_micro/category/name/"+category
         )
         .then(res => {
-            // res.data.forEach(function(subCategory) {
-            //             //     subCatArray.push(subCategory.subId);
-            //             // });
-            console.log(res.data);
-            dispatch({ type: FETCH_SUBCATEGORIES_FULFILLED, payload: res.data });
+            res.data.forEach(function(subCategory) {
+                subCatArray.push(subCategory.subId);
+            });
+            console.log(subCatArray);
+            dispatch({ type: FETCH_SUBCATEGORIES_FULFILLED, payload: subCatArray });
         });
 };
 
