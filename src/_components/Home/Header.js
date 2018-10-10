@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import grizzlogo from "../../assets/images/grizz-logo.png";
-import {fetchSearchResults,setSignedState} from "../../actions/postActions";
+import {fetchSearchResults,setUserEmail} from "../../actions/postActions";
 import '../../assets/css/Login.css';
 import {connect } from "react-redux";
 import * as firebase from "firebase";
 import {firebaseui} from "firebaseui";
 import { Link } from "react-router-dom";
-
+import FirebaseAuth from "react-firebaseui/FirebaseAuth"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-
 firebase.initializeApp({
     apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
     authDomain: "elixir-218723.firebaseapp.com",
@@ -56,7 +55,6 @@ searchFunctionality = () => {
 }
 
 
-
 GoogleLogin = () =>
 {
     firebase.auth().onAuthStateChanged(user => {
@@ -65,7 +63,12 @@ GoogleLogin = () =>
 
 
 };
+killWindow = () =>
+{
+    if (document.getElementById("loginModal")){
 
+    }
+};
 Logout = () =>
 {
     firebase.auth().signOut();
@@ -90,8 +93,8 @@ Logout = () =>
         return(
 
             <nav className="navbar navbar-expand-lg navbar-light" style={this.navStyle}>
-                <a className="navbar-brand" href="/"><strong>Grizzly</strong>
-                <img src={grizzlogo} style={{height: 50}} /> <strong>Store</strong></a>
+                <Link className="navbar-brand" to="/home"><strong>Grizzly</strong>
+                <img src={grizzlogo} style={{height: 50}} /> <strong>Store</strong></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -123,10 +126,10 @@ Logout = () =>
                     {/*If  Sign in is true , then loads Login button else logout*/}
                     <div>
                         { this.state.isSignedIn ?
-                            (<div class = "dropdown">
+                            (<div className = "dropdown">
                                 <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
                                         type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {firebase.auth().currentUser.displayName}</button>
+                                    {firebase.auth().currentUser.displayName}{this.props.setUserEmail(firebase.auth().currentUser.email)}</button>
 
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -187,14 +190,16 @@ Logout = () =>
                                         {/*-------------------------------------------------------------------------*/}
 
                                         <StyledFirebaseAuth
+                                             // onClick={this.killWindow()}
                                             uiConfig={this.uiConfig}
                                             firebaseAuth={firebase.auth()}
-                                        />
+                                       />
                                     </div>
                                     {/*-----------------------------------------------------------------------------*/}
                                     <div className="form-group">
-                                        <p className="text-center">Don't have account? <a href="#" id="signup">Sign
+                                        <p className="text-center">Don't have account? <a href="#" data-dismiss="modal" id="signup">
                                             up here</a></p>
+
                                     </div>
                                 </form>
                             </div>
@@ -267,10 +272,10 @@ Logout = () =>
     }
 }
 const mapDispatchToProps = {
-    fetchSearchResults,setSignedState
+    fetchSearchResults,setUserEmail
 };
 const mapStateToProps = state => ({
-    isSignedIn:state.posts.isSignedIn
+    userEmail:state.posts.userEmail
 })
 
 

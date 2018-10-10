@@ -43,7 +43,7 @@ class RowCategory extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.catList !== this.props.catList) {
-            this.props.fetchAllCat();
+             this.props.fetchAllCat();
         }
 
     }
