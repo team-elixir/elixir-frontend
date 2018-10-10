@@ -14,6 +14,7 @@ class App extends Component {
                 <div className="App">
                     <Header />
                     <RowCategory />
+                    {/*<RowNew/>*/}
                     <Routes />
                     <Footer />
                 </div>
