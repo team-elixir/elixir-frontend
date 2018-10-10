@@ -18,7 +18,7 @@ class SubCategories extends Component {
         {
             this.props.fetchSubCategories(this.props.match.params.name);
         }
-
+        console.log("So the email is "+this.props.userEmail)
         this.setState({subCatArray: this.props.subCategories});
     }
     componentDidUpdate(prevProps){
@@ -48,6 +48,7 @@ class SubCategories extends Component {
 
 const mapStateToProps = state => ({
     subCategories: state.posts.subCategories,
+    userEmail:state.posts.userEmail
 });
 
 const mapDispatchToProps = {
@@ -56,5 +57,6 @@ const mapDispatchToProps = {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+
 )(SubCategories);
