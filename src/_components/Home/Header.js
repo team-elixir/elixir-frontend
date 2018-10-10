@@ -45,7 +45,7 @@ searchFunctionality = () => {
                     </div>
                 </div>
 
-                { /* Start of Log in Model*/ }
+                { /* Start of Log in Modal*/ }
 
                 <div>
                     <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -100,10 +100,10 @@ searchFunctionality = () => {
                     </div>
                 </div>
 
-                { /* End of Log in Model*/ }
+                { /* End of Log in Modal*/ }
 
 
-                { /* Start of SignUp in Model*/ }
+                { /* Start of SignUp in Modal*/ }
 
                 <div>
                     <div className="modal fade" id="signupModal" tabIndex="-1" role="dialog"
@@ -155,7 +155,7 @@ searchFunctionality = () => {
                     </div>
                 </div>
 
-                { /* End of SignUp in Model*/ }
+                { /* End of SignUp in Modal*/ }
 
             </nav>
         );
