@@ -65,8 +65,9 @@ GoogleLogin = () =>
 };
 killWindow = () =>
 {
-    if (document.getElementById("loginModal")){
-
+    if(this.state.isSignedIn) {
+        this.props.setUserEmail(firebase.auth().currentUser.email)
+        console.log("Worked Fine")
     }
 };
 Logout = () =>
@@ -129,7 +130,7 @@ Logout = () =>
                             (<div className = "dropdown">
                                 <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
                                         type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {firebase.auth().currentUser.displayName}{this.props.setUserEmail(firebase.auth().currentUser.email)}</button>
+                                    {firebase.auth().currentUser.displayName}</button>
 
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -190,7 +191,7 @@ Logout = () =>
                                         {/*-------------------------------------------------------------------------*/}
 
                                         <StyledFirebaseAuth
-                                             // onClick={this.killWindow()}
+                                              onClick={this.killWindow()}
                                             uiConfig={this.uiConfig}
                                             firebaseAuth={firebase.auth()}
                                        />
