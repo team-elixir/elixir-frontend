@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 
 import SubCategories from '../SubCategories';
 import Cart from "../Cart";
-import profile from "../Products/profile";
+import Profile from "../Products/Profile";
 
 
 class Routes extends Component {
@@ -24,7 +24,7 @@ class Routes extends Component {
                     <Route path="/loading" component={Loading}/>
                     <Route path="/category/:name" component={SubCategories} />
                     <Route path="/cart" component={Cart}/>
-                    <Route path="/profile" component={profile}/>
+                    <Route path="/profile" component={Profile}/>
 
                     <Route path="*" component={PageNotFound} />
 
