@@ -96,7 +96,8 @@ class RowCategory extends Component {
                     {/*</Dropdown>*/}
 
 
-                    <Link to="/category/all" style={this.styles} className=" btn btn-outline-info m-2">Shop all</Link>
+                    {/*<Link to="/category/all" style={this.styles} className=" btn btn-outline-info m-2">Shop all</Link>*/}
+                    <Link to="/profile" style={this.styles} className=" btn btn-outline-info m-2">Shop all</Link>
                     {catArray.map(category =>
                      <Link to={"/category/"+category.name} style={this.styles} className=" btn-outline-info m-2" >{category.name}</Link>
                     )}
