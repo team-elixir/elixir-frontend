@@ -6,7 +6,18 @@ import StarRatingComponent from 'react-star-rating-component';
 
 
 const ProductInfos = (data) => {
-    // console.log("ProductInfos: " + data.data.list);
+    console.log("ProductInfos: " + JSON.stringify(data.data.product));
+
+    const product = {
+        productId: data.data.product.id,
+        qty: 1,
+        unitPrice: data.data.product.price,
+    }
+    const addToCart = () => {
+
+    }
+
+
     if(data !== null) {
         let image = data.data.list.length === 1 ?
             <img width="100%" height="400" alt="" src={data.data.list[0]}/>
@@ -37,6 +48,7 @@ const ProductInfos = (data) => {
                         <div className="col-lg-8 col-md-6">
                             <h5 className="text-left">Product Description</h5>
                             <p className="text-left mt-3 p-view-description">{data.data.product.description}</p>
+                            <button className="float-left btn btn-success" onClick={this.addToCart} >Add to cart</button>
                             <div className="col-12 mt-3 pl-0 pr-0 pb-0 pull-bottom">
                                 <h5 className="text-left "><span className="rrp-text text-danger">RRP</span> ${data.data.product.price}</h5>
                             </div>

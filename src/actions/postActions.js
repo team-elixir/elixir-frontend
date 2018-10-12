@@ -23,7 +23,7 @@ export const fetchSearchResults = () => dispatch => {
         );
 };
 export  const setUserEmail = (userEmail) => dispatch =>{
-    console.log("ACtion"+userEmail)
+    console.log("Action "+userEmail)
     dispatch({
         type:USEREMAIL_STATE,
         payload:userEmail

@@ -59,6 +59,12 @@ GoogleLogin = () =>
 {
     firebase.auth().onAuthStateChanged(user => {
         this.setState({ isSignedIn: !!user });
+
+
+        if(!!user)
+        {
+            this.props.setUserEmail(user.email);
+        }
     });
 
 
@@ -92,7 +98,7 @@ Logout = () =>
 
         return(
 
-            <nav className="navbar navbar-expand-lg navbar-light" style={this.navStyle}>
+            <nav className="navbar navbar-expand-md navbar-light" style={this.navStyle}>
                 <Link className="navbar-brand" to="/home"><strong>Grizzly</strong>
                 <img src={grizzlogo} style={{height: 50}} /> <strong>Store</strong></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -126,16 +132,21 @@ Logout = () =>
                     {/*If  Sign in is true , then loads Login button else logout*/}
                     <div>
                         { this.state.isSignedIn ?
-                            (<div className = "dropdown">
+                            (<div>
+                                <div className="d-inline-block"><Link to="/cart" i className="fa fa-shopping-cart float-left mr-3 mt-2" style={{fontSize:"45px", position:"relative", top:"13px"}}></Link></div>
+                                <div className = "d-inline-block dropdown">
                                 <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
                                         type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {firebase.auth().currentUser.displayName}{this.props.setUserEmail(firebase.auth().currentUser.email)}</button>
+                                    {firebase.auth().currentUser.displayName}
+                                    {/*{this.props.setUserEmail(firebase.auth().currentUser.email)}*/}
+                                    </button>
 
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <button style={this.styles} className="btn btn-outline-info m-2"
                                                   onClick={() => this.Logout()}>Logout</button>
                                 </div>
+                            </div>
                             </div>)
 
                             //
@@ -272,7 +283,7 @@ Logout = () =>
     }
 }
 const mapDispatchToProps = {
-    fetchSearchResults,setUserEmail
+    fetchSearchResults, setUserEmail
 };
 const mapStateToProps = state => ({
     userEmail:state.posts.userEmail

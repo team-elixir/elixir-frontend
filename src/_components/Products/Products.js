@@ -35,7 +35,7 @@ class Products extends Component {
     // }
 
     render() {
-        // console.log(this.props.pageState.item);
+        //console.log(this.props.pageState.item);
         if (this.props.pageState.item.product)
             return (
                 // console.log(nextProps.match.params),
