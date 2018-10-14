@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import grizzlogo from "../../assets/images/grizz-logo.png";
-import {fetchSearchResults,setUserEmail} from "../../actions/postActions";
+import {fetchSearchResults,setUserData} from "../../actions/postActions";
 import '../../assets/css/Login.css';
 import {connect } from "react-redux";
 import * as firebase from "firebase";
@@ -8,6 +8,7 @@ import {firebaseui} from "firebaseui";
 import { Link } from "react-router-dom";
 import FirebaseAuth from "react-firebaseui/FirebaseAuth"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import axios from "axios";
 firebase.initializeApp({
     apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
     authDomain: "elixir-218723.firebaseapp.com",
@@ -66,7 +67,25 @@ GoogleLogin = () =>
 killWindow = () =>
 {
     if(this.state.isSignedIn) {
-        this.props.setUserEmail(firebase.auth().currentUser.email)
+        console.log("Kill Window Called");
+         this.props.setUserData({"userEmail":firebase.auth().currentUser.email,"loginName":firebase.auth().currentUser.displayName});
+        axios
+            .post(
+                "https://api.elixir.ausgrads.academy/user_micro/users/customer/add",
+                {
+                    "name":firebase.auth().currentUser.displayName,
+                    "email":firebase.auth().currentUser.email,
+                    "contactNum":"",
+                    "address":""
+                }
+            )
+            .catch((error) =>
+        {
+            console.log(" User already Exists in Database")
+        })
+
+
+        console.log("Add user successful")
         console.log("Worked Fine")
     }
 };
@@ -130,15 +149,21 @@ Logout = () =>
                             (<div className = "dropdown">
                                 <button style={this.styles} class="btn btn-secondary m-2 dropdown-toggle" id="dropdownMenuButton"
                                         type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {firebase.auth().currentUser.displayName}</button>
+                                    {/*{this.props.userData.loginName}*/}
+                                    {firebase.auth().currentUser.displayName}
+
+                                    </button>
 
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <Link to="/profile"><button style={this.styles} className="btn btn-outline-info m-2"
+                                    >My Profile</button></Link>
                                     <button style={this.styles} className="btn btn-outline-info m-2"
                                                   onClick={() => this.Logout()}>Logout</button>
+
                                 </div>
                             </div>)
-
+                            // ONLY DO THE ABOVE IF SIGNED IN
                             //
                             // <button style={this.styles} className="btn btn-outline-info m-2"
                             //                                 type="submit" >{firebase.auth().currentUser.displayName}</button>
@@ -273,10 +298,10 @@ Logout = () =>
     }
 }
 const mapDispatchToProps = {
-    fetchSearchResults,setUserEmail
+    fetchSearchResults,setUserData
 };
 const mapStateToProps = state => ({
-    userEmail:state.posts.userEmail
+    userData:state.posts.userData,
 })
 
 

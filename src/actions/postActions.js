@@ -1,4 +1,5 @@
-import {USEREMAIL_STATE, FETCH_POSTS, FETCH_SUBCATEGORIES_FULFILLED, FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS} from "./types";
+import {USEREMAIL_STATE, FETCH_POSTS, FETCH_SUBCATEGORIES_FULFILLED, FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS,
+FETCH_USER_DETAILS} from "./types";
 import axios from "axios";
 
 export const fetchPosts = () => dispatch => {
@@ -22,13 +23,21 @@ export const fetchSearchResults = () => dispatch => {
             })
         );
 };
-export  const setUserEmail = (userEmail) => dispatch =>{
-    console.log("ACtion"+userEmail)
+export  const setUserData = (userData) => dispatch =>{
+    console.log("ACtion")
     dispatch({
         type:USEREMAIL_STATE,
-        payload:userEmail
+        payload:userData
 
     })
+}
+export const getUserDetails = (email) => dispatch => {
+    axios.get("https://api.elixir.ausgrads.academy/user_micro/users/customer/"+email)
+        .then(
+            res=> {
+                dispatch({type: FETCH_USER_DETAILS, payload: res.data})
+            });
+
 }
 export const fetchSubCategories = (category) => dispatch => {
     const subCatArray = [];
@@ -68,3 +77,4 @@ export const fetchAllCat = () => dispatch => {
         });
 
 };
+
