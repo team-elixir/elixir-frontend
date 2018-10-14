@@ -15,6 +15,14 @@ class Profile extends Component {
             }
     }
 
+
+
+componentDidMount  () {
+    if (this.props.userData.loginName !== "") {
+        this.props.getUserDetails(this.props.userData.userEmail)
+    }
+}
+
 componentDidUpdate(prevProps) {
     if(this.props.userData.loginName!=="")
     {
