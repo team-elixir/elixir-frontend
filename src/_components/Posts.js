@@ -25,7 +25,7 @@ class Posts extends Component {
 
         if (prevProps.data !== this.props.data) {
             console.log(this.props.data);
-            console.log("Email Posts is "+ this.props.userEmail)
+            console.log("Email Posts is "+ this.props.userData.userEmail)
             if(this.props.data.length === 0){
                 console.log("Calling fetch posts from here.")
                 this.props.fetchPosts();
@@ -94,7 +94,7 @@ class Posts extends Component {
 
 const mapStateToProps = state => ({
     posts: state.posts.items,
-    userEmail:state.posts.userEmail
+    userData:state.posts.userData
 });
 
 const mapDispatchToProps = {

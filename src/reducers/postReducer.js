@@ -1,8 +1,9 @@
 import {
-    FETCH_POSTS,USEREMAIL_STATE,
+    FETCH_POSTS, USEREMAIL_STATE,
     FETCH_SUBCATEGORIES_FULFILLED,
     FETCH_PRODUCTS_FULFILLED,
-    FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS
+    FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS, ADD_USER,
+    FETCH_USER_DETAILS
 } from "../actions/types";
 
 const initialState = {
@@ -11,7 +12,17 @@ const initialState = {
     categoryItems: [],
     subCategories: [],
     catList: [],
-    userEmail:''
+    userData: {
+        userEmail:'',
+        loginName:''
+    },// as retreived by google account, so user data has name and Email
+
+    userDetails:{
+        name:"",
+        email:"",
+        address: "",
+        contactNum: ""
+    }//contains fields like Name, Email, Address and ContactNumber . To be used to contact the backend Database
 
 
 };
@@ -30,15 +41,21 @@ export default function(state = initialState, action) {
                 subCategories: action.payload
 
             };
+
         case FETCH_CATEGORIES_DETAILS:
             return{
                 ...state,
                 catList: action.payload
             };
-        case   USEREMAIL_STATE:
+        case FETCH_USER_DETAILS:
+            return {
+                ...state,
+                userDetails: action.payload
+            }
+        case   USEREMAIL_STATE:   // sets user email and name as retreived from Google
             return{
                 ...state,
-                userEmail: action.payload
+                userData: action.payload
             }
         default:
             return state;
