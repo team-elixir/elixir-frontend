@@ -18,7 +18,6 @@ class SubCategories extends Component {
         {
             this.props.fetchSubCategories(this.props.match.params.name);
         }
-        console.log("So the email is "+this.props.userEmail)
         this.setState({subCatArray: this.props.subCategories});
     }
     componentDidUpdate(prevProps){
@@ -34,6 +33,7 @@ class SubCategories extends Component {
 
     render() {
         const subArray = this.props.subCategories;
+        // console.log("SubCats are "+ this.props.subCategories)
         return (
             <div>
                 {(this.props.match.params.name !== "all") ?
@@ -48,7 +48,7 @@ class SubCategories extends Component {
 
 const mapStateToProps = state => ({
     subCategories: state.posts.subCategories,
-    userEmail:state.posts.userEmail
+    userData:state.posts.userData
 });
 
 const mapDispatchToProps = {
