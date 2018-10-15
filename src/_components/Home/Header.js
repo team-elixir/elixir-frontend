@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import FirebaseAuth from "react-firebaseui/FirebaseAuth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 firebase.initializeApp({
   apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
   authDomain: "elixir-218723.firebaseapp.com"
@@ -18,6 +19,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     //  var googleLoginUI =  new firebaseui.auth.AuthUI(firebase.auth());
+    this.searchFunctionality = this.searchFunctionality.bind(this);
   }
 
   state = {
@@ -41,18 +43,26 @@ class Header extends React.Component {
     "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
     height: "80px"
   };
-  searchFunctionality = () => {
-    this.props.fetchSearchResults();
-    console.log("-----Search functionality called--------");
+  searchFunctionality = event => {
+    event.stopPropagation();
+    // this.props.fetchSearchResults();
+    //  this.props.searchProductAction1("a");
+    // console.log(this.props.dataState.searchResult1);
+    // console.log(this.state.searchBoxValue);
+    console.log("Start");
+    // console.log(event.target.value);
+    console.log("END HERE");
+    // route data to search Product router to handle grid view
+    if (event.target.value != "") {
+      this.props.history.push("/search/" + event.target.value);
+    } else {
+      this.props.history.push("/home");
+    }
   };
 
   GoogleLogin = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
-
-      if (!!user) {
-        this.props.setUserEmail(user.email);
-      }
     });
   };
   killWindow = () => {
@@ -98,7 +108,7 @@ class Header extends React.Component {
 
     return (
       <nav
-        className="navbar navbar-expand-md navbar-light"
+        className="navbar navbar-expand-lg navbar-light"
         style={this.navStyle}
       >
         <Link className="navbar-brand" to="/home">
@@ -126,6 +136,7 @@ class Header extends React.Component {
                 placeholder="what you are looking to buy today"
                 aria-label=""
                 aria-describedby="basic-addon1"
+                onChange={this.searchFunctionality}
               />
               <div className="input-group-prepend">
                 <button
@@ -175,7 +186,8 @@ class Header extends React.Component {
                     }}
                   />
                 </div>
-                <div className="d-inline-block dropdown">
+
+                <div className="dropdown">
                   <button
                     style={this.styles}
                     class="btn btn-secondary m-2 dropdown-toggle"
@@ -430,4 +442,4 @@ const mapStateToProps = state => ({
 export default connect(
   null,
   mapDispatchToProps
-)(Header);
+)(withRouter(Header));
