@@ -28,6 +28,7 @@ export const getProductByID = (id) => dispatch => {
         .get(`https://api.elixir.ausgrads.academy/products_micro/products/getByProductId/${id}`)
         // .catch(error => console.log(error.status))
         .then(res => {
+            console.log(res.data);
             dispatch({
                     type: FETCH_SINGLE_PRODUCT_FULFILLED,
                     payload: res.data,
