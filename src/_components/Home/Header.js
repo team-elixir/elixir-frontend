@@ -13,6 +13,10 @@ import {withRouter} from 'react-router-dom'
 firebase.initializeApp({
     apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
     authDomain: "elixir-218723.firebaseapp.com",
+    databaseURL: "https://elixir-218723.firebaseio.com",
+    projectId: "elixir-218723",
+    storageBucket: "elixir-218723.appspot.com",
+    messagingSenderId: "671693303394"
 });
 
 class Header extends React.Component{
