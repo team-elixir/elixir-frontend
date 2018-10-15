@@ -1,5 +1,11 @@
 import axios from "axios";
-import {PRODUCTS_GET_CATEGORY, PRODUCTS_GET_PRODUCT, PRODUCTS_SET_LOADING} from "./types";
+import {
+    FETCH_SINGLE_PRODUCT_FULFILLED, FETCH_SINGLE_PRODUCT_REJECTED,
+    FETCH_SINGLE_PRODUCT,
+    PRODUCTS_GET_CATEGORY,
+    PRODUCTS_GET_PRODUCT,
+    PRODUCTS_SET_LOADING
+} from "./types";
 
 export const getProduct = (id) => dispatch => {
     axios
@@ -14,6 +20,24 @@ export const getProduct = (id) => dispatch => {
                 // console.log('getProduct Fire!!')
             )
         });
+};
+
+export const getProductByID = (id) => dispatch => {
+    dispatch({ type: FETCH_SINGLE_PRODUCT });
+    axios
+        .get(`https://api.elixir.ausgrads.academy/products_micro/products/getByProductId/${id}`)
+        // .catch(error => console.log(error.status))
+        .then(res => {
+            dispatch({
+                    type: FETCH_SINGLE_PRODUCT_FULFILLED,
+                    payload: res.data,
+                })
+        }).catch(err => {
+        dispatch({
+            type: FETCH_SINGLE_PRODUCT_REJECTED,
+            payload: err,
+        })
+    });
 };
 
 export const getCategory = (sid) => dispatch => {

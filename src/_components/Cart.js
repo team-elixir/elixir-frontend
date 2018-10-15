@@ -1,63 +1,118 @@
-import React, {Component} from 'react';
-import './Cart.css';
+import React, { Component } from "react";
+import "./Cart.css";
+import { Link } from "react-router-dom";
+
+import { fetchSubCategories } from "../actions/postActions";
+import { fetchCart } from "../actions/cartAction";
+import connect from "react-redux/es/connect/connect";
+
+import { isError } from "util";
+import CartItem from "./CartItem";
 
 class Cart extends Component {
-    render() {
-        return (
-            <div>
-                <div className="container">
-                    <p className="text-secondary" style={{fontSize: "30px"}}>Shopping Cart</p>
-                    <table id="cart" className="table table-hover table-condensed">
-                        <thead>
-                        <tr>
-                            <th styles="width:50%">Product</th>
-                            <th styles="width:10%">Price</th>
-                            <th styles="width:8%">Quantity</th>
-                            <th styles="width:22%" className="text-center">Subtotal</th>
-                            <th styles="width:10%"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td data-th="Product">
-                                <div className="row">
-                                    <div className="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."
-                                                                             className="img-responsive"/></div>
-                                    <div className="col-sm-10">
-                                        <h4 className="nomargin">Product 1</h4>
-                                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                            nulla pariatur. Lorem ipsum dolor sit amet.</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">$1.99</td>
-                            <td data-th="Quantity">
-                                <input type="number" className="form-control text-center" value="1"/>
-                            </td>
-                            <td data-th="Subtotal" className="text-center">1.99</td>
-                            <td className="actions" data-th="">
-                                <button className="btn btn-info btn-sm"><i className="fa fa-refresh"></i></button>
-                                <button className="btn btn-danger btn-sm"><i className="fa fa-trash-o"></i></button>
-                            </td>
-                        </tr>
+  constructor(props) {
+    super(props);
+  }
 
-                        </tbody>
-                        <tfoot>
-
-                        <tr>
-                            <td><a href="/" className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue
-                                Shopping</a></td>
-                            <td colSpan="2" className="hidden-xs"></td>
-                            <td className="hidden-xs text-center"><strong>Total $1.99</strong></td>
-                            <td><a href="#" className="btn btn-success btn-block">Checkout <i
-                                className="fa fa-angle-right"></i></a></td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        );
+  componentDidMount() {
+    if (this.props.userData.userEmail == "") {
     }
+    if (
+      this.props.userData.userEmail !== null ||
+      typeof this.props.userData.userEmail !== "undefined"
+    ) {
+      console.log("Ran just fine ");
+      this.props.fetchCart(this.props.userData.userEmail);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.cart) !== JSON.stringify(this.props.cart) || this.props.userData.userEmail !== prevProps.userData.userEmail) {
+      if (
+        this.props.userData.userEmail !== null ||
+        typeof this.props.userData.userEmail !== "undefined"
+      )
+        this.props.fetchCart(this.props.userData.userEmail);
+    }
+  }
+
+  render() {
+    const cart = this.props.cart;
+    let cartItems = [];
+    if (cart.length > 0) {
+        cart.map(cartItem =>
+            cartItems = cartItem.orderline
+        );
+      //cartItems = cart[0].orderline;
+      console.log("Cart Items here" + JSON.stringify(cart));
+    }
+
+    return (
+      <div>
+          <p className="text-secondary float-left" style={{ fontSize: "30px" }}>
+              Shopping Cart
+          </p>
+        <div className="container">
+          {cartItems.length > 0 ? (
+                   cart.map(cart=>
+            <table id="cart" className="table table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th styles="width:50%">Product</th>
+                  <th styles="width:10%">Price</th>
+                  <th styles="width:8%">Quantity</th>
+                  <th styles="width:22%" className="text-center">
+                    Subtotal
+                  </th>
+                  <th styles="width:10%" />
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems.map(cartItem => (
+                 <CartItem data={cartItem}/>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>
+                    <Link to="/" className="btn btn-warning float-left">
+                      <i className="fa fa-angle-left" /> Continue Shopping
+                    </Link>
+                  </td>
+                  <td colSpan="2" className="hidden-xs" />
+                  <td className="hidden-xs text-center">
+                    <strong>$ {cart.totalPrice}</strong>
+                  </td>
+                  <td>
+                    <Link to="" className="btn btn-success btn-block">
+                      Checkout <i className="fa fa-angle-right" />
+                    </Link>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+              )
+          ) : (
+            <div>
+              <h1>"Your Shopping Cart is Empty..."</h1>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Cart;
+const mapStateToProps = state => ({
+  cart: state.cart.cart,
+  userData: state.posts.userData
+});
+
+const mapDispatchToProps = {
+  fetchCart
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);
