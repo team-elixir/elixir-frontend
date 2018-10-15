@@ -1,9 +1,16 @@
-import {PRODUCTS_GET_PRODUCT, PRODUCTS_GET_CATEGORY, PRODUCTS_SET_LOADING} from '../actions/types';
+import {
+    PRODUCTS_GET_PRODUCT,
+    PRODUCTS_GET_CATEGORY,
+    PRODUCTS_SET_LOADING,
+    FETCH_SINGLE_PRODUCT, FETCH_SINGLE_PRODUCT_REJECTED, FETCH_SINGLE_PRODUCT_FULFILLED
+} from '../actions/types';
 
 const initialState = {
     items: [],
     item: {},
     info: {},
+    cartItems: [],
+    errors : [],
     isLoading: true,
     Loading: true,
 };
@@ -29,6 +36,26 @@ export default function (state = initialState, action) {
                 ...state,
                 items: action.payload,
                 Loading: false
+            };
+        case FETCH_SINGLE_PRODUCT:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case FETCH_SINGLE_PRODUCT_REJECTED:
+            // console.log("get product info");
+            return {
+                ...state,
+                errors: action.payload,
+                isLoading: false
+            };
+
+        case FETCH_SINGLE_PRODUCT_FULFILLED:
+            // console.log("get product info");
+            return {
+                ...state,
+                cartItems: initialState.cartItems.push(action.payload),
+                isLoading: false
             };
         default:
             return state;
