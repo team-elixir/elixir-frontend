@@ -36,8 +36,8 @@ class ProductSliderInterface extends Component {
         return (
             <div>
                 {/* load data to the screen */}
-                <ProductSlider name={watchData} promotion={watchP}/>
-                <ProductSlider name={phoneData} promotion={phoneP}/>
+                <ProductSlider name={watchData} promotion={"Watch On Sale Hurry!"}/>
+                <ProductSlider name={phoneData} promotion={"Phone On Sale Hurry! "}/>
 
             </div>);
     }
