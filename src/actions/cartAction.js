@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ADD_TO_CART, FETCH_CART_FULLFILLED} from "./types";
+import {ADD_TO_CART, FETCH_CART_FULLFILLED, DELETE_PRODUCT_FROM_CART } from "./types";
 
 
 export const fetchCart = (email) => dispatch => {
@@ -24,6 +24,18 @@ export const addProductsToCart = (email, product) => dispatch => {
         .then(res => {
             // console.log(res.data);
             dispatch({ type: ADD_TO_CART, payload: res.data  });
+        });
+
+};
+
+export const removeProductsFromCart = (email, product) => dispatch => {
+    axios
+        .delete(
+            "https://api.elixir.ausgrads.academy/orders_micro/order/delOrder/"+ email,
+            product
+        )
+        .then(res => {
+            dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: res.data  });
         });
 
 };
