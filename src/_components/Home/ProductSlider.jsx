@@ -91,7 +91,7 @@ class ProductSlider extends Component {
 
     previous() {
         if (this.animate) return;
-        const nextIndex = this.state.activeIndex === 0 ? this.props.length - 5 : this.state.activeIndex - 5;
+        const nextIndex = this.state.activeIndex === 0 ? this.props.name.length - 5 : this.state.activeIndex - 5;
         this.setState({ activeIndex: nextIndex });
     }
     dataSouce = () =>{
@@ -100,7 +100,7 @@ class ProductSlider extends Component {
         for (var i = this.state.activeIndex; i < this.state.activeIndex+5; i++) {
 
             indents.push(
-                <div className="col-xl-2">
+                <div className="col-xl-2  m-3">
                     <a href="#">
                         <img id="image" src={this.props.name[i]} alt="Image"/>
                     </a>
@@ -129,9 +129,8 @@ class ProductSlider extends Component {
                     key={item.id}
                 >
                     <div className="carousel-inner">
-
                         <div className="carousel-item active">
-                            <div className="row d-flex justify-content-center" >
+                            <div className="row d-flex justify-content-center m-4 rounded" style = {{background: '#F8ECE0'}} >
                                 {this.dataSouce()}
                             </div>
 
@@ -141,13 +140,10 @@ class ProductSlider extends Component {
             );
         });
         return (
-            <div  className="d-flex justify-content-center m-3">
-                <div style={this.style1}>
-                    <a href="#">
-                        <img id="image"  src={this.props.promotion} alt="Image"/>
-                    </a>
-                </div>
-                <div id ="carousel_icon" className="col-md-10">
+
+            <div>
+                <h1 style = {{fontFamily:'Arial', fontWeight: 700}} > <span className="badge-warning">{this.props.promotion} </span></h1>
+                <div id ="carousel_icon" className="col-xl-12">
                     <Carousel
                         activeIndex={activeIndex}
                         next={this.next}
@@ -162,6 +158,32 @@ class ProductSlider extends Component {
                     </Carousel>
                 </div>
             </div>
+
+
+            // <div  className="d-flex justify-content-center m-3">
+            //
+            //
+            //     {/*<div style={this.style1}>*/}
+            //         {/*<a href="#">*/}
+            //             {/*<img id="image"  src={this.props.promotion} alt="Image"/>*/}
+            //         {/*</a>*/}
+            //     {/*</div>*/}
+            //     <div id ="carousel_icon" className="col-md-10">
+            //         <Carousel
+            //             activeIndex={activeIndex}
+            //             next={this.next}
+            //             previous={this.previous}
+            //             interval={false}
+            //             keyboard={false}
+            //         >
+            //             {slides}
+            //             <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}>
+            //             </CarouselControl>
+            //             <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+            //         </Carousel>
+            //     </div>
+            //
+            //  </div>
         );
     }
 }
