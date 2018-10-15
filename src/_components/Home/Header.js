@@ -11,17 +11,12 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 firebase.initializeApp({
-<<<<<<< HEAD
     apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
     authDomain: "elixir-218723.firebaseapp.com",
     databaseURL: "https://elixir-218723.firebaseio.com",
     projectId: "elixir-218723",
     storageBucket: "elixir-218723.appspot.com",
     messagingSenderId: "671693303394"
-=======
-  apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
-  authDomain: "elixir-218723.firebaseapp.com"
->>>>>>> 28fd9c86bcf1937e2f4c0016700d4b8901b4a24a
 });
 
 class Header extends React.Component {
