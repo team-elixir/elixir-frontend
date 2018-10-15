@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import FirebaseAuth from "react-firebaseui/FirebaseAuth"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import axios from "axios";
+import {withRouter} from 'react-router-dom'
 firebase.initializeApp({
     apiKey: "AIzaSyBnmqsoippRVBgadkHkKpsijLcdiMCUtpQ",
     authDomain: "elixir-218723.firebaseapp.com",
@@ -19,7 +20,7 @@ class Header extends React.Component{
     {
         super(props);
       //  var googleLoginUI =  new firebaseui.auth.AuthUI(firebase.auth());
-        ;
+        this.searchFunctionality = this.searchFunctionality.bind(this);
     }
 
     state = { isSignedIn: false ,
@@ -50,10 +51,24 @@ class Header extends React.Component{
         "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
         height: "80px"
     };
-searchFunctionality = () => {
-    this.props.fetchSearchResults();
-    console.log("-----Search functionality called--------");
-}
+    searchFunctionality = (event) => {
+        event.stopPropagation();
+        // this.props.fetchSearchResults();
+        //  this.props.searchProductAction1("a");
+        // console.log(this.props.dataState.searchResult1);
+        // console.log(this.state.searchBoxValue);
+        console.log("Start");
+        // console.log(event.target.value);
+        console.log("END HERE");
+        // route data to search Product router to handle grid view
+        if (event.target.value!=""){
+            this.props.history.push("/search/"+ event.target.value);
+        }
+        else{
+            this.props.history.push("/home");
+        }
+    }
+
 
 
 GoogleLogin = () =>
@@ -126,7 +141,9 @@ Logout = () =>
                         <div className="input-group mb-3" style={{paddingTop: "13px"}}>
                             <input type="text" className="form-control rounded-left"
                                    placeholder="what you are looking to buy today" aria-label=""
-                                   aria-describedby="basic-addon1"/>
+                                   aria-describedby="basic-addon1"
+                                   onChange={this.searchFunctionality}
+                            />
                             <div className="input-group-prepend">
                                 <button className="btn-primary rounded-right" type="submit" style={{width: "50px"}}><i onClick={this.searchFunctionality} className="fa fa-search"></i></button>
                             </div>
@@ -305,4 +322,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(withRouter(Header));
