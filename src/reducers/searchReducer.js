@@ -19,6 +19,9 @@ const searchReducer = (state = initState, action) => {
                 searchResult1: action.payload.data};
         case 'SEARCH-PRODUCT1':
             return {searchResult1: action.payload};
+        case 'SEARCH-SORTING':
+            return {searchResult1: action.payload.data};
+
         default:
             return state;
     }
