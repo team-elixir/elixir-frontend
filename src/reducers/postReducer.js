@@ -2,6 +2,7 @@ import {
     FETCH_POSTS, USEREMAIL_STATE,
     FETCH_SUBCATEGORIES_FULFILLED,
     FETCH_PRODUCTS_FULFILLED,
+    UPDATE_USER_DETAILS,
     FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS, ADD_USER,
     FETCH_USER_DETAILS
 } from "../actions/types";
@@ -56,6 +57,11 @@ export default function(state = initialState, action) {
             return{
                 ...state,
                 userData: action.payload
+            }
+        case UPDATE_USER_DETAILS:
+            return {
+                ...state,
+                userDetails: action.payload
             }
         default:
             return state;
