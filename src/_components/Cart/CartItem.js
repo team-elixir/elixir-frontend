@@ -26,15 +26,13 @@ class CartItem extends Component {
     removeFromCart = (e) => {
         if (this.props.data.productId !== undefined)
         {
-            const headers ={
-            }
-            const product =
-                {
-                    "productId": this.props.data.productId
-                }
+            // const product =
+            //     {
+            //         "productId": this.props.data.productId
+            //     }
+            const product = this.props.data.productId;
             const email = this.props.userData.userEmail;
             console.log("This one "+product)
-            console.log("This one is email"+email)
             this.props.removeProductsFromCart(email, product);
 
         }

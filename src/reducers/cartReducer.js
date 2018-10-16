@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
       };
       case DELETE_PRODUCT_FROM_CART:
           return {
-              state ,
+              ...state ,
               deletemsgFromServer: action.payload
           };
     default:
