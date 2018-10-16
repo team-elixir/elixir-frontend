@@ -8,6 +8,8 @@ import StarRatingComponent from 'react-star-rating-component';
 const ProductInfos = (data) => {
     console.log("ProductInfos: " + JSON.stringify(data.data.product));
 
+    // Eg: {"productId":"1", "qty":"1", "unitPrice": "999"} add body should be JSON
+
     const product = {
         productId: data.data.product.id,
         qty: 1,
@@ -27,16 +29,8 @@ const ProductInfos = (data) => {
             <div className="col-md-12">
                 <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-1 pt-3">
                     <div>
-                        <h1 className="text-left">{data.data.product.name}<span
-                            className="p-view-header-brand"> by {data.data.product.brand}</span></h1>
-                        <h4 className="text-left"><StarRatingComponent
-                            name="rate1"
-                            starCount={5}
-                            value={data.data.product.rating}
-                            editing={false}
-                            starColor={"#f1c40f"}
-                            renderStarIcon={() => <span className="fa fa-star"></span>}
-                            emptyStarColor={"#7f8c8d"}/></h4>
+                        <h1 className="text-left">{data.data.product.name}<span className="p-view-header-brand"> by {data.data.product.brand}</span></h1>
+                        <h4 className="text-left"><StarRatingComponent name="rate1" starCount={5} value={data.data.product.rating} editing={false} starColor={"#f1c40f"} renderStarIcon={() => <span className="fa fa-star"></span>} emptyStarColor={"#7f8c8d"}/></h4>
                         <hr/>
                     </div>
                     <div className="row marg-top-25">
