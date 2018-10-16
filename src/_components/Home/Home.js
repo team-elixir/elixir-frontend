@@ -4,8 +4,8 @@ import RowCategory from "./RowCategory";
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderInterface from "./ProductSliderInterface";
 import Footer from "./Footer";
-import Posts from "../Posts";
-import Cart from "../Cart";
+import Posts from "./Posts";
+import Cart from "../Cart/Cart";
 
 class Home extends Component {
     render() {
