@@ -27,9 +27,14 @@ class Header extends React.Component {
   }
 
   state = {
-    isSignedIn: false
+    isSignedIn: false,
+    email : '',
+    password:''
+
     // show:true
   };
+
+
 
   uiConfig = {
     signInFlow: "popup",
@@ -71,6 +76,7 @@ class Header extends React.Component {
   };
   killWindow = () => {
     if (this.state.isSignedIn) {
+        // console.log(firebase.auth().currentUser.getIdToken());
       console.log("Kill Window Called");
       this.props.setUserData({
         userEmail: firebase.auth().currentUser.email,
@@ -228,21 +234,29 @@ class Header extends React.Component {
                 </div>
               </div>
             ) : (
-              // ONLY DO THE ABOVE IF SIGNED IN
-              //
-              // <button style={this.styles} className="btn btn-outline-info m-2"
-              //                                 type="submit" >{firebase.auth().currentUser.displayName}</button>
-              //
-              // )
-              <button
-                style={this.styles}
-                className="btn btn-outline-info m-2"
-                type="submit"
-                data-toggle="modal"
-                data-target="#loginModal"
-              >
-                Login
-              </button>
+              // // ONLY DO THE ABOVE IF SIGNED IN
+              // //
+              // // <button style={this.styles} className="btn btn-outline-info m-2"
+              // //                                 type="submit" >{firebase.auth().currentUser.displayName}</button>
+              // //
+              // // )
+              // //  ----------------------------------------------Button might be needed if we implement the login func---
+              // {/*<button*/}
+              //   {/*style={this.styles}*/}
+              //   {/*className="btn btn-outline-info m-2"*/}
+              //   {/*type="submit"*/}
+              //   {/*data-toggle="modal"*/}
+              //   {/*data-target="#loginModal"*/}
+              // {/*>*/}
+                //---------------------------------------------------------------
+                <StyledFirebaseAuth
+                onClick={this.killWindow()}
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+                />
+
+
+
             )}
           </div>
         </div>
