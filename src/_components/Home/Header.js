@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as firebase from "firebase";
 import { firebaseui } from "firebaseui";
 import { Link } from "react-router-dom";
+import "../../assets/css/Google.css"
 import FirebaseAuth from "react-firebaseui/FirebaseAuth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import axios from "axios";
@@ -48,6 +49,10 @@ class Header extends React.Component {
     borderRadius: 30,
     width: 100
   };
+    buttonBack = {
+        // background : firebase.auth().currentUser.photoURL
+
+};
   navStyle = {
     "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
     height: "80px"
@@ -184,36 +189,35 @@ class Header extends React.Component {
           <div>
             {this.state.isSignedIn ? (
               <div>
-                <div className="d-inline-block">
-                  <Link
-                    to="/cart"
-                    i
-                    className="fa fa-shopping-cart float-left mr-3 mt-2"
-                    style={{
-                      fontSize: "45px",
-                      position: "relative",
-                      top: "13px"
-                    }}
-                  />
-                </div>
+
 
                 <div className="dropdown d-inline-block">
-                  <button
-                    style={this.styles}
-                    class="btn btn-secondary m-2 dropdown-toggle"
-                    id="dropdownMenuButton"
-                    type="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
+                  {/*<button*/}
+                    {/*className="btn   dropdown-toggle"*/}
+                    {/*id="dropdownMenuButton"*/}
+                    {/*type="button"*/}
+                    {/*style={{*/}
+                        {/*fontSize: "1px",*/}
+                        {/*position: "relative",*/}
+                        {/*top: "13px",*/}
+
+                    {/*}}*/}
+                    {/*data-toggle="dropdown"*/}
+                    {/*aria-haspopup="true"*/}
+                    {/*aria-expanded="false"*/}
+                  {/*>*/}
+                      <img src ={firebase.auth().currentUser.photoURL}     className={"btn m2 btn-secondary dropdown-toggle  "} id={"dropdown-toggle2"}
+
+                    aria-expanded={"false"} data-toggle ="dropdown" aria-haspopup={"true"}
+
+                      />
                     {/*{this.props.userData.loginName}*/}
-                    {firebase.auth().currentUser.displayName}
-                  </button>
+                    {/*{firebase.auth().currentUser.displayName}*/}
 
                   <div
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
+                    aria-expanded={"true"}
                   >
                     <Link to="/profile">
                       <button
@@ -223,6 +227,16 @@ class Header extends React.Component {
                         My Profile
                       </button>
                     </Link>
+                    <br/>
+                      <Link to="/cart">
+                          <button
+                              style={this.styles}
+                              className="btn btn-outline-info m-2"
+                          >
+                              My Cart
+                          </button>
+                      </Link>
+                    <br/>
                     <button
                       style={this.styles}
                       className="btn btn-outline-info m-2"
@@ -230,6 +244,7 @@ class Header extends React.Component {
                     >
                       Logout
                     </button>
+
                   </div>
                 </div>
               </div>
