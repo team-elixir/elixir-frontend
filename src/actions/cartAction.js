@@ -42,6 +42,7 @@ export const addProductsToCart = (email, product) => dispatch => {
 // };
 
 export const removeProductsFromCart = (email, product) => dispatch => {
+    console.log(product);
     axios
         .delete(
             "https://api.elixir.ausgrads.academy/orders_micro/order/delete/"+ email+"/"+product
