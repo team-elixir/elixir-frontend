@@ -3,6 +3,7 @@ import {
   FETCH_POSTS,
   FETCH_SUBCATEGORIES_FULFILLED,
   FETCH_SUBCATEGORIES_DETAILS,
+  UPDATE_USER_DETAILS,
   FETCH_CATEGORIES_DETAILS,
   FETCH_USER_DETAILS
 } from "./types";
@@ -84,3 +85,12 @@ export const fetchAllCat = () => dispatch => {
       dispatch({ type: FETCH_CATEGORIES_DETAILS, payload: res.data });
     });
 };
+export const updateUserDetails = (email,changedUserData) => dispatch => {
+  axios
+      .put("https://api.elixir.ausgrads.academy/user_micro/users/customer/update/"+email,changedUserData)
+      .then(res => {
+        dispatch(
+            {type:UPDATE_USER_DETAILS, payload:res.data}
+        )
+      })
+}
