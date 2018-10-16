@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {fetchAllCat, fetchAllSub, fetchPosts, fetchProducts, fetchSubCategories} from "../actions/postActions";
-import Post from "./Post";
-import Cart from "./Cart";
+import {fetchAllCat, fetchAllSub, fetchPosts, fetchProducts, fetchSubCategories} from "../../actions/postActions";
+import Post from "../CategoryProducts/Post";
+import Cart from "../Cart/Cart";
 
 class Posts extends Component {
     constructor(props) {

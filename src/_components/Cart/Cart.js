@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./Cart.css";
+import "../../assets/css/Cart.css";
 import { Link } from "react-router-dom";
 
-import { fetchSubCategories } from "../actions/postActions";
-import { fetchCart } from "../actions/cartAction";
+import { fetchCart } from "../../actions/cartAction";
 import connect from "react-redux/es/connect/connect";
 
 import { isError } from "util";
@@ -48,10 +47,10 @@ class Cart extends Component {
 
     return (
       <div>
-          <p className="text-secondary float-left" style={{ fontSize: "30px" }}>
-              Shopping Cart
-          </p>
         <div className="container">
+            <p className="text-secondary float-left" style={{ fontSize: "30px" }}>
+                Shopping Cart
+            </p>
           {cartItems.length > 0 ? (
                    cart.map(cart=>
             <table id="cart" className="table table-hover table-condensed">

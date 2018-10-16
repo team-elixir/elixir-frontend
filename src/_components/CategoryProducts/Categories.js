@@ -5,9 +5,9 @@ import {
   fetchPosts,
   fetchProducts,
   fetchSubCategories
-} from "../actions/postActions";
+} from "../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
-import Posts from "./Posts";
+import Posts from "../Home/Posts";
 
 class Categories extends Component {
   constructor(props) {

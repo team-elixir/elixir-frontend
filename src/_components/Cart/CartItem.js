@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { getProductByID } from '../actions/productActions';
-import { removeProductsFromCart } from "../actions/cartAction";
+import { getProductByID } from '../../actions/productActions';
+import { removeProductsFromCart } from "../../actions/cartAction";
 import connect from "react-redux/es/connect/connect";
 
 class CartItem extends Component {
@@ -23,8 +23,22 @@ class CartItem extends Component {
     // Eg: {"productId":"1"} delete body should be JSON
 
 
-    removeFromcart = () => {
-        this.props.removeProductsFromCart();
+    removeFromCart = (e) => {
+        if (this.props.data.productId !== undefined)
+        {
+            const headers ={
+            }
+            const product =
+                {
+                    "productId": this.props.data.productId
+                }
+            const email = this.props.userData.userEmail;
+            console.log("This one "+product)
+            console.log("This one is email"+email)
+            this.props.removeProductsFromCart(email, product);
+
+        }
+
     };
 
     render() {
@@ -39,7 +53,7 @@ class CartItem extends Component {
         {
             productsList.map(eachProduct =>
                 {
-                (eachProduct.product.id === cartItem.productId) ? product=eachProduct : console.log("Not Fond");
+                (eachProduct.product.id === cartItem.productId) ? product=eachProduct : console.log("Not Found");
 
                 }
             )
@@ -50,7 +64,7 @@ class CartItem extends Component {
                     {(product !== null) &&
                     <td data-th="Product">
                         <div className="row">
-                            <div className="container">
+                            <div className="container mt-4">
                                 <div className="my-item d-flex flex-column flex-md-row">
                                     <p className="my-item__image mb-3 mb-md-0 mr-md-3 w-25">
                                         <img src={product.list[0]} alt="Image" className="img-fluid"/>
@@ -79,13 +93,13 @@ class CartItem extends Component {
                     </td>
 
                 </tr>
-
         );
     }
 }
 
 const mapStateToProps = state => ({
-    productsList: state.productData.cartItems
+    productsList: state.productData.cartItems,
+    userData: state.posts.userData
 });
 
 const mapDispatchToProps = {

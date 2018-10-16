@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Posts from "./Posts";
+import Posts from "../Home/Posts";
 
 class SubCategories extends Component {
   constructor(props) {

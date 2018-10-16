@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 
 import {fetchSubCategories} from "../../actions/postActions";
-import Posts from "../Posts";
+import Posts from "../Home/Posts";
 import {searchProductAction, searchProductAction1} from "../../actions/searchProductAction";
-import Post from "../Post";
+import Post from "../CategoryProducts/Post";
 
 class SearchProductRouter extends Component {
 
