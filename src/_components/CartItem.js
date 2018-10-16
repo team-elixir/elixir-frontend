@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { getProductByID } from '../actions/productActions'
+import { getProductByID } from '../actions/productActions';
+import { removeProductsFromCart } from "../actions/cartAction";
 import connect from "react-redux/es/connect/connect";
 
 class CartItem extends Component {
@@ -13,78 +14,82 @@ class CartItem extends Component {
     }
 
     componentDidUpdate(prevProps) {
-
+        if(prevProps.productsList !== this.props.productsList)
+        {
+            this.props.getProductByID(this.props.data.productId);
+        }
     }
 
+    // Eg: {"productId":"1"} delete body should be JSON
+
+
+    removeFromcart = () => {
+        this.props.removeProductsFromCart();
+    };
 
     render() {
 
+        let product = null;
         const cartItem = this.props.data;
+        const productsList = this.props.productsList;
         console.log(cartItem);
+        console.log(productsList);
+
+        if(productsList !== null || productsList.length > 0)
+        {
+            productsList.map(eachProduct =>
+                {
+                (eachProduct.product.id === cartItem.productId) ? product=eachProduct : console.log("Not Fond");
+
+                }
+            )
+        }
+        console.log(product);
         return (
                 <tr key={cartItem.productId}>
+                    {(product !== null) &&
                     <td data-th="Product">
                         <div className="row">
-                            {/*<div className="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."*/}
-                            {/*className="img-responsive"/></div>*/}
-                            {/*<div className="col-sm-10">*/}
-                            {/*<h4 className="nomargin">Product 1</h4>*/}
-                            {/*<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat*/}
-                            {/*nulla pariatur.</p>*/}
-                            {/*</div>*/}
                             <div className="container">
                                 <div className="my-item d-flex flex-column flex-md-row">
                                     <p className="my-item__image mb-3 mb-md-0 mr-md-3 w-25">
-                                        <img
-                                            src="http://via.placeholder.com/1600x1600"
-                                            alt="Image"
-                                            className="img-fluid"
-                                        />
+                                        <img src={product.list[0]} alt="Image" className="img-fluid"/>
                                     </p>
                                     <div className="my-item__text">
-                                        <h4
-                                            className="nomargin"
-                                            style={{ color: "black" }}
-                                        >
-                                            Product 1
+                                        <h4 className="nomargin" style={{ color: "black" }}>
+                                            {product.product.name}
                                         </h4>
                                         <p>
-                                            Quibusdam inventore iusto deleniti quis quam
-                                            veniam, qui esse velit, voluptates
+                                            {product.product.brand}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </td>
+                    }
                     <td data-th="Price">{cartItem.unitPrice}</td>
-                    <td data-th="Quantity">
-                        <input
-                            type="number"
-                            className="form-control text-center"
-                            value={cartItem.qty}
-                        />
-                    </td>
-                    <td data-th="Subtotal" className="text-center">
-                        {cartItem.subTotal}
-                    </td>
+                    <td data-th="Quantity"><input type="number" className="form-control text-center" value={cartItem.qty}/></td>
+                    <td data-th="Subtotal" className="text-center">{cartItem.subTotal}</td>
                     <td className="actions" data-th="">
                         {/*<button className="btn btn-info btn-sm"><i className="fa fa-refresh"></i></button>*/}
-                        <button className="btn btn-danger btn-sm">
+                        <button className="btn btn-danger btn-sm" onClick={this.removeFromCart}>
                             <i className="fa fa-trash-o" />
                         </button>
                     </td>
+
                 </tr>
+
         );
     }
 }
 
 const mapStateToProps = state => ({
-    cartItems: state.productData.cartItems
+    productsList: state.productData.cartItems
 });
 
 const mapDispatchToProps = {
-    getProductByID,
+    getProductByID, removeProductsFromCart,
 };
 
 export default connect(

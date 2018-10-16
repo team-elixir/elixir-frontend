@@ -52,9 +52,13 @@ export default function (state = initialState, action) {
 
         case FETCH_SINGLE_PRODUCT_FULFILLED:
             // console.log("get product info");
+            let temp = initialState.cartItems;
+            temp.push(action.payload);
+            console.log(temp);
+
             return {
                 ...state,
-                cartItems: initialState.cartItems.push(action.payload),
+                cartItems: temp,
                 isLoading: false
             };
         default:

@@ -4,7 +4,7 @@ import connect from "react-redux/es/connect/connect";
 
 import {fetchSubCategories} from "../../actions/postActions";
 import Posts from "../Posts";
-import {searchProductAction, searchProductAction1} from "../../actions/searchProductAction";
+import {searchPriceSorting, searchProductAction, searchProductAction1} from "../../actions/searchProductAction";
 import Post from "../Post";
 
 class SearchProductRouter extends Component {
@@ -12,34 +12,60 @@ class SearchProductRouter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productData: [],
+            sortValue:"",
         }
     }
-
+    // Load the data after render
     componentDidMount() {
 
         if(this.props.match.params.name !== "")
         {
             this.props.searchProduct(this.props.match.params.name);
 
-
         }
-        this.setState({productData: this.props.dataState.searchResult1});
-    }
+    }a
+    // update data after different key search input
     componentDidUpdate(prevProps){
 
-        if(this.props.match.params.name !== prevProps.match.params.name)
+        let currentSearchKey = this.props.match.params.name;
+        let prevSearchKey = prevProps.match.params.name;
+
+        // Update during key change in the search box
+        if(currentSearchKey !== prevSearchKey)
         {
+            // update according the search search box list
+            if (this.state.sortValue !== "" && this.state.sortValue !== "Relevance" ){
+                this.props.searchSorting(this.state.sortValue, this.props.match.params.name);
+            }
+            // update default select box list
+            else{
+                this.props.searchProduct(this.props.match.params.name);
+            }
+        }
+    }
+    // update base on specific key search and sorting list
+    selectSorting(event){
+        let searchKey = this.props.match.params.name;
+        let sortKey = event.target.value;
+        // keep tracking sorting value
+        this.setState({sortValue: sortKey})
+
+        if (searchKey !== "" && sortKey !== "" && sortKey !== "Relevance"){
+            this.props.searchSorting(sortKey, searchKey);
+        }
+        // update data to default value
+        else{
             this.props.searchProduct(this.props.match.params.name);
         }
     }
 
     render() {
-        let post1 = ['1','2'];
-        let posts = this.props.dataState.searchResult1;
-        let postItems;
-        if (posts.length>0){
-            postItems = posts.map(post => (
+        // initial data
+        let dataResult = this.props.dataState.searchResult1;
+        // prepare data for displaying
+        let dataItems;
+        if (dataResult.length > 0){
+            dataItems = dataResult.map(post => (
                 <Post key ={post.product.id} data={post}/>
             ));
         }
@@ -48,21 +74,18 @@ class SearchProductRouter extends Component {
 
                 <div className="container mt-lg-5">
                     <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
-
                         <p className="m-3">Sort By: </p>
-                        <select>
-                            <option value="Relevance" >Relevance</option>
-                            <option value="title" >Price: Low to High</option>
-                            <option value="title" >Price: High to Low</option>
+                        <select onChange={this.selectSorting.bind(this)}>
+                            <option>Relevance</option>
+                            <option value="Low" >Price: Low to High</option>
+                            <option value="High" >Price: High to Low</option>
                         </select>
                     </div>
+                    {/*Displaying*/}
                     <div className="card-columns">
-                        {postItems}
+                        {dataItems}
                     </div>
                 </div>
-
-
-                {/*<Posts data={post1}/>*/}
             </div>
 
         );
@@ -75,6 +98,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     searchProduct: searchProductAction,
+    searchSorting: searchPriceSorting,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchProductRouter);

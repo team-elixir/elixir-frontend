@@ -17,6 +17,15 @@ import {FETCH_POSTS, FETCH_SUBCATEGORIES_FULFILLED} from "./types";
 //     });
 // };
 
+export const searchPriceSorting = (priceType, searchKey) => dispatch => {
+
+    axios
+        .post('https://api.elixir.ausgrads.academy/products_micro/products/SortByPrice', [priceType, searchKey])
+        .then(res => {
+            // console.log(productName);
+            dispatch({ type: 'SEARCH-SORTING', payload: res });
+        });
+};
 
 export const  searchProductAction = (keyName) => dispatch => {
     axios

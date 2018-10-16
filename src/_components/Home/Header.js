@@ -191,7 +191,7 @@ class Header extends React.Component {
                   />
                 </div>
 
-                <div className="dropdown">
+                <div className="dropdown d-inline-block">
                   <button
                     style={this.styles}
                     class="btn btn-secondary m-2 dropdown-toggle"

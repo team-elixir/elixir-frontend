@@ -21,7 +21,6 @@ class Cart extends Component {
       this.props.userData.userEmail !== null ||
       typeof this.props.userData.userEmail !== "undefined"
     ) {
-      console.log("Ran just fine ");
       this.props.fetchCart(this.props.userData.userEmail);
     }
   }
