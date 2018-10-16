@@ -5,12 +5,12 @@ import Home from "../Home/Home";
 import Products from "../Products/Products";
 import PageNotFound from "../Loading/PageNotFound";
 import Loading from "../Loading/Loading";
-import Posts from "../Posts";
+import Posts from "../Home/Posts";
 import ProductsSearch from "../Home/ProductsSearch";
-import Categories from "../Categories";
+import Categories from "../CategoryProducts/Categories";
 
-import SubCategories from "../SubCategories";
-import Cart from "../Cart";
+import SubCategories from "../CategoryProducts/SubCategories";
+import Cart from "../Cart/Cart";
 import Profile from "../Products/Profile";
 import SearchProductRouter from "./SearchProductRouter";
 
