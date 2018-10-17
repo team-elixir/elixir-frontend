@@ -85,6 +85,7 @@ export const fetchAllCat = () => dispatch => {
       dispatch({ type: FETCH_CATEGORIES_DETAILS, payload: res.data });
     });
 };
+
 export const updateUserDetails = (email,changedUserData) => dispatch => {
   axios
       .put("https://api.elixir.ausgrads.academy/user_micro/users/customer/update/"+email,changedUserData)

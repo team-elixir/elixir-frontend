@@ -5,7 +5,7 @@ import {Link,withRouter} from 'react-router-dom';
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderConnection from "./ProductSliderInterface";
 import Footer from "./Footer";
-import Posts from "./Posts";
+import Posts from "../CategoryProducts/Posts";
 
 class ProductsSearch extends Component {
     constructor(props){

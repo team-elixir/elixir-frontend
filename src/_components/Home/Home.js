@@ -4,7 +4,7 @@ import RowCategory from "./RowCategory";
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderInterface from "./ProductSliderInterface";
 import Footer from "./Footer";
-import Posts from "./Posts";
+import Posts from "../CategoryProducts/Posts";
 import Cart from "../Cart/Cart";
 
 class Home extends Component {
