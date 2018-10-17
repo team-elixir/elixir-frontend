@@ -5,6 +5,8 @@ import { addProductsToCart } from "../../actions/cartAction";
 import PageNotFound from "../Loading/PageNotFound";
 import StarRatingComponent from 'react-star-rating-component';
 import {getProductByID} from "../../actions/productActions";
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 import connect from "react-redux/es/connect/connect";
 
@@ -19,10 +21,15 @@ class ProductInfos extends Component {
 
         const product = {"productId": this.props.data.product.id, "qty": 1, "unitPrice": this.props.data.product.price}
         const email = this.props.userData.userEmail;
+        console.log(this.props.data.product.name);
 
         console.log(product);
         this.props.addProductsToCart(email, product);
 
+        toast(`${this.props.data.product.name} successfully added to cart`, {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'toast-success-griz'
+        });
     };
 
     render() {
@@ -42,6 +49,7 @@ class ProductInfos extends Component {
         return (
             <div className="col-md-12">
                 <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-1 pt-3">
+                <ToastContainer hideProgressBar={true} autoClose={3000} />
                     <div>
                         <h1 className="text-left">{this.props.data.product.name}<span className="p-view-header-brand"> by {this.props.data.product.brand}</span></h1>
                         <h4 className="text-left"><StarRatingComponent name="rate1" starCount={5} value={this.props.data.product.rating} editing={false} starColor={"#f1c40f"} renderStarIcon={() => <span className="fa fa-star"></span>} emptyStarColor={"#7f8c8d"}/></h4>

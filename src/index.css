@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.toast-success-griz {
+  background: #2ecc71 !important;
+  border-radius: 10px !important;
+  margin-top: 50px;
+  color: #fff !important;
+}
