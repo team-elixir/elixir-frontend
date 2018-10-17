@@ -124,7 +124,7 @@ class Header extends React.Component {
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light"
-        style={this.navStyle}
+        // style={this.navStyle}
       >
         <Link className="navbar-brand" to="/home">
           <strong>Grizzly</strong>
@@ -206,7 +206,7 @@ class Header extends React.Component {
                     {/*aria-haspopup="true"*/}
                     {/*aria-expanded="false"*/}
                   {/*>*/}
-                      <img src ={firebase.auth().currentUser.photoURL}     className={"btn m2 btn-secondary dropdown-toggle  "} id={"dropdown-toggle2"}
+                      <img  src ={firebase.auth().currentUser.photoURL}     className={"btn m2 btn-secondary dropdown-toggle float-right  "} id={"dropdown-toggle2"}
 
                     aria-expanded={"false"} data-toggle ="dropdown" aria-haspopup={"true"}
 

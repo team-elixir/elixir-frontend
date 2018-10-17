@@ -14,7 +14,7 @@ class CartItem extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if((JSON.stringify(prevProps.productsList) !== JSON.stringify(this.props.productsList)) || (JSON.stringify((this.props.cart))!== JSON.stringify(prevProps.cart)))
+        if((JSON.stringify(prevProps.productsList) !== JSON.stringify(this.props.productsList)) || (JSON.stringify((this.props.deletemsgFromServer))!== JSON.stringify(prevProps.deletemsgFromServer)))
         {
             this.props.getProductByID(this.props.data.productId);
             this.props.fetchCart(this.props.userData.userEmail);
@@ -65,8 +65,9 @@ class CartItem extends Component {
         }
         console.log(product);
         console.log("Return was called");
-        return (
+        {  console.log("Product List ----------" +productsList)}
 
+        return (
                 <tr key={cartItem.productId}>
                     {(product !== null) &&
                     <td data-th="Product">
@@ -106,7 +107,8 @@ class CartItem extends Component {
 
 const mapStateToProps = state => ({
     productsList: state.productData.cartItems,
-    userData: state.posts.userData
+    userData: state.posts.userData,
+    deletemsgFromServer:state.cart.deletemsgFromServer
 });
 
 const mapDispatchToProps = {

@@ -49,7 +49,7 @@ export const removeProductsFromCart = (email, product) => dispatch => {
         )
         .then(res => {
             {console.log(res.data)};
-            dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: res.data  });
+            dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: product  });
         });
 
 };
