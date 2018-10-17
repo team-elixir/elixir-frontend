@@ -5,7 +5,7 @@ import Home from "../Home/Home";
 import Products from "../Products/Products";
 import PageNotFound from "../Loading/PageNotFound";
 import Loading from "../Loading/Loading";
-import Posts from "../Home/Posts";
+import Posts from "../CategoryProducts/Posts";
 import ProductsSearch from "../Home/ProductsSearch";
 import Categories from "../CategoryProducts/Categories";
 
