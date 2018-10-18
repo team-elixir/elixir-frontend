@@ -9,7 +9,7 @@ http://www.freshdesignweb.com/drop-down-responsive-menu-with-css3-and-jquery.htm
 }
 #fdw nav ul {
     display:block;
-    z-index:999999;
+    /*z-index:999999;*/
 }
 #fdw nav ul li {
     display:inline-block;
