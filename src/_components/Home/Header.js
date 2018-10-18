@@ -56,7 +56,8 @@ class Header extends React.Component {
     };
     navStyle = {
         "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
-        height: "95px"
+        height: "95px",
+        marginBottom: "-20px"
     };
     Popups = () =>
     {
