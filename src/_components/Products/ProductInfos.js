@@ -51,7 +51,7 @@ class ProductInfos extends Component {
                 <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-1 pt-3">
                 <ToastContainer hideProgressBar={true} autoClose={3000} />
                     <div>
-                        <h1 className="text-left">{this.props.data.product.name}<span className="p-view-header-brand"> by {this.props.data.product.brand}</span></h1>
+                        <h4 className="text-left">{this.props.data.product.name}<span className="p-view-header-brand"> by {this.props.data.product.brand}</span></h4>
                         <h4 className="text-left"><StarRatingComponent name="rate1" starCount={5} value={this.props.data.product.rating} editing={false} starColor={"#f1c40f"} renderStarIcon={() => <span className="fa fa-star"></span>} emptyStarColor={"#7f8c8d"}/></h4>
                         <hr/>
                     </div>
