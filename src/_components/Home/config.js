@@ -5,7 +5,7 @@ var config = {
     databaseURL: "https://elixir-218723.firebaseio.com",
     projectId: "elixir-218723",
     storageBucket: "elixir-218723.appspot.com",
-    messagingSenderId: "671693303394"
+    messagingSenderId: "671693303394",
     clientId: "671693303394-32bthqmc8mcccgr9akovsvijafe9ihq1.apps.googleusercontent.com",
 
     scopes: [

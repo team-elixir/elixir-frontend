@@ -128,9 +128,9 @@ class ProductSlider extends Component {
                     tag="div"
                     key={item.id}
                 >
-                    <div className="carousel-inner">
+                    <div className="carousel-inner" style={{background: '#f2f2f2' }}>
                         <div className="carousel-item active">
-                            <div className="row d-flex justify-content-center m-4 rounded" style = {{background: '#F8ECE0'}} >
+                            <div className="row d-flex justify-content-center m-4 rounded" style={{background: '##f2f2f2'}} >
                                 {this.dataSouce()}
                             </div>
 
@@ -142,7 +142,7 @@ class ProductSlider extends Component {
         return (
 
             <div>
-                <h1 style = {{fontFamily:'Arial', fontWeight: 700}} > <span className="badge-warning">{this.props.promotion} </span></h1>
+                <h1 style = {{fontFamily:'Arial', fontWeight: 500}} > <span className="display-4">{this.props.promotion} </span></h1>
                 <div id ="carousel_icon" className="col-xl-12">
                     <Carousel
                         activeIndex={activeIndex}
