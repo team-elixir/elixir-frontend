@@ -128,9 +128,9 @@ onSubmit (e)
     if (this.props.userData.loginName === "") {
       // on page reload(via browser) initiaaly , it's
       //value is set to "" , but it gets it's value back in a second
-      <Loading />;
+
       console.log("Loading was called");
-      return null;
+      return <Loading />;
     } else return this.display();
   }
 }

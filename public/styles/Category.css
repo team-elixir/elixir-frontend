@@ -9,7 +9,7 @@ http://www.freshdesignweb.com/drop-down-responsive-menu-with-css3-and-jquery.htm
 }
 #fdw nav ul {
     display:block;
-    z-index:999999;
+    /*z-index:999999;*/
 }
 #fdw nav ul li {
     display:inline-block;
@@ -105,28 +105,28 @@ http://www.freshdesignweb.com/drop-down-responsive-menu-with-css3-and-jquery.htm
 /*===================== end Header style ======================*/
 
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* nav */
-    #fdw nav ul li{
-        margin-left:12px;
-    }
-}
+/*@media only screen and (min-width: 768px) and (max-width: 959px) {*/
+    /*!* nav *!*/
+    /*#fdw nav ul li{*/
+        /*margin-left:12px;*/
+    /*}*/
+/*}*/
 
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
+/*!* All Mobile Sizes (devices and browser) *!*/
+/*@media only screen and (max-width: 767px) {*/
 
-    /* nav menu ul & select */
-    #fdw nav ul {
-        display:none;
-    }
-    #fdw nav select {
-        width:100%;
-        display:block;
-        margin-bottom:30px;
-        cursor:pointer;
-        padding:6px;
-        background:#f9f9f9;
-        border:1px solid #e3e3e3;
-        color:#777;
-    }
-}
+    /*!* nav menu ul & select *!*/
+    /*#fdw nav ul {*/
+        /*display:none;*/
+    /*}*/
+    /*#fdw nav select {*/
+        /*width:100%;*/
+        /*display:block;*/
+        /*margin-bottom:30px;*/
+        /*cursor:pointer;*/
+        /*padding:6px;*/
+        /*background:#f9f9f9;*/
+        /*border:1px solid #e3e3e3;*/
+        /*color:#777;*/
+    /*}*/
+/*}*/

@@ -4,7 +4,7 @@ import connect from "react-redux/es/connect/connect";
 
 import { fetchSubCategories } from "../../actions/postActions";
 
-import Posts from "../Home/Posts";
+import Posts from "../CategoryProducts/Posts";
 import Post from "../CategoryProducts/Post";
 import {
   searchPriceSorting,

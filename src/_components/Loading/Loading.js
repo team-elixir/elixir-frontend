@@ -10,7 +10,7 @@ class Loading extends Component {
                 <div id="loader"><br/></div>
                 <div className="loading">
                     <header>
-                        <h1>Please wait while product is loading.</h1>
+                        <h1>Please wait while we fetch your Data</h1>
                     </header>
                     <Link to="/">Back to homepage</Link>
                 </div>

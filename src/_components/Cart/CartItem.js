@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { getProductByID } from '../../actions/productActions';
-import { removeProductsFromCart } from "../../actions/cartAction";
+import { removeProductsFromCart, fetchCart } from "../../actions/cartAction";
 import connect from "react-redux/es/connect/connect";
 
 class CartItem extends Component {
@@ -14,9 +14,11 @@ class CartItem extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.productsList !== this.props.productsList)
+        if((JSON.stringify(prevProps.productsList) !== JSON.stringify(this.props.productsList)) || (JSON.stringify((this.props.deletemsgFromServer))!== JSON.stringify(prevProps.deletemsgFromServer)))
         {
             this.props.getProductByID(this.props.data.productId);
+            this.props.fetchCart(this.props.userData.userEmail);
+            console.log("Component did update was called by react ")
         }
     }
 
@@ -32,8 +34,12 @@ class CartItem extends Component {
             //     }
             const product = this.props.data.productId;
             const email = this.props.userData.userEmail;
-            console.log("This one "+product)
+            // console.log("This one "+product)
+            console.log("This one is product "+product);
+
             this.props.removeProductsFromCart(email, product);
+
+            console.log("Reached here ");
 
         }
 
@@ -43,9 +49,10 @@ class CartItem extends Component {
 
         let product = null;
         const cartItem = this.props.data;
+
         const productsList = this.props.productsList;
-        console.log(cartItem);
-        console.log(productsList);
+        // console.log(cartItem);
+        // console.log(productsList);
 
         if(productsList !== null || productsList.length > 0)
         {
@@ -57,6 +64,9 @@ class CartItem extends Component {
             )
         }
         console.log(product);
+        console.log("Return was called");
+        {  console.log("Product List ----------" +productsList)}
+
         return (
                 <tr key={cartItem.productId}>
                     {(product !== null) &&
@@ -97,11 +107,12 @@ class CartItem extends Component {
 
 const mapStateToProps = state => ({
     productsList: state.productData.cartItems,
-    userData: state.posts.userData
+    userData: state.posts.userData,
+    deletemsgFromServer:state.cart.deletemsgFromServer
 });
 
 const mapDispatchToProps = {
-    getProductByID, removeProductsFromCart,
+    getProductByID, removeProductsFromCart, fetchCart,
 };
 
 export default connect(

@@ -48,7 +48,8 @@ export const removeProductsFromCart = (email, product) => dispatch => {
             "https://api.elixir.ausgrads.academy/orders_micro/order/delete/"+ email+"/"+product
         )
         .then(res => {
-            dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: res.data  });
+            {console.log(res.data)};
+            dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: product  });
         });
 
 };
