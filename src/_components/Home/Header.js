@@ -30,7 +30,8 @@ class Header extends React.Component {
   state = {
     isSignedIn: false,
     email : '',
-    password:''
+    password:'',
+      firstLog:false
 
     // show:true
   };
@@ -57,6 +58,10 @@ class Header extends React.Component {
     "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
     height: "80px"
   };
+  Popups = () =>
+  {
+
+  }
   searchFunctionality = event => {
     event.stopPropagation();
     // this.props.fetchSearchResults();
@@ -81,8 +86,15 @@ class Header extends React.Component {
   };
   killWindow = () => {
     if (this.state.isSignedIn) {
+      // if (this.state.firstLog==false){
+      //       this.setState({firstLog:true})
+      //
+      //       window.location.reload()
+      //
+      //   }
         // console.log(firebase.auth().currentUser.getIdToken());
       console.log("Kill Window Called");
+
       this.props.setUserData({
         userEmail: firebase.auth().currentUser.email,
         loginName: firebase.auth().currentUser.displayName
@@ -190,7 +202,6 @@ class Header extends React.Component {
             {this.state.isSignedIn ? (
               <div>
 
-
                 <div className="dropdown d-inline-block">
                   {/*<button*/}
                     {/*className="btn   dropdown-toggle"*/}
@@ -237,6 +248,16 @@ class Header extends React.Component {
                           </button>
                       </Link>
                     <br/>
+                      <Link to="/cart">
+                          <button
+                              style={this.styles}
+                              className="btn btn-outline-info m-2"
+                          >
+                              My Orders
+                          </button>
+                      </Link>
+                    <br/>
+                    <Link to ="/home">
                     <button
                       style={this.styles}
                       className="btn btn-outline-info m-2"
@@ -244,6 +265,7 @@ class Header extends React.Component {
                     >
                       Logout
                     </button>
+                    </Link>
 
                   </div>
                 </div>
@@ -256,19 +278,16 @@ class Header extends React.Component {
               // //
               // // )
               // //  ----------------------------------------------Button might be needed if we implement the login func---
-              // {/*<button*/}
-              //   {/*style={this.styles}*/}
-              //   {/*className="btn btn-outline-info m-2"*/}
-              //   {/*type="submit"*/}
-              //   {/*data-toggle="modal"*/}
-              //   {/*data-target="#loginModal"*/}
-              // {/*>*/}
-                //---------------------------------------------------------------
-                <StyledFirebaseAuth
-                onClick={this.killWindow()}
-                uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
-                />
+              <button
+                style={this.styles}
+                className="btn btn-outline-info m-2"
+                type="submit"
+                onClick={this.Popups}
+                data-toggle="modal"
+                data-target="#loginModal"
+              >Login
+              </button>
+
 
 
 
@@ -341,7 +360,6 @@ class Header extends React.Component {
                   </div>
                   <div className="col-md-12 mb-3">
                     {/*-------------------------------------------------------------------------*/}
-
                     <StyledFirebaseAuth
                       onClick={this.killWindow()}
                       uiConfig={this.uiConfig}
