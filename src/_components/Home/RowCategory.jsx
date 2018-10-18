@@ -24,7 +24,7 @@ class RowCategory extends Component {
     const catArray = this.props.catList;
     console.log(catArray);
     return (
-      <div id="fdw">
+      <div id="fdw" className="d-flex justify-content-center">
         <nav>
           <ul>
             <li>

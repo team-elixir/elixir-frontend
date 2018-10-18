@@ -56,7 +56,7 @@ class Header extends React.Component {
     };
     navStyle = {
         "box-shadow": "0 3px 6px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0)",
-        height: "80px"
+        height: "95px"
     };
     Popups = () =>
     {
@@ -134,8 +134,8 @@ class Header extends React.Component {
         //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
         return (
-            <div>
-                <nav className="navbar navbar-expand-md navbar-light ml-lg-5 mr-lg-5">
+            <div style={this.navStyle}>
+                <nav className="navbar navbar-expand-sm navbar-light ml-lg-5 mr-lg-5">
                     <Link className="navbar-brand" to="/home">
                         <strong>Grizzly</strong>
                         <img src={grizzlogo} style={{ height: 50 }} /> <strong>Store</strong>
@@ -349,6 +349,7 @@ class Header extends React.Component {
                     {/* End of SignUp in Model*/}
                 </nav>
             </div>
+
         );
     }
 }
