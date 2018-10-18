@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import RowCategory from "../Home/RowCategory";
-import Footer from "../Home/Footer";
-import Header from "../Home/Header";
 import SuggestProduct from "./SuggestProduct";
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
@@ -17,6 +14,10 @@ class Products extends Component {
     componentWillReceiveProps(nextProps) {
         if(nextProps.match.params !== this.props.match.params){
             this.props.getProduct(nextProps.match.params.id);
+
+            //  window.scrollTo(x, y)
+            //  X stand for horizontal, y is vertical.
+            window.scrollTo(0, 200)
         }
         //Test URL input id
         // console.log(nextProps.match.params);
@@ -30,9 +31,6 @@ class Products extends Component {
         this.props.getProduct(id);
         // console.log(this.props.product);
     }
-    // componentDidUpdate(){
-    //
-    // }
 
     render() {
         //console.log(this.props.pageState.item);
@@ -40,10 +38,11 @@ class Products extends Component {
             return (
                 // console.log(nextProps.match.params),
                 <div>
-                    {/* <Posts/> */}
-                    {/*<ProductInfo/>*/}
                     <ProductInfos data ={this.props.pageState.item}/>
+                    <br/>
+                    <br/>
                     <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
+                    <br/>
                 </div>
             );
         else
