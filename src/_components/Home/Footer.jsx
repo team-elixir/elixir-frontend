@@ -33,7 +33,7 @@ class Footer extends Component {
 
                                 <li><a href="#"><i className="fa fa-angle-double-right"/>Order
                                     Status</a></li>
-                                <li><a href="#"><i className="fa fa-angle-double-right"/>FAQ</a>
+                                <li><a href="#"><i className="fa fa-angle-double-right"/>FAQ</a></li>
                                 <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right"/>FAQ</a>
                                 </li>
                             </ul>
