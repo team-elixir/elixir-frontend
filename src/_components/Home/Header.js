@@ -248,6 +248,15 @@ class Header extends React.Component {
                           </button>
                       </Link>
                     <br/>
+                      <Link to="/cart">
+                          <button
+                              style={this.styles}
+                              className="btn btn-outline-info m-2"
+                          >
+                              My Orders
+                          </button>
+                      </Link>
+                    <br/>
                     <Link to ="/home">
                     <button
                       style={this.styles}
