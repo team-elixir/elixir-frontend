@@ -79,7 +79,7 @@ class Cart extends Component {
                   </td>
                   <td colSpan="2" className="hidden-xs" />
                   <td className="hidden-xs text-center">
-                    <strong>$ {cart.totalPrice}</strong>
+                    <strong>${cart.totalPrice.toFixed(2)}</strong>
                   </td>
                   <td>
                     <Link to="" className="btn btn-success btn-block">
