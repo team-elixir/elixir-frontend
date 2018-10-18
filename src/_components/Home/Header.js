@@ -41,8 +41,18 @@ class Header extends React.Component {
     uiConfig = {
         signInFlow: "popup",
         signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+        signInSuccessUrl: 'https://elixir.ausgrads.academy/home',
+
         callbacks: {
-            signInSuccess: () => false
+            // signInSuccess: () => false
+            signInSuccess: function(currentUser, credential, redirectUrl) {
+                // const userId = currentUser.uid;
+                // Manually redirect.
+                window.location.assign(`https://elixir.ausgrads.academy/home`);
+                // window.location.reload();
+                // Do not automatically redirect.
+                return false;
+            },
         }
     };
 
