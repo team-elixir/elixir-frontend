@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import "./assets/bootstrap/css/bootstrap.min.css";
 import Header from "./_components/Home/Header";
 import Routes from "./_components/Routes/Routes";
@@ -12,10 +12,15 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
-                    <Header />
-                    <RowCategory />
-                    <Routes />
-                    <Footer />
+                    <body className="Site">
+                    <Header/>
+                    <main className="Site-content">
+                        <RowCategory/>
+                        <Routes/>
+                    </main>
+                    <Footer/>
+                    </body>
+
                 </div>
             </BrowserRouter>
         );
