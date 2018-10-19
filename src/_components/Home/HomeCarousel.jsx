@@ -69,7 +69,7 @@ export class HomeCarousel extends Component {
         });
 
         return (
-            <div id="tcarousel_icon" style={{marginBottom: "30px", marginTop: "-30px"}}>
+            <div id="tcarousel_icon" style={{marginBottom: "30px", marginTop: "10px"}}>
                 <Carousel
                     activeIndex={activeIndex}
                     next={this.next}

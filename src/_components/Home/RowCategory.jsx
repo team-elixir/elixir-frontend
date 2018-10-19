@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Row.css";
 
 import {
   fetchPosts,
@@ -24,7 +25,7 @@ class RowCategory extends Component {
     const catArray = this.props.catList;
     console.log(catArray);
     return (
-      <div id="fdw" className="d-flex justify-content-center">
+      <div id="fdw" className="d-flex justify-content-center" style={{marginBottom: "-30px"}}>
         <nav>
           <ul>
             <li>
@@ -34,7 +35,6 @@ class RowCategory extends Component {
               <li>
                 <Link to={"/category/" + category.name}>{category.name}</Link>
                 <ul styles="display: none;" className="sub_menu">
-                  <li className="arrow_top" />
                   {category.subcategories.map(subCategory => (
                     <li>
                       <Link to={"/subCategory/" + subCategory.subId}>

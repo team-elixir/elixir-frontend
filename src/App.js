@@ -6,6 +6,8 @@ import Header from "./_components/Home/Header";
 import Routes from "./_components/Routes/Routes";
 import RowCategory from "./_components/Home/RowCategory";
 import Footer from "./_components/Home/Footer";
+import NewRow from "./_components/Home/NewRow";
+import NewRowcategory from "./_components/Home/NewRowcategory";
 
 class App extends Component {
     render() {
@@ -15,7 +17,9 @@ class App extends Component {
                     <body className="Site">
                     <Header/>
                     <main className="Site-content">
-                        <RowCategory/>
+                        {/*<RowCategory/>*/}
+                        {/*<NewRow/>*/}
+                        <NewRowcategory/>
                         <Routes/>
                     </main>
                     <Footer/>

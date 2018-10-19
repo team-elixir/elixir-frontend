@@ -6,6 +6,7 @@ import ProductSliderInterface from "./ProductSliderInterface";
 import Footer from "./Footer";
 import Posts from "../CategoryProducts/Posts";
 import Cart from "../Cart/Cart";
+import PopularProduct from "./PopularProduct";
 
 class Home extends Component {
     render() {
@@ -13,7 +14,9 @@ class Home extends Component {
             <div>
                 {/*Top carousel-Yu*/}
                 <HomeCarousel/>
+                <PopularProduct/>
                 <ProductSliderInterface/>
+
                 {/*Footer-Yu*/}
             </div>
         );
