@@ -75,6 +75,13 @@ class SearchProductRouter extends Component {
     return (
       <div>
         <div className="container mt-lg-5">
+          <div className="row">
+              <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+              </div>
+              <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+              </div>
           <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <p className="m-3">Sort By: </p>
             <select onChange={this.selectSorting.bind(this)}>
@@ -85,6 +92,7 @@ class SearchProductRouter extends Component {
           </div>
           {/*Displaying*/}
           <div className="card-columns">{dataItems}</div>
+        </div>
         </div>
       </div>
     );
