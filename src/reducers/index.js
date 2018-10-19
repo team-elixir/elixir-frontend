@@ -4,6 +4,7 @@ import postReducer from './postReducer';
 import sliderReducer from "./sliderReducer";
 import cartReducer from "./cartReducer";
 import searchReducer from "./searchReducer";
+import payPalReducer from "./payPalReducer";
 
 export default combineReducers({
     productData: productsReducer,
@@ -11,5 +12,6 @@ export default combineReducers({
     cart: cartReducer,
     slider: sliderReducer,
     searchProduct: searchReducer,
+    paypal: payPalReducer,
     
 });
