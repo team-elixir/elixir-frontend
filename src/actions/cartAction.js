@@ -6,7 +6,7 @@ export const fetchCart = (email) => dispatch => {
     console.log("https://api.elixir.ausgrads.academy/orders_micro/order/user/" +email);
     axios
         .get(
-            "https://api.elixir.ausgrads.academy/orders_micro/order/user/" +email
+            "https://api.elixir.ausgrads.academy/orders_micro/order/user/" +email+"/pending"
         )
         .then(res => {
              console.log(res.data);
@@ -52,4 +52,12 @@ export const removeProductsFromCart = (email, product) => dispatch => {
             dispatch({ type: DELETE_PRODUCT_FROM_CART, payload: product  });
         });
 
+};
+// Get order status complete from database
+export const getOrderStatusCompleted = (email) => dispatch => {
+    axios.
+    get("https://api.elixir.ausgrads.academy/orders_micro/order/user/"+email+"/complete")
+        .then(res => {
+            dispatch({type: 'ORDER-STATUS-COMPLETE', payload: res.data});
+        });
 };
