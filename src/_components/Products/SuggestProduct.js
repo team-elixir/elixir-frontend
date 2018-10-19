@@ -4,18 +4,25 @@ import {connect} from 'react-redux';
 import CategoryCarousel from "./CategoryCarousel";
 
 class SuggestProduct extends Component {
-    componentWillMount(){
-        const { data } = this.props;
-        console.log(data);
+    componentWillMount() {
+        const {data} = this.props;
+        // console.log("will mount"+data);
         this.props.getCategory(data);
     }
 
-    shouldComponentUpdate() {
-        return this.props.listStatus.Loading;
+    componentWillReceiveProps(nextProps) {
+        // console.log(nextProps.data);
+        // console.log("ReceiveProps");
+        // console.log(this.props.data);
+        if (nextProps.data !== this.props.data) {
+            this.props.getCategory(nextProps.data);
+            return this.props.listStatus.Loading;
+        }
     }
 
     show() {
         // const {list} = this.props.listInfo;
+        // console.log(this.props);
         const {listInfo} = this.props;
         let category = <CategoryCarousel categoryImage={listInfo}/>;
         // console.log(listInfo);
@@ -33,6 +40,7 @@ class SuggestProduct extends Component {
             </div>
         )
     }
+
     render() {
         // Check if we have data.
         if (!this.props.listStatus.Loading)
