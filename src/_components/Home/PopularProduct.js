@@ -4,7 +4,7 @@ import Xyz from "./banner11.jpg";
 import Lmn from "./banner12.jpg";
 import Phone from "./Phone.jpg";
 import Camera from "./Camera.jpg";
-// import Dress from "./Dress.jpg";
+import Dress from "./Dress.webp";
 import handbag from "./handbag.jpg";
 
 import {Link} from "react-router-dom";
@@ -40,12 +40,12 @@ class PopularProduct extends Component {
                         <Link to="/category/all" className="text-white" style={{fontSize:"50px",fontFamily:"times new roman", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>Camera</Link>
                     </div>
                 </div>
-                {/*<div className="card text-white" style={{width:"300px"}}>*/}
-                    {/*<img className="card-img" src={Dress} alt="Card image" style={{height:"250px", width: "300px"}}/>*/}
-                    {/*<div className="card-img-overlay">*/}
-                        {/*<Link to="/category/all" className="text-white" style={{fontSize:"50px",fontFamily:"times new roman", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>Dresses</Link>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
+                <div className="card text-white" style={{width:"300px"}}>
+                    <img className="card-img" src={Dress} alt="Card image" style={{height:"250px", width: "300px"}}/>
+                    <div className="card-img-overlay">
+                        <Link to="/category/all" className="text-white" style={{fontSize:"50px",fontFamily:"times new roman", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>Dresses</Link>
+                    </div>
+                </div>
                 <div className="card text-white" style={{width:"300px"}}>
                     <img className="card-img" src={handbag} alt="Card image" style={{height:"250px", width: "300px"}}/>
                     <div className="card-img-overlay">
