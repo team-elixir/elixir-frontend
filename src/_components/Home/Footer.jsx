@@ -6,7 +6,7 @@ class Footer extends Component {
         return (
             <section id="footer">
                 <div className="container-flux">
-                    <div className="row text-center text-xs-center text-sm-left text-md-left" >
+                    <div className="row text-center text-xs-center text-sm-left text-md-left">
                         <div className="col-md-3 pl-md-5">
                             <h5>ABOUT GRIZZLY</h5>
                             <ul className="list-unstyled quick-links">
@@ -30,10 +30,6 @@ class Footer extends Component {
                                     Policy</a></li>
                                 <li><a href="#"><i className="fa fa-angle-double-right"/>Shipping
                                     Policies</a></li>
-
-                                <li><a href="#"><i className="fa fa-angle-double-right"/>Order
-                                    Status</a></li>
-                                <li><a href="#"><i className="fa fa-angle-double-right"/>FAQ</a></li>
                                 <li><a href="https://elixir.ausgrads.academy"><i className="fa fa-angle-double-right"/>FAQ</a>
                                 </li>
                             </ul>
@@ -55,7 +51,7 @@ class Footer extends Component {
                                     &center=-37.818861, 144.959294
                                     &zoom=12
                                     &maptype=roadmap"
-                                    //&maptype=satellite"
+                                //&maptype=satellite"
                                     allowFullScreen>
                             </iframe>
                         </div>
