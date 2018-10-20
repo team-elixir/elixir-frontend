@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Header from "./Header";
-import RowCategory from "./RowCategory";
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderInterface from "./ProductSliderInterface";
 import Footer from "./Footer";

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {fetchAllCat, fetchAllSub, fetchPosts, fetchProducts, fetchSubCategories} from "../../actions/postActions";
 import Post from "./Post";
 import Cart from "../Cart/Cart";
+import bg from "./bg.jpeg";
 import {Link} from "react-router-dom";
 
 class Posts extends Component {
@@ -48,25 +49,37 @@ class Posts extends Component {
         ));
         return (
             <div >
+                <div className="row" styles="background-image:{bg}">
+                    <div className="col-lg-12 d-flex justify-content-center">
+                        <h2 style={{marginTop:"35px"}}>All Products</h2>
+                    </div>
+                </div>
                 <div className="row m-4">
-                    <div className=" align-items-center col-12 col-md-3 col-lg-2 bg-light mt-3">
+                    <div className=" align-items-center col-12 col-md-5 col-lg-3 bg-light mt-3">
                         <div>
-                            <h5 style={{marginTop: "50px"}}>Sub category</h5>
+                            <h3 style={{marginTop: "50px"}}><strong>Refine by Sub-categories</strong></h3>
+
                             {catArray.map(category => (
-                            <div className="radio">
-                                <label><Link to={"/category/" + category.name} type = "radio" className="text-dark">{category.name}</Link></label>
+                            <div className="radio ml-lg-3">
+                                <Link to={"/category/" + category.name} className="text-dark" style={{fontSize: "20px"}}><strong>{category.name}</strong></Link>
+                                <ul style={{listStyle:"none"}}>
+                                {category.subcategories.map(subCategory => (
+                                <li style={{marginLeft:"-25px"}}><Link to={"/subCategory/" + subCategory.subId} type = "radio" className="text-dark">{subCategory.name}</Link></li>
+                                    ))}
+                                    </ul>
+
                             </div>
-                                ))}
+                            ))}
                         </div>
 
-                        <div>
-                            <h5 style={{marginTop: "250px"}}>Refine By</h5>
-                        </div>
+                        {/*<div>*/}
+                            {/*<h5 style={{marginTop: "250px"}}>Refine By</h5>*/}
+                        {/*</div>*/}
 
 
                     </div>
 
-                    <div className="col-12 col-md-9 col-lg-10">
+                    <div className="col-12 col-md-7 col-lg-9">
                         <div className="row bg-light m-2">
                             <div className="align-items-center d-flex col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
