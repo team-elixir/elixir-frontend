@@ -5,6 +5,7 @@ import {
     CarouselItem,
     CarouselControl,
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 const items = [
     {
         id: 1,
@@ -100,11 +101,13 @@ class ProductSlider extends Component {
         for (var i = this.state.activeIndex; i < this.state.activeIndex+5; i++) {
 
             indents.push(
-                <div className="col-xl-2  m-3">
-                    <a href="#">
-                        <img id="image" src={this.props.name[i]} alt="Image"/>
-                    </a>
-                </div>
+                <Link to={`/product/view/${this.props.id[i]}`} className="col-xl-2 text-center m-3">
+                    <div>
+                        <img id="image" src={this.props.image[i]} style={{height: "250px", width: "250px"}} alt="Image"/>
+                        <h6>{this.props.name[i]}</h6>
+                        <h7>${this.props.price[i]}</h7>
+                    </div>
+                </Link>
             );
         }
         return indents;
