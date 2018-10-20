@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SuggestProduct from "./SuggestProduct";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {getProduct} from "../../actions/productActions";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -12,7 +12,7 @@ import Loading from "../Loading/Loading";
 class Products extends Component {
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.match.params !== this.props.match.params){
+        if (nextProps.match.params !== this.props.match.params) {
             this.props.getProduct(nextProps.match.params.id);
 
             //  window.scrollTo(x, y)
@@ -26,25 +26,29 @@ class Products extends Component {
         // this.props.getProduct(nextProps.match.params);
         return this.props.pageState.isLoading;
     }
-    componentWillMount(){
-        const { id } = this.props.match.params;
+
+    componentWillMount() {
+        const {id} = this.props.match.params;
         this.props.getProduct(id);
         // console.log(this.props.product);
     }
 
     render() {
-        //console.log(this.props.pageState.item);
-        if (this.props.pageState.item.product)
+        if (this.props.pageState.item.product) {
+            // console.log(this.props.pageState.item);
             return (
                 // console.log(nextProps.match.params),
                 <div>
-                    <ProductInfos data ={this.props.pageState.item}/>
+                    <ProductInfos data={this.props.pageState.item}/>
+                    {/*{console.log("Info log")}*/}
                     <br/>
                     <br/>
-                    <SuggestProduct data = {this.props.pageState.item.product.subCategoryId}/>
+                    <SuggestProduct data={this.props.pageState.item.product.subCategoryId}/>
+                    {/*{console.log("Suggest log")}*/}
                     <br/>
                 </div>
             );
+        }
         else
             return <Loading/>;
 

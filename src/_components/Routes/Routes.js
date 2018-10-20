@@ -13,6 +13,7 @@ import SubCategories from "../CategoryProducts/SubCategories";
 import Cart from "../Cart/Cart";
 import Profile from "../Products/Profile";
 import SearchProductRouter from "./SearchProductRouter";
+import OrderRouter from "./Order/OrderRouter";
 
 class Routes extends Component {
   render() {
@@ -28,6 +29,7 @@ class Routes extends Component {
         <Route path="/cart" component={Cart} />
         <Route path="/profile" component={Profile} />
         <Route path="/search/:name" component={SearchProductRouter} />
+          <Route path="/order" component={OrderRouter} />
         <Route path="*" component={PageNotFound} />
 
         {/*PageNotFoudn should be at bottom*/}

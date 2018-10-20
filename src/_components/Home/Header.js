@@ -25,6 +25,7 @@ class Header extends React.Component {
         super(props);
         //  var googleLoginUI =  new firebaseui.auth.AuthUI(firebase.auth());
         this.searchFunctionality = this.searchFunctionality.bind(this);
+        this.orderButton = this.orderButton.bind(this);
     }
 
     state = {
@@ -72,6 +73,9 @@ class Header extends React.Component {
     Popups = () =>
     {
 
+    }
+    orderButton(){
+        this.props.history.push("/order");
     }
     searchFunctionality = event => {
         event.stopPropagation();
@@ -213,11 +217,11 @@ class Header extends React.Component {
                                                 </button>
                                             </Link>
                                             {/*<br/>*/}
-                                            <Link to="/cart">
-                                                <button style={this.styles} className="btn btn-outline-info m-2">
+                                            {/*<Link to="/cart">*/}
+                                                <button onClick={this.orderButton} style={this.styles} className="btn btn-outline-info m-2">
                                                     My Orders
                                                 </button>
-                                            </Link>
+                                            {/*</Link>*/}
                                             {/*<br/>*/}
                                             <Link to ="/home">
                                                 <button style={this.styles} className="btn btn-outline-info m-2" onClick={() => this.Logout()}>
