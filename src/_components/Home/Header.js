@@ -75,7 +75,7 @@ class Header extends React.Component {
 
     }
     orderButton(){
-        this.props.history.push("/order?paymentId=PAY-125469007M588470HLPFPGGY&token=EC-8LC27732CN4835727&PayerID=H3WH8R7JH9Q9U");
+        this.props.history.push("/order");
     }
     searchFunctionality = event => {
         event.stopPropagation();
