@@ -61,3 +61,20 @@ export const getOrderStatusCompleted = (email) => dispatch => {
             dispatch({type: 'ORDER-STATUS-COMPLETE', payload: res.data});
         });
 };
+export const getOrderStatusPending = (email) => dispatch => {
+    axios.
+    get("https://api.elixir.ausgrads.academy/orders_micro/order/user/"+email+"/pending")
+        .then(res => {
+            dispatch({type: 'ORDER-STATUS-PENDING', payload: res.data});
+        });
+};
+export const updateOrderStatus = (id) => dispatch => {
+    let data = {
+        orderId: id
+    };
+    axios.
+    put("https://api.elixir.ausgrads.academy/orders_micro/order/status/", data)
+        .then(res => {
+            dispatch({type: 'UPDATE-ORDER-STATUS', payload: res.data});
+        });
+};
