@@ -56,13 +56,7 @@ export class HomeCarousel extends Component {
 
         const slides = items.map((item) => {
             return (
-                <CarouselItem
-                    className="carousel-tag"
-                    tag="div"
-                    onExiting={this.onExiting}
-                    onExited={this.onExited}
-                    key={item.id}
-                >
+                <CarouselItem className="carousel-tag" tag="div" onExiting={this.onExiting} onExited={this.onExited} key={item.id}>
                     <img id="carousel-img" src={item.src} alt={item.id} className="carousel-img"/>
                 </CarouselItem>
             );
@@ -70,13 +64,7 @@ export class HomeCarousel extends Component {
 
         return (
             <div id="tcarousel_icon" style={{marginBottom: "30px", marginTop: "10px"}}>
-                <Carousel
-                    activeIndex={activeIndex}
-                    next={this.next}
-                    previous={this.previous}
-                    className='carousel'
-                    interval='5000'
-                >
+                <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} className='carousel' interval='2700'>
                     <CarouselIndicators id="Cindicator" items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />

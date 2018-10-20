@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import "./Row.css";
+import "../../assets/css/Row.css";
 import {Link} from "react-router-dom";
 import {fetchAllCat, fetchPosts, fetchProducts, fetchSubCategories} from "../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 
-class NewRow extends Component {
+class NewRowcategory extends Component {
     componentDidMount() {
         this.props.fetchAllCat();
     }
@@ -29,10 +29,11 @@ class NewRow extends Component {
                             <ul style={{listStyle:"none"}}>
                                 <div className="dropdown-content">
                                     {category.subcategories.map(subCategory => (
-                                        <li>
+                                        <li style={{marginTop:"-5px", marginBottom:"-10px"}}>
                                             <Link to={"/subCategory/" + subCategory.subId} className="text-dark" style={{fontSize: "15px"}}>
                                                 {subCategory.name}
                                             </Link>
+                                            <hr/>
                                         </li>
                                     ))}
                                 </div>
@@ -60,4 +61,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NewRow);
+)(NewRowcategory);

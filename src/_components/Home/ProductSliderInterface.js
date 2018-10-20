@@ -11,7 +11,7 @@ var phoneP = "https://cdn.shopify.com/s/files/1/1739/1083/files/sales-icon-18218
 // products displaying
 var watchData = [];
 var phoneData = [];
-var cameraData = [];
+// var cameraData = [];
 
 class ProductSliderInterface extends Component {
 
@@ -34,10 +34,14 @@ class ProductSliderInterface extends Component {
             console.log(phoneData);
         }
         return (
-            <div>
+            <div className="container">
                 {/* load data to the screen */}
-                <ProductSlider name={watchData} promotion={"Watch On Sale Hurry!"}/>
-                <ProductSlider name={phoneData} promotion={"Phone On Sale Hurry! "}/>
+                {/*<ProductSlider name={CameraData} promotion={"Today's Picks!"}/>*/}
+                {/*Kitchen appliances*/}
+                {/*Games*/}
+                <ProductSlider name={watchData} promotion={"Today's Picks!"}/>
+                <ProductSlider name={watchData} promotion={"Deals on Watches!"}/>
+                <ProductSlider name={phoneData} promotion={"Phones On Sale Hurry! "} style={{marginBottom: "50px"}}/>
 
             </div>);
     }

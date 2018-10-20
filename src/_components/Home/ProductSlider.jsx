@@ -123,17 +123,12 @@ class ProductSlider extends Component {
 
         const slides = items.map((item) => {
             return (
-                <CarouselItem
-                    className="custom-1"
-                    tag="div"
-                    key={item.id}
-                >
+                <CarouselItem className="custom-1" tag="div" key={item.id}>
                     <div className="carousel-inner" style={{background: '#f2f2f2' }}>
                         <div className="carousel-item active">
                             <div className="row d-flex justify-content-center m-4 rounded" style={{background: '##f2f2f2'}} >
                                 {this.dataSouce()}
                             </div>
-
                         </div>
                     </div>
                 </CarouselItem>
@@ -142,18 +137,11 @@ class ProductSlider extends Component {
         return (
 
             <div>
-                <h1 style = {{fontFamily:'Arial', fontWeight: 500}} > <span className="display-4">{this.props.promotion} </span></h1>
+                <h1 style={{marginTop:"50px", marginBottom:"25px"}}> <strong>{this.props.promotion} </strong></h1>
                 <div id ="carousel_icon" className="col-xl-12">
-                    <Carousel
-                        activeIndex={activeIndex}
-                        next={this.next}
-                        previous={this.previous}
-                        interval={false}
-                        keyboard={false}
-                    >
+                    <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} interval={false} keyboard={false}>
                         {slides}
-                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}>
-                        </CarouselControl>
+                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}></CarouselControl>
                         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                     </Carousel>
                 </div>
