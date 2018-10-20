@@ -7,10 +7,12 @@ import connect from "react-redux/es/connect/connect";
 
 import { isError } from "util";
 import CartItem from "./CartItem";
+import {payment} from "../../actions/payPalAction";
 
 class Cart extends Component {
   constructor(props) {
     super(props);
+    this.checkOutButton = this.checkOutButton.bind(this);
   }
 
   componentDidMount() {
@@ -32,8 +34,17 @@ class Cart extends Component {
       )
         this.props.fetchCart(this.props.userData.userEmail);
     }
-  }
 
+      if (this.props.paypalData.payment.data !== undefined){
+          window.open(this.props.paypalData.payment.data.redirect_url);
+      }
+  }
+    // Send Request to PayPal
+    checkOutButton(){
+
+        const totalPrice = this.props.cart[0].totalPrice;
+        this.props.payment(10);
+    }
   render() {
     const cart = this.props.cart;
     let cartItems = [];
@@ -46,9 +57,9 @@ class Cart extends Component {
     }
 
     return (
-      <div>
+      <div style={{marginTop:"100px"}}>
         <div className="container">
-            <p className="text-secondary float-left" style={{ fontSize: "30px" }}>
+            <p className="text-secondary float-left" style={{ fontSize: "30px",marginRight:"100px" }}>
                 Shopping Cart
             </p>
           {cartItems.length > 0 ? (
@@ -82,9 +93,9 @@ class Cart extends Component {
                     <strong>${cart.totalPrice.toFixed(2)}</strong>
                   </td>
                   <td>
-                    <Link to="" className="btn btn-success btn-block">
+                    <button onClick={this.checkOutButton} className="btn btn-success btn-block">
                       Checkout <i className="fa fa-angle-right" />
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               </tfoot>
@@ -92,7 +103,7 @@ class Cart extends Component {
               )
           ) : (
             <div>
-              <h1>"Your Shopping Cart is Empty..."</h1>
+              <h1 >"Your Shopping Cart is Empty..."</h1>
             </div>
           )}
         </div>
@@ -103,11 +114,14 @@ class Cart extends Component {
 
 const mapStateToProps = state => ({
   cart: state.cart.cart,
-  userData: state.posts.userData
+  userData: state.posts.userData,
+    paypalData: state.paypal,
 });
 
 const mapDispatchToProps = {
-  fetchCart
+  fetchCart,
+    payment,
+
 };
 
 export default connect(

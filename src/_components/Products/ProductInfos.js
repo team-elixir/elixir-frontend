@@ -67,15 +67,30 @@ class ProductInfos extends Component {
                             </div>
                         </div>
                         <div className="col-lg-8 col-md-6">
-                            <h5 className="text-left">Product Description</h5>
+                            <h5 className="text-left"><strong>Product Description</strong></h5>
                             <p className="text-left mt-3 p-view-description">{this.props.data.product.description}</p>
                             <div className="col-12 mt-3 pl-0 pr-0 pb-0 pull-bottom">
+                                <div>
                                 <h5 className="text-left ">
                                     <span className="rrp-text text-danger">RRP</span>
                                     ${this.props.data.product.price}
                                 </h5>
                                 <button className="float-left btn btn-success" onClick={this.addToCart}>Add to cart
                                 </button>
+                                </div>
+                                <div>
+                                    <br/>
+                                    <br/>
+                                    <p>Quantity:
+                                        <select style={{marginLeft:"10px", width:"50px"}}>
+                                            <option value="title" >1</option>
+                                            <option value="title" >2</option>
+                                            <option value="title" >3</option>
+                                            <option value="title" >4</option>
+                                            <option value="title" >5</option>
+                                        </select></p>
+
+                                </div>
                             </div>
                         </div>
                     </div>

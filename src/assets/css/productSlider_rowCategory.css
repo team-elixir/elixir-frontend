@@ -25,16 +25,15 @@
 
 }
 
-#image{
+/*#image{*/
 
-    border-radius: 20px;
-    width: 100%;
-    background-color: #f8f9fa;
+    /*border-radius: 20px;*/
+    /*width: 100%;*/
+    /*!*background-color: #f8f9fa;*!*/
+    /*!* height: 10em; *!*/
 
-    /* height: 10em; */
-
-}
-.custom-1{
-    text-align: right;
-}
+/*}*/
+/*.custom-1{*/
+    /*text-align: right;*/
+/*}*/
  

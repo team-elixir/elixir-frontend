@@ -5,6 +5,7 @@ import {
     CarouselItem,
     CarouselControl,
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 const items = [
     {
         id: 1,
@@ -100,11 +101,13 @@ class ProductSlider extends Component {
         for (var i = this.state.activeIndex; i < this.state.activeIndex+5; i++) {
 
             indents.push(
-                <div className="col-xl-2  m-3">
-                    <a href="#">
-                        <img id="image" src={this.props.name[i]} alt="Image"/>
-                    </a>
-                </div>
+                <Link to={`/product/view/${this.props.id[i]}`} className="col-xl-2 text-center m-3">
+                    <div>
+                        <img id="image" src={this.props.image[i]} style={{height: "250px", width: "250px"}} alt="Image"/>
+                        <h6>{this.props.name[i]}</h6>
+                        <h7>${this.props.price[i]}</h7>
+                    </div>
+                </Link>
             );
         }
         return indents;
@@ -123,17 +126,12 @@ class ProductSlider extends Component {
 
         const slides = items.map((item) => {
             return (
-                <CarouselItem
-                    className="custom-1"
-                    tag="div"
-                    key={item.id}
-                >
+                <CarouselItem className="custom-1" tag="div" key={item.id}>
                     <div className="carousel-inner" style={{background: '#f2f2f2' }}>
                         <div className="carousel-item active">
                             <div className="row d-flex justify-content-center m-4 rounded" style={{background: '##f2f2f2'}} >
                                 {this.dataSouce()}
                             </div>
-
                         </div>
                     </div>
                 </CarouselItem>
@@ -142,18 +140,11 @@ class ProductSlider extends Component {
         return (
 
             <div>
-                <h1 style = {{fontFamily:'Arial', fontWeight: 500}} > <span className="display-4">{this.props.promotion} </span></h1>
+                <h1 style={{marginTop:"50px", marginBottom:"25px"}}> <strong>{this.props.promotion} </strong></h1>
                 <div id ="carousel_icon" className="col-xl-12">
-                    <Carousel
-                        activeIndex={activeIndex}
-                        next={this.next}
-                        previous={this.previous}
-                        interval={false}
-                        keyboard={false}
-                    >
+                    <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} interval={false} keyboard={false}>
                         {slides}
-                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}>
-                        </CarouselControl>
+                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}></CarouselControl>
                         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                     </Carousel>
                 </div>

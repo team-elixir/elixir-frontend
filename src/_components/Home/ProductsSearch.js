@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Header from "./Header";
-import RowCategory from "./RowCategory";
 import {Link,withRouter} from 'react-router-dom';
 import HomeCarousel from "./HomeCarousel";
 import ProductSliderConnection from "./ProductSliderInterface";
 import Footer from "./Footer";
 import Posts from "../CategoryProducts/Posts";
+import NewRowcategory from "./NewRowcategory";
 
 class ProductsSearch extends Component {
     constructor(props){
@@ -19,8 +19,8 @@ class ProductsSearch extends Component {
             
             <div className="App">
                 <Header />
-                <RowCategory/>
-                 <Posts/> 
+                <NewRowcategory/>
+                 <Posts/>
                  
                 {/*Top carousel-Yu*/}
                 {/*Footer-Yu*/}
