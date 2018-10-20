@@ -57,7 +57,7 @@ class Posts extends Component {
                 <div className="row m-4">
                     <div className=" align-items-center col-12 col-md-5 col-lg-3 bg-light mt-3">
                         <div>
-                            <h3 style={{marginTop: "50px"}}><strong>Refine by Sub-categories</strong></h3>
+                            <h4 style={{marginTop: "50px"}}>Shop by Sub-categories</h4>
 
                             {catArray.map(category => (
                             <div className="radio ml-lg-3">
