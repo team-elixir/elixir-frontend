@@ -57,9 +57,9 @@ class Cart extends Component {
     }
 
     return (
-      <div>
+      <div style={{marginTop:"100px"}}>
         <div className="container">
-            <p className="text-secondary float-left" style={{ fontSize: "30px" }}>
+            <p className="text-secondary float-left" style={{ fontSize: "30px",marginRight:"100px" }}>
                 Shopping Cart
             </p>
           {cartItems.length > 0 ? (
@@ -103,7 +103,7 @@ class Cart extends Component {
               )
           ) : (
             <div>
-              <h1>"Your Shopping Cart is Empty..."</h1>
+              <h1 >"Your Shopping Cart is Empty..."</h1>
             </div>
           )}
         </div>
