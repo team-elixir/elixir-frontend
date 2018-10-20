@@ -27,68 +27,21 @@ class OrderRouter extends Component {
 
     componentDidMount() {
 
-      //  load order default after user login
-        if (this.props.dataState.posts.hasOwnProperty('userData')){
-            if (this.props.dataState.posts.userData.hasOwnProperty('userEmail')) {
-                if (this.props.dataState.posts.userData.userEmail !== "") {
-
-                     if (this.props.location.search === "") {
-                        // if (this.props.dataState.posts.userData.userEmail !== "") {
-
-                        this.props.getOrderStatusCompleted(this.props.dataState.posts.userData.userEmail);
-                        // this.props.getOrderStatusCompleted("jamechet@google.com");
-                        //   }
-                   }
-                   else if (this.props.location.search.length > 30){
-                          this.props.getOrderStatusPending(this.props.dataState.posts.userData.userEmail);
-                             // this.props.updateOrderStatus(this.props.dataState.cart.cartPending[0].orderId);
-
-
-                         // this.props.dataState.cart.cartPending[0].orderId
-
-
-                     }
-                }
-            }
+        if (this.props.location.search === ""){
+            this.props.getOrderStatusCompleted(this.props.dataStatePosts.userData.userEmail);
         }
-
-
-
     }
-    componentDidUpdate(prevProps){
-        if (prevProps !== this.props){
-
-            if (this.props.dataState.cart.cartPending.length>0){
-                // this.props.updateOrderStatus(this.props.dataState.cart.cartPending[0].orderId);
-                console.log("Start002");
-                console.log(this.props.dataState);
-                console.log("End002");
-            }
-
-            //     if (this.props.dataState.posts.hasOwnProperty('userData')){
-        //         if (this.props.dataState.posts.userData.hasOwnProperty('userEmail')) {
-        //             if (this.props.dataState.posts.userData.userEmail !== "") {
-        //                 // if (this.props.dataState.posts.userData.userEmail !== "") {
-        //
-        //                 // this.props.getOrderStatusCompleted(this.props.dataState.posts.userData.userEmail);
-        //                 this.props.getOrderStatusCompleted("jamechet@google.com");
-        //                 console.log("Start001");
-        //                 console.log(this.props.dataState.posts.userData.userEmail);
-        //                 console.log("End001");
-        //                 //   }
-        //             }
-        //         }
-        //     }
-        }
 
 
-    }
     render() {
 
-        let cart= this.props.dataState.cart.cartComplete;
+           console.log("prev");
+           console.log(this.props);
+
+        let cart= this.props.dataStateCart.cartComplete;
         let cartItems = [];
         console.log("STE");
-        console.log(this.props.dataState.cart);
+        // console.log(this.props.dataStateCart);
         console.log("STQ");
 
         if (cart !== undefined) {
@@ -148,7 +101,8 @@ class OrderRouter extends Component {
 }
 
 const mapStateToProps = state => ({
-    dataState: state
+    dataStateCart: state.cart,
+    dataStatePosts: state.posts,
 });
 
 const mapActionToProps = {
