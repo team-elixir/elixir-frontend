@@ -75,7 +75,7 @@ class Header extends React.Component {
 
     }
     orderButton(){
-        this.props.history.push("/order");
+        this.props.history.push("/order/default/default");
     }
     searchFunctionality = event => {
         event.stopPropagation();
