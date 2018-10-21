@@ -17,8 +17,12 @@ class ProductInfos extends Component {
     }
 
     addToCart = (e) => {
-
-        const product = {"productId": this.props.data.product.id, "qty": 1, "unitPrice": this.props.data.product.price}
+        if (this.props.loginState){
+            const product = {
+                "productId": this.props.data.product.id,
+                "qty": 1,
+                "unitPrice": this.props.data.product.price
+            }
         const email = this.props.userData.userEmail;
         console.log(this.props.data.product.name);
 
@@ -29,6 +33,16 @@ class ProductInfos extends Component {
             position: toast.POSITION.TOP_RIGHT,
             className: 'toast-success-griz'
         });
+    }
+    else
+        {
+                    {  toast( `Please Login To Add to Cart`, {
+                    position: toast.POSITION.TOP_RIGHT,
+                    className: 'toast-success-griz'
+                });   }
+
+
+        }
     };
 
     render() {
@@ -109,7 +123,9 @@ class ProductInfos extends Component {
 
 
 const mapStateToProps = state => ({
-    userData: state.posts.userData
+    userData: state.posts.userData,
+    loginState:state.posts.loginState
+
 });
 
 const mapDispatchToProps = {

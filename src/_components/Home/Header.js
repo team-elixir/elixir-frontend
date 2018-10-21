@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import grizzlogo from "../../assets/images/grizz-logo.png";
-import { fetchSearchResults, setUserData } from "../../actions/postActions";
+import { fetchSearchResults, setUserData ,setLoginState} from "../../actions/postActions";
 import "../../assets/css/Login.css";
 import { connect } from "react-redux";
 import * as firebase from "firebase";
@@ -97,6 +97,7 @@ class Header extends React.Component {
     GoogleLogin = () => {
         firebase.auth().onAuthStateChanged(user => {
             this.setState({ isSignedIn: !!user });
+            this.props.s
         });
     };
     killWindow = () => {
@@ -134,12 +135,17 @@ class Header extends React.Component {
     };
     Logout = () => {
         firebase.auth().signOut();
+        this.props.setLoginState(false);
         window.location.reload();
     };
 
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-            this.setState({ isSignedIn: !!user }); //if user is an object , set to true else false
+            console.log("Ran before set thing ")
+            this.setState({ isSignedIn: !!user });
+            this.props.setLoginState(!!user);
+            console.log("It ran ")
+            console.log("It Ran after set thing ");//if user is an object , set to true else false
             // this.props.setSignedState(false)
             // console.log("VALUE"+JSON.stringify(this.props.isSignedIn));
         });
@@ -147,7 +153,7 @@ class Header extends React.Component {
 
     render() {
         //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
+        console.log("It ran in render the header");
         return (
             <div style={this.navStyle}>
                 <nav className="navbar navbar-expand-sm navbar-light ml-lg-5 mr-lg-5">
@@ -370,7 +376,8 @@ class Header extends React.Component {
 }
 const mapDispatchToProps = {
     fetchSearchResults,
-    setUserData
+    setUserData,
+    setLoginState
 };
 const mapStateToProps = state => ({
     userData: state.posts.userData

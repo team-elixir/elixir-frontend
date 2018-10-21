@@ -1,7 +1,7 @@
 import {
     FETCH_POSTS, USEREMAIL_STATE,
     FETCH_SUBCATEGORIES_FULFILLED,
-    FETCH_PRODUCTS_FULFILLED,
+    FETCH_PRODUCTS_FULFILLED,LOGIN_STATE,
     UPDATE_USER_DETAILS,
     FETCH_SUBCATEGORIES_DETAILS, FETCH_CATEGORIES_DETAILS, ADD_USER,
     FETCH_USER_DETAILS
@@ -17,7 +17,7 @@ const initialState = {
         userEmail:'',
         loginName:''
     },// as retreived by google account, so user data has name and Email
-
+    loginState: false,
     userDetails:{
         name:"",
         email:"",
@@ -42,6 +42,11 @@ export default function(state = initialState, action) {
                 subCategories: action.payload
 
             };
+        case LOGIN_STATE:
+            return {
+                ...state,
+                loginState: action.payload
+            }
 
         case FETCH_CATEGORIES_DETAILS:
             return{

@@ -2,7 +2,7 @@ import {
   USEREMAIL_STATE,
   FETCH_POSTS,
   FETCH_SUBCATEGORIES_FULFILLED,
-  FETCH_SUBCATEGORIES_DETAILS,
+  FETCH_SUBCATEGORIES_DETAILS,LOGIN_STATE,
   UPDATE_USER_DETAILS,
   FETCH_CATEGORIES_DETAILS,
   FETCH_USER_DETAILS
@@ -22,6 +22,12 @@ export const fetchPosts = () => dispatch => {
     );
 };
 
+export const setLoginState = (loginState) => dispatch => {
+    dispatch({
+        type:LOGIN_STATE,
+        payload:loginState
+    })
+}
 export const fetchSearchResults = () => dispatch => {
   fetch(
     "https://api.elixir.ausgrads.academy/products_micro/products/displayProducts"
