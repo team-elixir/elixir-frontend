@@ -15,8 +15,6 @@ class App extends Component {
                     <body className="Site">
                     <Header/>
                     <main className="Site-content">
-                        {/*<RowCategory/>*/}
-                        {/*<NewRow/>*/}
                         <NewRowcategory/>
                         <Routes/>
                     </main>

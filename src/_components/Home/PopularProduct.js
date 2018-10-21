@@ -35,7 +35,7 @@ class PopularProduct extends Component {
                 <div className="card text-white" style={{width:"350px"}}>
                     <img className="card-img" src={Xyz} alt="Card image" style={{height:"250px", width: "350px"}}/>
                     <div className="card-img-overlay">
-                        <Link to="/category/all" className="text-white" style={{fontSize:"50px", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>Shoes</Link>
+                        <Link to="/subCategory/15" className="text-white" style={{fontSize:"50px", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>Shoes</Link>
                     </div>
                 </div>
                 <div className="card text-white" style={{width:"350px"}}>

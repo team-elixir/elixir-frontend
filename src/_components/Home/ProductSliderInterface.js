@@ -75,14 +75,12 @@ class ProductSliderInterface extends Component {
         return (
             <div className="container">
                 {/* load data to the screen */}
-                {/*<ProductSlider name={CameraData} promotion={"Today's Picks!"}/>*/}
-                {/*Kitchen appliances*/}
-                {/*Games*/}
-                <ProductSlider image={watchImage} name={watchName} id={watchID} price={watchPrice} promotion={"Today's Picks!"}/>
-                <ProductSlider image={phoneImage} name={phoneName} id={phoneID} price={phonePrice} promotion={"Deals on Watches!"}/>
-                <ProductSlider image={phoneImage} name={phoneName} id={phoneID} price={phonePrice} promotion={"Phones On Sale Hurry! "} style={{marginBottom: "50px"}}/>
 
-                {/*<ProductSlider image={cameraImage} name={cameraName} id={phoneID} price={cameraPrice} promotion={"Phones On Sale Hurry! "} style={{marginBottom: "50px"}}/>*/}
+                {/*<ProductSlider image={watchImage} name={watchName} id={watchID} price={watchPrice} promotion={"Today's Picks!"}/>*/}
+                <ProductSlider image={watchImage} name={watchName} id={watchID} price={watchPrice} promotion={"Deals on Watches!"}/>
+                <ProductSlider image={phoneImage} name={phoneName} id={phoneID} price={phonePrice} promotion={"Phones On Sale Hurry! "} style={{marginBottom: "70px"}}/>
+
+                {/*<ProductSlider image={cameraImage} name={cameraName} id={cameraID} price={cameraPrice} promotion={"Phones On Sale Hurry! "} style={{marginBottom: "50px"}}/>*/}
 
             </div>);
     }
