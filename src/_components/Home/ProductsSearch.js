@@ -21,9 +21,6 @@ class ProductsSearch extends Component {
                 <Header />
                 <NewRowcategory/>
                  <Posts/>
-                 
-                {/*Top carousel-Yu*/}
-                {/*Footer-Yu*/}
                 <Footer/>
                 console.log("Its-------- the value");
                 console.log({categoryNames});

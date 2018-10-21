@@ -101,11 +101,11 @@ class ProductSlider extends Component {
         for (var i = this.state.activeIndex; i < this.state.activeIndex+5; i++) {
 
             indents.push(
-                <Link to={`/product/view/${this.props.id[i]}`} className="col-xl-2 text-center m-3">
+                <Link to={`/product/view/${this.props.id[i]}`} className="col-xl-2 d-flex justify-content-center m-3">
                     <div>
                         <img id="image" src={this.props.image[i]} style={{height: "250px", width: "250px"}} alt="Image"/>
-                        <h6>{this.props.name[i]}</h6>
-                        <h7>${this.props.price[i]}</h7>
+                        {/*<h6>{this.props.name[i]}</h6>*/}
+                        {/*<h7>${this.props.price[i]}</h7>*/}
                     </div>
                 </Link>
             );
@@ -127,9 +127,9 @@ class ProductSlider extends Component {
         const slides = items.map((item) => {
             return (
                 <CarouselItem className="custom-1" tag="div" key={item.id}>
-                    <div className="carousel-inner" style={{background: '#f2f2f2' }}>
+                    <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <div className="row d-flex justify-content-center m-4 rounded" style={{background: '##f2f2f2'}} >
+                            <div className="row d-flex justify-content-center m-4 rounded" >
                                 {this.dataSouce()}
                             </div>
                         </div>
