@@ -24,14 +24,25 @@ class OrderRouter extends Component {
             modal: !this.state.modal
         });
     }
-
+    // displaying after login
     componentDidMount() {
 
-        if (this.props.location.search === ""){
+        if (this.props.match.params.emailId === "default" && this.props.match.params.orderId === "default"){
             this.props.getOrderStatusCompleted(this.props.dataStatePosts.userData.userEmail);
         }
     }
-
+    // display after paypal
+    componentDidUpdate(prevProps){
+        if (prevProps.dataStateCart === this.props.dataStateCart){
+            // validating email format
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const checkEmail = re.test(this.props.match.params.emailId);
+            if (checkEmail === true){
+                this.props.updateOrderStatus(this.props.match.params.orderId);
+                this.props.getOrderStatusCompleted(this.props.match.params.emailId);
+            }
+        }
+    }
 
     render() {
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-export const payment = (sum) => dispatch => {
+export const payment = (sum, email, orderId) => dispatch => {
     let data = {
         sum: sum,
     }
@@ -14,7 +14,7 @@ export const payment = (sum) => dispatch => {
         }
     };
     axios
-    .post("https://api.elixir.ausgrads.academy/orders_micro/paypal/make/payment?sum=5")
+    .post("https://api.elixir.ausgrads.academy/orders_micro/paypal/make/payment?sum="+sum+"&email="+email+"&orderId="+orderId)
     //  .get("https://api.elixir.ausgrads.academy/orders_micro/paypal/tess/", axiosConfig)
         .then(posts =>
             dispatch({
