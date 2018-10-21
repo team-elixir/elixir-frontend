@@ -103,19 +103,19 @@ class OrderRouter extends Component {
                         <table id="cart" className="table table-hover table-condensed text-center">
                             <thead>
                             <tr>
-                                <th styles="width:50%">Order_ID</th>
-                                <th styles="width:10%">Total_Price</th>
-                                <th styles="width:8%">Payment_Status</th>
-                                <th styles="width:8%">Order_Items</th>
+                                <th styles="width:50%">Order ID</th>
+                                <th styles="width:10%">Total Price</th>
+                                <th styles="width:8%">Payment Status</th>
+                                <th styles="width:8%">Order Items</th>
                             </tr>
                             </thead>
                             <tbody>
                             {cart.map(cart => (
                                 <tr>
                                     <td>{cart.orderId}</td>
-                                    <td>${cart.totalPrice}</td>
+                                    <td>${cart.totalPrice.toFixed(2)}</td>
                                     <td>{cart.status}</td>
-                                    <td><button className="btn-lg" onClick={this.productLine} value={cart.orderId}>+</button></td>
+                                    <td><button className="btn-lg" onClick={this.productLine} value={cart.orderId}>View</button></td>
                                 </tr>
                             ))}
                             </tbody>
