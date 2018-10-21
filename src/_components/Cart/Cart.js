@@ -43,7 +43,9 @@ class Cart extends Component {
     checkOutButton(){
 
         const totalPrice = this.props.cart[0].totalPrice;
-        this.props.payment(10);
+        const emailId = this.props.userData.userEmail;
+        const orderId = this.props.cart[0].orderId;
+        this.props.payment(1,emailId,orderId);
     }
   render() {
     const cart = this.props.cart;
