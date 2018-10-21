@@ -4,8 +4,8 @@ import connect from "react-redux/es/connect/connect";
 
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import CartItem from "../../Cart/CartItem";
 import {getOrderStatusCompleted, getOrderStatusPending, updateOrderStatus} from "../../../actions/cartAction";
+import OrderItem from "../../Cart/OrderItem";
 
 
 
@@ -13,15 +13,32 @@ class OrderRouter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modal: false
+            modal: false,
+            cartItemsList:[],
         };
         this.toggle = this.toggle.bind(this);
+        this.productLine = this.productLine.bind(this);
 
     }
 
     toggle() {
         this.setState({
             modal: !this.state.modal
+        });
+    }
+    productLine(event){
+        console.log(event.target.value);
+        let cart= this.props.dataStateCart.cartComplete;
+        let cartItems = [];
+       cart.map(function(cart) {
+            if (cart.orderId == event.target.value){
+                cartItems = cart.orderline
+            }
+        });
+
+        this.setState({
+             modal: !this.state.modal,
+            cartItemsList: cartItems,
         });
     }
     // displaying after login
@@ -45,24 +62,13 @@ class OrderRouter extends Component {
     }
 
     render() {
-
-           console.log("prev");
-           console.log(this.props);
-
+        let cardv1 = this.state.cartItemsList;
         let cart= this.props.dataStateCart.cartComplete;
         let cartItems = [];
-        console.log("STE");
-        // console.log(this.props.dataStateCart);
-        console.log("STQ");
-
         if (cart !== undefined) {
-            console.log("STE1");
-            console.log(cart);
-            console.log("STQ1");
                 cart.map(cartItem =>
                     cartItems = cartItem.orderline
                 );
-                //cartItems = cart[0].orderline;
                 console.log("Cart Items here" + JSON.stringify(cart));
         }
         return (
@@ -70,7 +76,21 @@ class OrderRouter extends Component {
                 <div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} size = 'lg'>
                         <ModalBody>
-                            <CartItem data = {cartItems}/>
+                            <table id="cart" className="table table-hover table-condensed text-center">
+                                <thead>
+                                <tr>
+                                    <th styles="width:50%">Product</th>
+                                    <th styles="width:8%">Price</th>
+                                    <th styles="width:8%">Quantity</th>
+                                    <th styles="width:8%">SubTotal</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {cardv1.map(cart => (
+                                    <OrderItem data={cart}/>
+                                ))}
+                                </tbody>
+                            </table>
                         </ModalBody>
                     </Modal>
                 </div>
@@ -80,20 +100,22 @@ class OrderRouter extends Component {
                     </p>
 
                     {cartItems.length > 0 ? (
-                        <table id="cart" className="table table-hover table-condensed">
+                        <table id="cart" className="table table-hover table-condensed text-center">
                             <thead>
                             <tr>
                                 <th styles="width:50%">Order_ID</th>
                                 <th styles="width:10%">Total_Price</th>
                                 <th styles="width:8%">Payment_Status</th>
+                                <th styles="width:8%">Order_Items</th>
                             </tr>
                             </thead>
                             <tbody>
                             {cart.map(cart => (
-                                <tr onClick={this.toggle}>
+                                <tr>
                                     <td>{cart.orderId}</td>
-                                    <td>{cart.totalPrice}</td>
+                                    <td>${cart.totalPrice}</td>
                                     <td>{cart.status}</td>
+                                    <td><button className="btn-lg" onClick={this.productLine} value={cart.orderId}>+</button></td>
                                 </tr>
                             ))}
                             </tbody>
